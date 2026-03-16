@@ -1,12 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // 1. Link 컴포넌트 임포트 추가
+import { Link } from 'react-router-dom';
 import './Footer.scss';
-import instaLogo from '../img/porter/instagramlogo.png';
-import porterLogoW from '../img/porter/porterlogo_w.png';
-import potrLogoW from '../img/porter/potrlogo_w.png';
-import luggageLabelLogoW from '../img/porter/luggagelabellogo_w.png';
 
 const Footer = () => {
+    // public 폴더 경로를 편하게 쓰기 위한 변수 설정
+    const imgPath = `${process.env.PUBLIC_URL}/images`;
+
     return (
         <footer className="footer-container Bk-Bk_solid">
             <div className="footer-top">
@@ -45,15 +44,22 @@ const Footer = () => {
                 <div className="footer-col">
                     <h2 className="Wh-Wh_50">PORTER</h2>
                     <div className="sub-menu logo-menu">
-                        {/* 로고 클릭 시 메인으로 이동하도록 Link로 감싸주었습니다 */}
                         <Link to="/">
-                            <img src={porterLogoW} alt="PORTER" className="logo-1" />
+                            <img
+                                src={`${imgPath}/porterlogo_w.png`}
+                                alt="PORTER"
+                                className="logo-1"
+                            />
                         </Link>
                         <Link to="/">
-                            <img src={potrLogoW} alt="POTR" className="logo-2" />
+                            <img src={`${imgPath}/potrlogo_w.png`} alt="POTR" className="logo-2" />
                         </Link>
                         <Link to="/">
-                            <img src={luggageLabelLogoW} alt="LUGGAGE LABEL" className="logo-3" />
+                            <img
+                                src={`${imgPath}/luggagelabellogo_w.png`}
+                                alt="LUGGAGE LABEL"
+                                className="logo-3"
+                            />
                         </Link>
                     </div>
                 </div>
@@ -79,9 +85,12 @@ const Footer = () => {
                 </div>
 
                 <div className="logo-box">
-                    {/* 인스타그램 로고도 링크로 활용될 수 있어 유지했습니다 */}
                     <Link to="/">
-                        <img src={instaLogo} alt="Instagram" className="insta-logo Wh-Wh_90" />
+                        <img
+                            src={`${imgPath}/instagramlogo.png`}
+                            alt="Instagram"
+                            className="insta-logo Wh-Wh_90"
+                        />
                     </Link>
                 </div>
             </div>

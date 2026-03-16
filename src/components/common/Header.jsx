@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Header.scss';
-import logo from '../img/porter/porterlogo.png';
 
 const PlusIcon = ({ size }) => (
     <svg
@@ -38,7 +37,11 @@ const Header = () => {
         <header className={`header ${isLargeHeader ? 'large-header' : 'small-header'}`}>
             {/* 로고 클릭 시 메인 이동 */}
             <Link to="/" className="logo-area">
-                <img src={logo} alt="PORTER 로고" className="logo-img" />
+                <img
+                    src={`${process.env.PUBLIC_URL}/images/porterlogo.png`}
+                    alt="PORTER 로고"
+                    className="logo-img"
+                />
             </Link>
 
             <div className="content-area">
