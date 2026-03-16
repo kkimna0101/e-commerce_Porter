@@ -1,0 +1,252 @@
+﻿@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid $gray-200;
+  z-index: 1000;
+
+  &__inner {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: $black;
+  }
+
+  &__center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+
+    @include tablet {
+      display: none;
+    }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+}
+
+.gnb {
+  display: flex;
+  gap: 32px;
+
+  li {
+    a {
+      font-size: 14px;
+      font-weight: 600;
+      color: $black;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+
+      span {
+        font-weight: 400;
+      }
+
+      &:hover {
+        color: $gray-500;
+      }
+    }
+  }
+}
+
+.util-btn {
+  display: flex;
+  align-items: center;
+  color: $black;
+
+  &.flex {
+    position: relative;
+    gap: 4px;
+  }
+
+  &:hover {
+    color: $gray-500;
+  }
+}
+
+.util-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: $black;
+  text-transform: uppercase;
+
+  &:hover {
+    color: $gray-500;
+  }
+}
+
+.cart-badge {
+  background: $black;
+  color: $white;
+  font-size: 10px;
+  font-weight: 700;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -6px;
+  right: -8px;
+}
+
+.desktop-only {
+  @include tablet {
+    display: none !important;
+  }
+}
+
+.mobile-only {
+  display: none !important;
+
+  @include tablet {
+    display: flex !important;
+  }
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: $white;
+  z-index: 2000;
+  padding: 80px 24px;
+
+  &__close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: $black;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    li {
+      a {
+        font-size: 24px;
+        font-weight: 700;
+        color: $black;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
+
+.search-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+  }
+
+  &__content {
+    width: 90%;
+    max-width: 800px;
+  }
+
+  &__input {
+    width: 100%;
+    font-size: 40px;
+    font-weight: 700;
+    color: $black;
+    border: none;
+    border-bottom: 2px solid $black;
+    padding: 16px 0;
+    background: transparent;
+    text-transform: uppercase;
+    outline: none;
+
+    &::placeholder {
+      color: $gray-300;
+    }
+
+    @include mobile {
+      font-size: 24px;
+    }
+  }
+
+  &__recent {
+    margin-top: 40px;
+    
+    h3 {
+      font-size: 13px;
+      font-weight: 700;
+      color: $gray-500;
+      margin-bottom: 16px;
+      letter-spacing: 1px;
+    }
+
+    .recent-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .recent-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: $gray-100;
+      border-radius: 20px;
+      font-size: 14px;
+      color: $black;
+
+      span {
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      button {
+        color: $gray-400;
+        display: flex;
+        align-items: center;
+        &:hover {
+          color: $black;
+        }
+      }
+    }
+  }
+}
+

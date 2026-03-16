@@ -1,0 +1,83 @@
+﻿@use '../styles/variables' as *;
+
+.complete-page {
+  padding-top: 100px;
+  padding-bottom: 160px;
+  display: flex;
+  justify-content: center;
+
+  .complete-box {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    background: $gray-100;
+    padding: 60px 40px;
+    
+    .icon-success {
+      color: $point_orange;
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      font-size: 32px;
+      font-weight: 800;
+      color: $black;
+      margin-bottom: 16px;
+      letter-spacing: 1px;
+    }
+
+    .order-number {
+      font-size: 16px;
+      color: $gray-600;
+      margin-bottom: 40px;
+
+      strong {
+        color: $black;
+        font-weight: 700;
+      }
+    }
+
+    .order-summary-box {
+      background: $white;
+      padding: 32px;
+      border: 1px solid $gray-200;
+      text-align: left;
+      margin-bottom: 40px;
+
+      .summary-item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 16px;
+        font-size: 14px;
+
+        &:last-child { margin-bottom: 0; }
+
+        .label { color: $gray-500; font-weight: 600; }
+        .value { color: $black; text-align: right; max-width: 60%; word-break: keep-all; }
+        .highlight { font-size: 16px; font-weight: 800; color: $point_orange; }
+      }
+    }
+
+    .action-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      .btn {
+        width: 100%;
+        height: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        transition: all 0.3s;
+
+        &-black { background: $black; color: $white; border: 1px solid $black; &:hover { background: $gray-800; }}
+        &-outline { background: transparent; color: $black; border: 1px solid $gray-300; &:hover { border-color: $black; }}
+      }
+    }
+  }
+}
+

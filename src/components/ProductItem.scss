@@ -1,0 +1,142 @@
+﻿@use '../styles/variables' as *;
+
+.product-item {
+  width: 100%;
+
+  &__link {
+    display: block;
+    
+    &:hover {
+      .product-item__actions {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      .product-item__image-wrap img {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  &__image-wrap {
+    position: relative;
+    width: 100%;
+    padding-top: 130%; // ?몃줈濡?湲?鍮꾩쑉
+    overflow: hidden;
+    background: $gray-100;
+    margin-bottom: 16px;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+  }
+
+  &__badges {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 10;
+
+    .badge {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 8px;
+      color: $white;
+      background: $black;
+      letter-spacing: 1px;
+
+      &.sale {
+        background: $point_orange;
+      }
+    }
+  }
+
+  &__actions {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 10;
+    
+    .action-btn {
+      height: 48px;
+      background: rgba(255, 255, 255, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, color 0.2s;
+      
+      &:hover {
+        background: $black;
+        color: $white;
+      }
+
+      &.add {
+        flex: 1;
+        font-weight: 700;
+        letter-spacing: 1px;
+        border-right: 1px solid $gray-200;
+      }
+
+      &.heart {
+        width: 48px;
+        
+        &.active, &:hover {
+          color: $point_orange;
+          svg { stroke: $point_orange; }
+        }
+      }
+    }
+  }
+
+  &__info {
+    text-align: left;
+  }
+
+  &__meta {
+    font-size: 12px;
+    color: $gray-400;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+  }
+
+  &__name {
+    font-size: 14px;
+    font-weight: 600;
+    color: $black;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+
+  &__price {
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    .price-original {
+      color: $gray-400;
+      text-decoration: line-through;
+      font-weight: 400;
+      font-size: 13px;
+    }
+
+    .price-discount {
+      color: $point_orange;
+    }
+  }
+}
+

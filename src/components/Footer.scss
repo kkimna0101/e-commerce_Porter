@@ -1,0 +1,162 @@
+﻿@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.footer {
+  background-color: $black;
+  color: $white;
+  padding: 80px 0 40px;
+  margin-top: 80px;
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    margin-bottom: 80px;
+
+    @include desktop {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__main-menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+
+    @include desktop {
+      width: 40%;
+      padding: 0 60px;
+    }
+
+    li {
+      width: 100%;
+      
+      @include tablet {
+        width: calc(50% - 20px);
+      }
+
+      @include desktop {
+        width: 100%;
+      }
+
+      a {
+        font-family: 'roboto condense', sans-serif;
+        font-size: 40px;
+        font-weight: 800;
+        text-transform: uppercase;
+        color: $white;
+        display: block;
+
+        @include desktop {
+          font-size: 80px;
+        }
+
+        &:hover {
+          color: $gray-400;
+        }
+      }
+    }
+  }
+
+  &__sub-menus {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+
+    @include tablet {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @include desktop {
+      width: 60%;
+      padding-right: 60px;
+    }
+  }
+
+  &__col {
+    h3 {
+      font-family: 'roboto', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: $white;
+
+      @include tablet {
+        font-size: 20px;
+      }
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      li {
+        a {
+          font-size: 14px;
+          font-weight: 300;
+          color: $gray-300;
+
+          @include tablet {
+            font-size: 16px;
+            font-weight: 200;
+          }
+
+          &:hover {
+            color: $white;
+          }
+        }
+      }
+    }
+  }
+
+  &__brands {
+    ul li a {
+      font-weight: 600 !important;
+      color: $white !important;
+
+      &:hover {
+        color: $gray-400 !important;
+      }
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 40px;
+    border-top: 1px solid $gray-700;
+
+    @include tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__lang {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 14px;
+
+    .lang-label {
+      color: $txt_none-active;
+      font-weight: 600;
+    }
+
+    .lang-list {
+      color: $white;
+      padding-left: 16px;
+      border-left: 1px solid $gray-700;
+    }
+  }
+
+  &__copyright {
+    font-size: 13px;
+    color: $gray-500;
+  }
+}
+

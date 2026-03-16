@@ -1,0 +1,285 @@
+﻿@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+@use 'sass:color';
+
+.checkout-page {
+    padding-top: 60px;
+    padding-bottom: 120px;
+
+    &__title {
+        font-size: 32px;
+        font-weight: 800;
+        text-align: center;
+        margin-bottom: 60px;
+        letter-spacing: 2px;
+    }
+}
+
+.checkout-container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    @include desktop {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+}
+
+.checkout-form-section {
+    flex: 1;
+
+    .form-group-box {
+        margin-bottom: 60px;
+
+        h3 {
+            font-size: 16px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            letter-spacing: 1px;
+            border-bottom: 2px solid $black;
+            padding-bottom: 16px;
+        }
+
+        .form-row {
+            margin-bottom: 24px;
+
+            label {
+                display: block;
+                font-size: 13px;
+                font-weight: 700;
+                margin-bottom: 8px;
+                color: $black;
+            }
+
+            input[type='text'] {
+                width: 100%;
+                height: 48px;
+                padding: 0 16px;
+                border: 1px solid $gray-300;
+                font-size: 14px;
+                outline: none;
+
+                &:focus {
+                    border-color: $black;
+                }
+            }
+
+            &.address-row {
+                .zipcode-box {
+                    display: flex;
+                    gap: 12px;
+
+                    input {
+                        width: 150px;
+                    }
+                    button {
+                        height: 48px;
+                        padding: 0 24px;
+                        background: $black;
+                        color: $white;
+                        font-size: 13px;
+                        font-weight: 700;
+                        white-space: nowrap;
+                    }
+                }
+
+                .mt-8 {
+                    margin-top: 8px;
+                }
+            }
+        }
+
+        .payment-radios {
+            display: flex;
+            gap: 32px;
+            margin-bottom: 24px;
+
+            .radio-label {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                cursor: pointer;
+                font-size: 14px;
+                font-weight: 600;
+
+                input[type='radio'] {
+                    width: 18px;
+                    height: 18px;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .card-select {
+            select {
+                width: 100%;
+                max-width: 300px;
+                height: 48px;
+                padding: 0 16px;
+                border: 1px solid $black;
+                font-size: 14px;
+                outline: none;
+                background: transparent;
+                cursor: pointer;
+            }
+        }
+
+        .bank-info {
+            background: $gray-100;
+            padding: 24px;
+            p {
+                font-size: 14px;
+                color: $gray-600;
+                line-height: 1.6;
+                margin-bottom: 8px;
+                strong {
+                    color: $black;
+                }
+            }
+        }
+    }
+}
+
+.checkout-summary-section {
+    width: 100%;
+
+    @include desktop {
+        width: 380px;
+        position: sticky;
+        top: 100px;
+    }
+
+    .summary-box {
+        background: $gray-100;
+        padding: 32px;
+
+        h3 {
+            font-size: 16px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            letter-spacing: 1px;
+            border-bottom: 2px solid $black;
+            padding-bottom: 16px;
+        }
+
+        .order-items-preview {
+            border-bottom: 1px solid $gray-300;
+            padding-bottom: 24px;
+
+            .preview-item {
+                display: flex;
+                gap: 16px;
+                margin-bottom: 16px;
+
+                .img {
+                    width: 60px;
+                    height: 80px;
+                    flex-shrink: 0;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+
+                .info {
+                    flex: 1;
+                    .name {
+                        font-size: 13px;
+                        font-weight: 700;
+                        margin-bottom: 4px;
+                        color: $black;
+                    }
+                    .opt {
+                        font-size: 12px;
+                        color: $gray-500;
+                        margin-bottom: 4px;
+                    }
+                    .qty-price {
+                        font-size: 13px;
+                        font-weight: 600;
+                        color: $black;
+                    }
+                }
+            }
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            font-size: 14px;
+            color: $gray-600;
+
+            &.mt-24 {
+                margin-top: 24px;
+            }
+
+            &.total {
+                margin-top: 24px;
+                padding-top: 24px;
+                border-top: 1px solid $gray-300;
+                font-size: 18px;
+                font-weight: 800;
+                color: $black;
+            }
+        }
+
+        .btn-pay {
+            width: 100%;
+            height: 60px;
+            background: $point_orange;
+            color: $white;
+            font-size: 16px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-top: 32px;
+            transition: background 0.3s;
+
+            &:hover {
+                background: color.adjust($point_orange, $lightness: -10%);
+            }
+        }
+    }
+}
+
+.postcode-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+    &__content {
+        position: relative;
+        width: 90%;
+        max-width: 500px;
+        background: $white;
+        padding: 40px 0 0;
+        z-index: 10;
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            font-size: 16px;
+            color: $black;
+        }
+    }
+}

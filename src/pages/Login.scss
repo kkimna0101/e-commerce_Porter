@@ -1,0 +1,105 @@
+﻿@use '../styles/variables' as *;
+
+.login-page, .signup-page, .find-account-page {
+  padding-top: 100px;
+  padding-bottom: 160px;
+  display: flex;
+  justify-content: center;
+
+  .login-box, .signup-box, .find-box {
+    width: 100%;
+    max-width: 480px;
+    
+    h2 {
+      font-size: 32px;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 16px;
+      letter-spacing: 2px;
+    }
+
+    .desc {
+      text-align: center;
+      color: $gray-500;
+      margin-bottom: 40px;
+      font-size: 15px;
+    }
+  }
+
+  .login-form, .signup-form, .find-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .input-row {
+      input {
+        width: 100%;
+        height: 52px;
+        padding: 0 16px;
+        border: 1px solid $gray-300;
+        font-size: 14px;
+        outline: none;
+        &::placeholder { color: $gray-400; }
+        &:focus { border-color: $black; }
+      }
+    }
+
+    .error-msg {
+      color: $point_orange;
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    .btn-login, .btn-submit {
+      width: 100%;
+      height: 56px;
+      background: $black;
+      color: $white;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-top: 16px;
+      transition: background 0.3s;
+
+      &:hover { background: $gray-800; }
+    }
+  }
+
+  .test-login-wrap {
+    margin-top: 24px;
+    
+    .btn-test {
+      width: 100%;
+      height: 56px;
+      background: $white;
+      color: $black;
+      border: 1px solid $black;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.3s;
+
+      &:hover { background: $gray-100; }
+    }
+  }
+
+  .login-links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid $gray-200;
+
+    a {
+      font-size: 13px;
+      color: $gray-500;
+      
+      &:hover { color: $black; text-decoration: underline; }
+
+      &.join-link {
+        font-weight: 700;
+        color: $black;
+      }
+    }
+  }
+}
+
