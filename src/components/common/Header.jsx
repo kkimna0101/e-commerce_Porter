@@ -38,7 +38,7 @@ const Header = () => {
             {/* 로고 클릭 시 메인 이동 */}
             <Link to="/" className="logo-area">
                 <img
-                    src={`${process.env.PUBLIC_URL}/images/porterlogo.png`}
+                    src="/images/porterlogo.png"
                     alt="PORTER 로고"
                     className="logo-img"
                 />
