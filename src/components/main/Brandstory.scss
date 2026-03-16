@@ -1,0 +1,103 @@
+@use '../../styles/variables' as *;
+
+$font-stack: 'Roboto Condensed', 'Arial Narrow', Arial, sans-serif;
+
+.brand-story {
+    display: flex;
+    align-items: center;
+    padding: 80px 60px;
+    gap: 60px;
+    background-color: #fff;
+}
+
+.brand-story__left {
+    flex: 1;
+    min-width: 0;
+}
+
+.bs-viewport {
+    position: relative;
+    overflow: hidden;
+}
+
+/* PORTER 고정 */
+.bs-porter {
+    position: absolute;
+    left: 0;
+    z-index: 2;
+    pointer-events: none;
+    font-family: $font-stack;
+    font-weight: 900;
+    font-size: 104px;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: #000;
+    text-transform: uppercase;
+}
+
+/* 각 고정 슬롯: top/height/fontSize/paddingLeft 는 JSX 인라인 */
+.bs-slot {
+    position: absolute;
+    left: 0;
+    overflow: hidden; // 슬라이드 애니메이션 클리핑
+    display: flex;
+    align-items: flex-end; // baseline 맞춤
+    font-family: $font-stack;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    color: #cecece;
+    text-transform: uppercase;
+    white-space: nowrap;
+    line-height: 1;
+    box-sizing: content-box;
+}
+
+/* ── 우측 ── */
+.brand-story__right {
+    width: 440px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.brand-story__title {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    color: #000;
+    margin: 0;
+}
+
+.brand-story__subtitle {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    color: #000;
+    margin: 0;
+}
+
+.brand-story__body-ko {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    color: #000;
+    margin: 0;
+    word-break: keep-all;
+}
+
+.brand-story__body-en {
+    font-family: 'Roboto', Arial, sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    color: #000;
+    margin: 0;
+}

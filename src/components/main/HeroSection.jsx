@@ -5,8 +5,11 @@ const HeroSection = () => {
     return (
         <section className="hero">
             <div className="hero__frame">
-                {/* <img src="/images/hero.jpg" alt="Porter collection" className="hero__img" /> */}
-                <div className="hero__img hero__img--placeholder" />
+                <img
+                    src="https://placehold.co/1870x550"
+                    alt="Porter collection"
+                    className="hero__img"
+                />
             </div>
         </section>
     );
