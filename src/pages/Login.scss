@@ -1,4 +1,4 @@
-﻿@use '../styles/variables' as *;
+@use '../styles/variables' as *;
 
 .login-page, .signup-page, .find-account-page {
   padding-top: 100px;
@@ -40,7 +40,7 @@
         font-size: 14px;
         outline: none;
         &::placeholder { color: $gray-400; }
-        &:focus { border-color: $black; }
+        &:focus { border-color: $black-solid; }
       }
     }
 
@@ -53,7 +53,7 @@
     .btn-login, .btn-submit {
       width: 100%;
       height: 56px;
-      background: $black;
+      background: $black-solid;
       color: $white;
       font-size: 15px;
       font-weight: 700;
@@ -72,8 +72,8 @@
       width: 100%;
       height: 56px;
       background: $white;
-      color: $black;
-      border: 1px solid $black;
+      color: $black-solid;
+      border: 1px solid $black-solid;
       font-size: 14px;
       font-weight: 600;
       transition: all 0.3s;
@@ -93,13 +93,14 @@
       font-size: 13px;
       color: $gray-500;
       
-      &:hover { color: $black; text-decoration: underline; }
+      &:hover { color: $black-solid; text-decoration: underline; }
 
       &.join-link {
         font-weight: 700;
-        color: $black;
+        color: $black-solid;
       }
     }
   }
 }
+
 
