@@ -1,12 +1,35 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import './NotFound.scss';
+import errorImg from '../img/porter/404page.png';
+
+const ArrowRightIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
 
 const NotFound = () => {
+  const navigate = useNavigate();
+
   return (
-    <div style={{ textAlign: 'center', padding: '100px 0' }}>
-      <h2>404 - Page Not Found</h2>
-      <p style={{ marginBottom: '20px' }}>요청하신 페이지를 찾을 수 없습니다.</p>
-      <Link to="/" style={{ textDecoration: 'underline' }}>홈으로 돌아가기</Link>
+    <div className="not-found-container">
+      <div className="text-area">
+        <p className="go-home" onClick={() => navigate('/')}>
+          GO HOME <ArrowRightIcon />
+        </p>
+        <p className="about-products">
+          ABOUT OUR PRODUCTS
+        </p>
+      </div>
+      
+      {/* 우클릭 금지*/}
+      <img 
+        src={errorImg} 
+        alt="404 Page Not Found" 
+        className="error-image" 
+        onContextMenu={(e) => e.preventDefault()}
+      />
     </div>
   );
 };
