@@ -9,7 +9,7 @@ const Footer = () => {
                 {/* 첫 번째 : ABOUT */}
                 <div className="footer-col">
                     <h2 className="Wh-Wh_solid">ABOUT</h2>
-                    <div className="sub-menu txt-bebebe">
+                    <div className="sub-menu">
                         <Link to="/about">포터 스토리</Link>
                         <Link to="/offline">스토어</Link>
                         <Link to="/">뉴스레터</Link>
@@ -20,7 +20,7 @@ const Footer = () => {
                 {/* 두 번째 : CONTACT */}
                 <div className="footer-col">
                     <h2 className="Wh-Wh_solid">CONTACT</h2>
-                    <div className="sub-menu txt-bebebe">
+                    <div className="sub-menu">
                         <Link to="/mypage">회원 정보</Link>
                         <Link to="/board/inquiry">1:1 문의하기</Link>
                         <Link to="/board/faq">FAQ</Link>
@@ -31,7 +31,7 @@ const Footer = () => {
                 {/* 세 번째 : POLICY */}
                 <div className="footer-col">
                     <h2 className="Wh-Wh_solid">POLICY</h2>
-                    <div className="sub-menu txt-bebebe">
+                    <div className="sub-menu">
                         <Link to="/">개인 정보 보호 정책</Link>
                         <Link to="/">이용약관</Link>
                     </div>
@@ -41,8 +41,10 @@ const Footer = () => {
                 <div className="footer-col">
                     <h2 className="Wh-Wh_50">PORTER</h2>
                     <div className="sub-menu logo-menu">
-                        
-                        <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+                        <Link
+                            to="/"
+                            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                        >
                             <img src={`/images/porterlogo_w.png`} alt="PORTER" className="logo-1" />
                         </Link>
                         <Link to="/">
@@ -86,6 +88,17 @@ const Footer = () => {
                             className="insta-logo Wh-Wh_90"
                         />
                     </Link>
+                    <div
+                        className="back-to-top Wh-Wh_solid"
+                        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                    >
+                        <span>BACK TO TOP</span>
+                        <img
+                            className="arrow-icon"
+                            src={`/images/footer_arrow.png`}
+                            alt="Arrow Up"
+                        />
+                    </div>
                 </div>
             </div>
         </footer>

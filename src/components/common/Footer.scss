@@ -1,4 +1,7 @@
-﻿.Bk-Bk_solid {
+﻿@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.Bk-Bk_solid {
     background-color: #000000;
 }
 .Wh-Wh_solid {
@@ -26,7 +29,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 48px 0;
+    padding: 48px 0 96px;
 }
 
 .footer-top {
@@ -73,7 +76,7 @@
             cursor: pointer;
             white-space: nowrap;
             text-decoration: none; // 링크 밑줄 제거
-            color: inherit; // 부모 컬러(txt-bebebe 등) 상속
+            color: $white-80; // 부모 컬러(txt-bebebe 등) 상속
 
             &:hover {
                 color: #ffffff; // 호버 시 색상 변화 추가 (선택사항)
@@ -110,7 +113,7 @@
 }
 
 .footer-bottom {
-    padding: 0 60px;
+    padding: 56px 60px 0;
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -141,10 +144,11 @@
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     font-size: 20px;
+    color: $white-80;
 
     .divider {
         height: 16px;
-        border-left: 1px solid #929292;
+        border-left: 1px solid $white-80;
         margin: 0 12px;
     }
 }
@@ -161,10 +165,39 @@
         margin: 0;
     }
 }
+.logo-box {
+    display: flex;
+    justify-content: space-between; // 인스타는 왼쪽, TOP은 오른쪽으로 밀어줌
+    align-items: center;
+    width: 100%; // 너비를 꽉 채워야 양 끝 배치가 가능합니다.
+    margin-top: 10px; // 간격 조절
 
-.insta-logo {
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
-    cursor: pointer;
+    .insta-logo {
+        width: 60px;
+        height: 60px;
+        object-fit: contain;
+        cursor: pointer;
+    }
+
+    .back-to-top {
+        display: flex;
+        align-items: flex-end;
+        gap: 8px;
+        cursor: pointer;
+        font-family: 'Roboto Condensed', sans-serif;
+        font-weight: 700;
+        font-size: 20px;
+        letter-spacing: 0.05em;
+        line-height: 1;
+
+        .arrow-icon {
+            height: 60px;
+            /* 아이콘 이미지라면 width, height 설정 */
+        }
+
+        &:hover {
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+    }
 }
