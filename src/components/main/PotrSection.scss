@@ -70,7 +70,6 @@
             margin-top: 20px;
             word-break: keep-all;
 
-            /* 원래는 500이 맞는데 잘 안보여서 600으로 임의 수정 */
             .medium-text {
               font-weight: 600 !important;
             }
@@ -154,23 +153,32 @@
         flex-wrap: wrap;
         justify-content: space-between;
         row-gap: 84px;
+        align-items: center;
 
-        .product-box {
-          background-color: rgba(93, 103, 91, 0.15);
+        .potr-box {
           display: flex;
           justify-content: center;
           align-items: center;
+
+          img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+          }
         }
 
-        .box-top-left, .box-top-right, .box-bot-left {
+        .box-top-left {
           width: 739px;
+          height: 850px;
         }
         
-        .box-top-left, .box-top-right {
+        .box-top-right {
+          width: 739px;
           height: 850px;
         }
 
         .box-bot-left {
+          width: 739px;
           height: 770px;
         }
 
@@ -180,11 +188,10 @@
         }
       }
     }
-
     /* 4. 하단 Force 사진 영역 */
     .bottom-content {
       padding: 0 62px 0 126px;
-      margin-top: 8px;
+      margin-top: 0px;
       margin-bottom: 60px;
       display: flex;
       justify-content: space-between;

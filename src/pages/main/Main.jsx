@@ -5,6 +5,7 @@ import Intro from '../../components/Intro';
 
 import BrandStory from '../../components/main/Brandstory';
 import PotrSection from '../../components/main/PotrSection';
+import LLSection from '../../components/main/LLSection';
 import './Main.scss';
 import PorterSection from '../../components/main/PorterSection';
 
@@ -28,6 +29,7 @@ const Main = () => {
                 <BrandStory />
                 <PorterSection />
                 <PotrSection />
+                <LLSection />
             </main>
         </>
     );
