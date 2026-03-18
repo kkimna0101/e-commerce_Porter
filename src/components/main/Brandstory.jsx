@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
-import './BrandStory.scss';
+import './Brandstory.scss';
 
 const SH = 50;
 const LH = 104;
