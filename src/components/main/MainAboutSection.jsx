@@ -1,59 +1,49 @@
-import React, { useEffect, useRef } from 'react';
-import $ from 'jquery';
+import React, { useRef } from 'react';
 import './MainAboutSection.scss';
 
-// jquery.ripples는 jQuery가 글로벌(window.$)에 있어야 작동하는 경우가 많습니다.
-window.jQuery = $;
-window.$ = $;
-
 const MainAboutSection = () => {
-  const rippleRef = useRef(null);
+  const imageRef = useRef(null);
 
-  useEffect(() => {
-    // 1. jQuery를 글로벌에 먼저 할당합니다.
-    window.jQuery = $;
-    window.$ = $;
+  // 마우스 이동 시 이미지 패닝 효과
+  const handleMouseMove = (e) => {
+    if (!imageRef.current) return;
 
-    // 2. ripples 플러그인을 동적으로 불러와서 확실한 순서를 보장합니다.
-    // ESM import 호이스팅 문제를 피하기 위해 동적 임포트를 사용합니다.
-    const initRipples = async () => {
-      try {
-        await import('jquery.ripples');
-        const $el = $(rippleRef.current);
+    const { clientX, clientY, currentTarget } = e;
+    const rect = currentTarget.getBoundingClientRect();
+    
+    // 중심점으로부터의 상대적 위치 계산 (-0.5 ~ 0.5)
+    // 0에 가까울수록 중심, -0.5는 왼쪽/위, 0.5는 오른쪽/아래
+    const relX = (clientX - rect.left) / rect.width - 0.5;
+    const relY = (clientY - rect.top) / rect.height - 0.5;
 
-        if ($el.length > 0 && typeof $el.ripples === 'function') {
-          $el.ripples({
-            resolution: 512,
-            dropRadius: 20,
-            perturbance: 0.04,
-          });
-        }
-      } catch (err) {
-        console.error('Ripples effect failed to load:', err);
-      }
-    };
+    // 움직임 범위 설정 (반대로 움직여서 시야를 이동시키는 느낌)
+    const moveX = relX * -60; 
+    const moveY = relY * -60;
 
-    initRipples();
+    // 이미지 transform 업데이트
+    imageRef.current.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.1)`;
+  };
 
-    return () => {
-      try {
-        const $el = $(rippleRef.current);
-        if ($el.length > 0 && typeof $el.ripples === 'function') {
-          $el.ripples('destroy');
-        }
-      } catch (err) {
-        // cleanup 실패 시 무시
-      }
-    };
-  }, []);
+  // 마우스가 나가면 부드럽게 제자리로
+  const handleMouseLeave = () => {
+    if (!imageRef.current) return;
+    imageRef.current.style.transform = `translate(0, 0) scale(1.1)`;
+  };
 
   return (
     <section className="main-about-section">
       <div className="about-content">
         
-        {/* 상단 이미지 영역 (SCSS에서 background-image로 처리) */}
-        <div className="image-wrap" ref={rippleRef}>
-          {/* jquery.ripples를 위해 비워둡니다 */}
+        {/* 상단 이미지 영역 (마우스 패닝 효과) */}
+        <div 
+          className="image-wrap" 
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+        >
+          <div 
+            className="panning-image" 
+            ref={imageRef}
+          ></div>
         </div>
 
         {/* 하단 오렌지색 박스 영역 */}
