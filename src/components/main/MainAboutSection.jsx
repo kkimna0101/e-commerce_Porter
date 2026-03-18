@@ -12,7 +12,6 @@ const MainAboutSection = () => {
     const rect = currentTarget.getBoundingClientRect();
     
     // 중심점으로부터의 상대적 위치 계산 (-0.5 ~ 0.5)
-    // 0에 가까울수록 중심, -0.5는 왼쪽/위, 0.5는 오른쪽/아래
     const relX = (clientX - rect.left) / rect.width - 0.5;
     const relY = (clientY - rect.top) / rect.height - 0.5;
 
@@ -43,6 +42,7 @@ const MainAboutSection = () => {
           <div 
             className="panning-image" 
             ref={imageRef}
+            style={{ transform: 'scale(1.1)', cursor: 'default' }}
           ></div>
         </div>
 
