@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useStore } from '../../store/useStore';
-import { X } from 'lucide-react';
 import Swal from 'sweetalert2';
 import './Cart.scss';
 
@@ -21,11 +20,11 @@ const Cart = () => {
         getSanitizedCart();
     }, [getSanitizedCart]);
 
+    // 진입 즉시 전체 선택
     useEffect(() => {
-        // 진입 즉시 전체 선택
         const allIds = cartItems.map((item) => item.cartId);
         setSelectedIds(allIds);
-    }, [cartItems.length]); // length 변경시에만 트리거, 무한 루프 방지
+    }, [cartItems.length]);
 
     const handleSelectAll = (e) => {
         if (e.target.checked) {
@@ -39,7 +38,7 @@ const Cart = () => {
         if (checked) {
             setSelectedIds((prev) => [...prev, id]);
         } else {
-            setSelectedIds((prev) => prev.filter((selectedId) => selectedId !== id));
+            setSelectedIds((prev) => prev.filter((sid) => sid !== id));
         }
     };
 
@@ -74,61 +73,123 @@ const Cart = () => {
         navigate('/checkout', { state: { selectedIds: allIds } });
     };
 
+    const handleDeleteSelected = () => {
+        if (selectedIds.length === 0) {
+            return Swal.fire({
+                text: '삭제할 상품을 선택해주세요.',
+                icon: 'warning',
+                confirmButtonColor: '#1a1a1a',
+            });
+        }
+        removeMultipleFromCart(selectedIds);
+        setSelectedIds([]);
+    };
+
+    // ── 공통 헤더 + 컨트롤 ───────────────────────────────
+    const CartHeader = () => (
+        <>
+            <div className="cart-controls">
+                <label className="checkbox-wrap">
+                    <input
+                        type="checkbox"
+                        checked={
+                            cartItems.length > 0 &&
+                            selectedIds.length === cartItems.length
+                        }
+                        onChange={handleSelectAll}
+                        disabled={cartItems.length === 0}
+                    />
+                    <span className="chk-label">
+                        전체선택 ({selectedIds.length}/{cartItems.length})
+                    </span>
+                </label>
+                <button
+                    className="btn-delete-selected"
+                    onClick={handleDeleteSelected}
+                    disabled={cartItems.length === 0}
+                >
+                    삭제
+                </button>
+            </div>
+
+            <div className="cart-table-head">
+                <span></span>
+                <span>상품정보</span>
+                <span>주문수량</span>
+                <span>상품금액</span>
+                <span></span>
+            </div>
+        </>
+    );
+
+    // ── 빈 장바구니 ──────────────────────────────────────
     if (cartItems.length === 0) {
         return (
-            <div className="cart-empty inner">
-                <h2>SHOPPING BAG</h2>
-                <div className="empty-msg">
-                    <p>장바구니가 비어 있습니다.</p>
-                    <Link to="/product" className="continue-btn">
-                        쇼핑 계속하기
-                    </Link>
+            <div className="cart-page inner">
+                <h2 className="cart-page__title">CART</h2>
+
+                <div className="cart-layout">
+                    <section className="cart-left">
+                        <CartHeader />
+                        <div className="cart-empty">
+                            <div className="empty-bg-text">
+                                <span>YOUR</span>
+                                <span>CART</span>
+                                <span>IS</span>
+                            </div>
+                            <div className="empty-bg-text">
+                                <span className="word-empty">Empty</span>
+                            </div>
+                            <div className="empty-links">
+                                <Link to="/product">GO SHOPPING</Link>
+                                <Link to="/about">ABOUT OUR PRODUCTS</Link>
+                            </div>
+                        </div>
+                    </section>
+
+                    <aside className="cart-summary">
+                        <div className="summary-head">
+                            <h3>TOTAL</h3>
+                        </div>
+                        <hr className="summary-divider" />
+                        <div className="summary-fee-row">
+                            <span>상품 금액</span>
+                            <span>₩ 0</span>
+                        </div>
+                        <div className="summary-fee-row">
+                            <span>배송비</span>
+                            <span>₩ 0</span>
+                        </div>
+                        <div className="summary-total-row">
+                            <span className="label">총 결제 예정 금액</span>
+                            <span className="amount">₩ 0</span>
+                        </div>
+                        <div className="summary-actions">
+                            <button className="btn-checkout btn-all" disabled>
+                                Proceed to Checkout
+                            </button>
+                        </div>
+                    </aside>
                 </div>
             </div>
         );
     }
 
+    // ── 상품 있는 장바구니 ────────────────────────────────
     return (
         <div className="cart-page inner">
-            <h2 className="cart-page__title">SHOPPING BAG</h2>
+            <h2 className="cart-page__title">CART</h2>
 
-            <div className="cart-container">
-                <div className="cart-list-section">
-                    <div className="cart-list__header">
-                        <label className="checkbox-wrap">
-                            <input
-                                type="checkbox"
-                                checked={
-                                    selectedIds.length > 0 &&
-                                    selectedIds.length === cartItems.length
-                                }
-                                onChange={handleSelectAll}
-                            />
-                            <span className="chk-label">
-                                전체 선택 ({selectedIds.length}/{cartItems.length})
-                            </span>
-                        </label>
-                        <button
-                            className="btn-remove-selected"
-                            onClick={() => {
-                                if (selectedIds.length === 0)
-                                    return Swal.fire({
-                                        text: '삭제할 상품을 선택해주세요.',
-                                        icon: 'warning',
-                                        confirmButtonColor: '#1a1a1a',
-                                    });
-                                removeMultipleFromCart(selectedIds);
-                                setSelectedIds([]);
-                            }}
-                        >
-                            선택 삭제
-                        </button>
-                    </div>
+            <div className="cart-layout">
+                {/* LEFT */}
+                <section className="cart-left">
+                    <CartHeader />
 
                     <ul className="cart-list">
                         {cartItems.map((item) => (
                             <li key={item.cartId} className="cart-item">
-                                <div className="item-checkbox">
+                                {/* 1. 체크박스 */}
+                                <div className="item-check">
                                     <input
                                         type="checkbox"
                                         checked={selectedIds.includes(item.cartId)}
@@ -137,31 +198,34 @@ const Cart = () => {
                                         }
                                     />
                                 </div>
-                                <Link to={`/product/${item.id}`} className="item-img">
-                                    <img src={item.image} alt={item.name} />
-                                </Link>
+
+                                {/* 2. 상품정보 */}
                                 <div className="item-info">
-                                    <p className="meta">
-                                        {item.category} | {item.gender}
-                                    </p>
-                                    <Link to={`/product/${item.id}`} className="name">
-                                        {item.name}
+                                    <Link to={`/product/${item.id}`} className="item-thumb-link">
+                                        <img
+                                            src={item.image}
+                                            alt={item.name}
+                                            className="item-thumb"
+                                        />
                                     </Link>
-                                    <p className="options">
-                                        Color: {item.selectedColor} / Size: {item.selectedSize}
-                                    </p>
-                                    <div className="price">
-                                        {(item.discountPrice || item.price).toLocaleString()}₩
+                                    <div className="item-details">
+                                        <Link to={`/product/${item.id}`} className="item-name">
+                                            {item.name}
+                                        </Link>
+                                        <p className="item-option">{item.selectedColor}</p>
+                                        <p className="item-option">{item.selectedSize}</p>
                                     </div>
                                 </div>
-                                <div className="item-controls">
-                                    <div className="qty-control">
+
+                                {/* 3. 주문수량 */}
+                                <div className="item-qty">
+                                    <div className="qty-box">
                                         <button
                                             onClick={() =>
                                                 updateCartQuantity(item.cartId, item.quantity - 1)
                                             }
                                         >
-                                            -
+                                            −
                                         </button>
                                         <span>{item.quantity}</span>
                                         <button
@@ -172,46 +236,82 @@ const Cart = () => {
                                             +
                                         </button>
                                     </div>
+                                </div>
+
+                                {/* 4. 상품금액 — 헤더와 정렬되도록 독립 컬럼 */}
+                                <div className="item-price">
+                                    ₩ {((item.discountPrice || item.price) * item.quantity).toLocaleString()}
+                                </div>
+
+                                {/* 5. X 버튼 — 독립 컬럼 */}
+                                <div className="item-remove">
                                     <button
-                                        className="btn-delete"
+                                        className="btn-remove"
                                         onClick={() => removeFromCart(item.cartId)}
+                                        aria-label="삭제"
                                     >
-                                        <X size={20} />
+                                        <svg
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            strokeWidth={2}
+                                        >
+                                            <line x1="18" y1="6" x2="6" y2="18" />
+                                            <line x1="6" y1="6" x2="18" y2="18" />
+                                        </svg>
                                     </button>
                                 </div>
                             </li>
                         ))}
                     </ul>
-                </div>
+                </section>
 
-                <div className="cart-summary-section">
-                    <div className="summary-box">
-                        <h3>ORDER SUMMARY</h3>
-                        <div className="summary-row">
-                            <span>상품 금액</span>
-                            <span>{itemsPrice.toLocaleString()}₩</span>
-                        </div>
-                        <div className="summary-row">
-                            <span>배송비 (10만원 이상 무료)</span>
-                            <span>+{shippingFee.toLocaleString()}₩</span>
-                        </div>
-                        <div className="summary-row total">
-                            <span>총 결제 금액</span>
-                            <span>{totalPrice.toLocaleString()}₩</span>
-                        </div>
-                        <div className="summary-actions">
-                            <button
-                                className="btn-order btn-selected"
-                                onClick={handleOrderSelected}
-                            >
-                                선택 상품 주문하기
-                            </button>
-                            <button className="btn-order btn-all" onClick={handleOrderAll}>
-                                전체 상품 주문하기
-                            </button>
-                        </div>
+                {/* RIGHT */}
+                <aside className="cart-summary">
+                    <div className="summary-head">
+                        <h3>TOTAL</h3>
                     </div>
-                </div>
+
+                    <div className="summary-items">
+                        {selectedItems.length > 0 ? (
+                            selectedItems.map((item) => (
+                                <div className="summary-item-row" key={item.cartId}>
+                                    <span className="s-name">{item.name}</span>
+                                    <span>
+                                        ₩{' '}
+                                        {(
+                                            (item.discountPrice || item.price) * item.quantity
+                                        ).toLocaleString()}
+                                    </span>
+                                </div>
+                            ))
+                        ) : (
+                            <p className="summary-empty-msg">선택된 상품 없음</p>
+                        )}
+                    </div>
+
+                    <hr className="summary-divider" />
+
+                    <div className="summary-fee-row">
+                        <span>상품 금액</span>
+                        <span>₩ {itemsPrice.toLocaleString()}</span>
+                    </div>
+                    <div className="summary-fee-row">
+                        <span>배송비</span>
+                        <span>₩ {shippingFee.toLocaleString()}</span>
+                    </div>
+
+                    <div className="summary-total-row">
+                        <span className="label">총 결제 예정 금액</span>
+                        <span className="amount">₩ {totalPrice.toLocaleString()}</span>
+                    </div>
+
+                    <div className="summary-actions">
+                        <button className="btn-checkout btn-all" onClick={handleOrderAll}>
+                            Proceed to Checkout
+                        </button>
+                    </div>
+                </aside>
             </div>
         </div>
     );
