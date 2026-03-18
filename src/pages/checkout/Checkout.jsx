@@ -104,8 +104,7 @@ const Checkout = () => {
         setIsPostcodeOpen(false);
     };
 
-    const getPhone = (data) =>
-        `${data.phonePrefix}-${data.phoneMid}-${data.phoneLast}`;
+    const getPhone = (data) => `${data.phonePrefix}-${data.phoneMid}-${data.phoneLast}`;
 
     const getEmail = () => {
         const domain =
@@ -193,7 +192,6 @@ const Checkout = () => {
 
             <div className="checkout-container">
                 <div className="checkout-form-section">
-
                     {/* ── 주문자 정보 ── */}
                     <div className="form-group-box">
                         <h3>주문자 정보</h3>
@@ -261,8 +259,16 @@ const Checkout = () => {
                                     value={ordererData.emailDomainCustom}
                                     onChange={handleOrdererChange}
                                     placeholder="직접입력"
-                                    disabled={ordererData.emailDomain !== 'direct' && ordererData.emailDomain !== ''}
-                                    className={ordererData.emailDomain !== 'direct' && ordererData.emailDomain !== '' ? 'disabled' : ''}
+                                    disabled={
+                                        ordererData.emailDomain !== 'direct' &&
+                                        ordererData.emailDomain !== ''
+                                    }
+                                    className={
+                                        ordererData.emailDomain !== 'direct' &&
+                                        ordererData.emailDomain !== ''
+                                            ? 'disabled'
+                                            : ''
+                                    }
                                 />
                                 <select
                                     name="emailDomain"
@@ -272,7 +278,8 @@ const Checkout = () => {
                                         setOrdererData((prev) => ({
                                             ...prev,
                                             emailDomain: val,
-                                            emailDomainCustom: val === 'direct' ? prev.emailDomainCustom : val,
+                                            emailDomainCustom:
+                                                val === 'direct' ? prev.emailDomainCustom : val,
                                         }));
                                     }}
                                 >
@@ -408,8 +415,12 @@ const Checkout = () => {
                                 className="memo-select"
                             >
                                 <option value="">배송 메시지를 선택해 주세요.</option>
-                                <option value="부재시 문앞에 놓아주세요">부재시 문앞에 놓아주세요</option>
-                                <option value="부재시 경비실에 맡겨주세요">부재시 경비실에 맡겨주세요</option>
+                                <option value="부재시 문앞에 놓아주세요">
+                                    부재시 문앞에 놓아주세요
+                                </option>
+                                <option value="부재시 경비실에 맡겨주세요">
+                                    부재시 경비실에 맡겨주세요
+                                </option>
                                 <option value="배송 전 연락바랍니다">배송 전 연락바랍니다</option>
                                 <option value="직접 수령하겠습니다">직접 수령하겠습니다</option>
                             </select>

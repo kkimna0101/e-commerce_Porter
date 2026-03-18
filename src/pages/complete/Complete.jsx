@@ -33,9 +33,7 @@ const Complete = () => {
     const firstItem = orderInfo.items[0];
     const remainCount = orderInfo.items.length - 1;
     const previewLabel =
-        remainCount > 0
-            ? `${firstItem?.name} 외 ${remainCount}건`
-            : firstItem?.name;
+        remainCount > 0 ? `${firstItem?.name} 외 ${remainCount}건` : firstItem?.name;
 
     const createdDate = new Date(orderInfo.createdAt)
         .toLocaleDateString('ko-KR', { year: 'numeric', month: '2-digit', day: '2-digit' })
@@ -54,14 +52,9 @@ const Complete = () => {
 
             {/* ── 주문 정보 ── */}
             <div className="complete-section">
-                <button
-                    className="complete-section__head"
-                    onClick={() => toggleSection('order')}
-                >
+                <button className="complete-section__head" onClick={() => toggleSection('order')}>
                     <span className="section-title">주문 정보</span>
-                    <span className="section-preview">
-                        {!openSections.order && previewLabel}
-                    </span>
+                    <span className="section-preview">{!openSections.order && previewLabel}</span>
                     <span className={`section-arrow ${openSections.order ? 'open' : ''}`}>
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
                             <polyline points="18 15 12 9 6 15" />
@@ -82,7 +75,10 @@ const Complete = () => {
                                         <p className="order-item__name">{item.name}</p>
                                         <p className="order-item__opt">{item.selectedColor}</p>
                                         <p className="order-item__price">
-                                            ₩ {((item.discountPrice || item.price) * item.quantity).toLocaleString()}
+                                            ₩{' '}
+                                            {(
+                                                (item.discountPrice || item.price) * item.quantity
+                                            ).toLocaleString()}
                                         </p>
                                     </div>
                                 </div>
@@ -94,10 +90,7 @@ const Complete = () => {
 
             {/* ── 결제 정보 ── */}
             <div className="complete-section">
-                <button
-                    className="complete-section__head"
-                    onClick={() => toggleSection('payment')}
-                >
+                <button className="complete-section__head" onClick={() => toggleSection('payment')}>
                     <span className="section-title">결제 정보</span>
                     <span className="section-preview" />
                     <span className={`section-arrow ${openSections.payment ? 'open' : ''}`}>
@@ -173,7 +166,9 @@ const Complete = () => {
                             {orderInfo.shippingInfo.memo && (
                                 <>
                                     <span className="info-label">배송 시 요청사항</span>
-                                    <span className="info-value">{orderInfo.shippingInfo.memo}</span>
+                                    <span className="info-value">
+                                        {orderInfo.shippingInfo.memo}
+                                    </span>
                                 </>
                             )}
                         </div>
@@ -182,7 +177,7 @@ const Complete = () => {
             </div>
 
             {/* ── 하단 버튼 ── */}
-            <div className="complete-actions">
+            {/* <div className="complete-actions">
                 {isLoggedIn ? (
                     <Link to="/mypage" className="btn-complete btn-complete--black">
                         주문 내역 보기
@@ -195,7 +190,7 @@ const Complete = () => {
                 <Link to="/" className="btn-complete btn-complete--outline">
                     홈으로 돌아가기
                 </Link>
-            </div>
+            </div> */}
         </div>
     );
 };

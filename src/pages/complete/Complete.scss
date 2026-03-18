@@ -64,10 +64,8 @@ $font-body: 'Pretendard', 'Roboto', sans-serif;
 
 // ── Accordion Section ─────────────────────────────────────
 .complete-section {
-    border-top: 1px solid $gray-mid;
-
+    margin-bottom: 56px;
     &:last-of-type {
-        border-bottom: 1px solid $gray-mid;
         margin-bottom: 40px;
     }
 
@@ -76,18 +74,22 @@ $font-body: 'Pretendard', 'Roboto', sans-serif;
         display: flex;
         align-items: center;
         gap: 16px;
-        padding: 20px 0;
+        padding: 14px 8px;
         background: none;
         border: none;
         cursor: pointer;
         text-align: left;
+        margin-bottom: 24px;
+        border-top: 2px solid $black-solid;
+        border-bottom: 2px solid $black-solid;
 
         .section-title {
             font-family: $font-body;
-            font-size: 16px;
+            font-size: 24px;
             font-weight: 700;
             color: $black;
             letter-spacing: 0.02em;
+            line-height: 1;
             flex-shrink: 0;
         }
 
@@ -138,7 +140,7 @@ $font-body: 'Pretendard', 'Roboto', sans-serif;
     display: flex;
     gap: 16px;
     padding: 16px 0;
-    border-bottom: 1px solid $gray-light;
+    // border-bottom: 1px solid $gray-light;
 
     &:first-child {
         border-top: none;
@@ -225,6 +227,7 @@ $font-body: 'Pretendard', 'Roboto', sans-serif;
 }
 
 // ── 하단 버튼 ─────────────────────────────────────────────
+/*
 .complete-actions {
     display: flex;
     gap: 12px;
@@ -242,7 +245,10 @@ $font-body: 'Pretendard', 'Roboto', sans-serif;
     font-weight: 700;
     letter-spacing: 0.04em;
     text-decoration: none;
-    transition: background 0.15s, border-color 0.15s, color 0.15s;
+    transition:
+        background 0.15s,
+        border-color 0.15s,
+        color 0.15s;
 
     &--black {
         background: $black;
@@ -265,3 +271,4 @@ $font-body: 'Pretendard', 'Roboto', sans-serif;
         }
     }
 }
+*/
