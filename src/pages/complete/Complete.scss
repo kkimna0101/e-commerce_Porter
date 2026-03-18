@@ -1,111 +1,267 @@
 ﻿@use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 
+// ── Variables ─────────────────────────────────────────────
+$black: $black-solid;
+$white: $white-solid;
+$gray-light: $gray-100;
+$gray-mid: $gray-300;
+$gray-text: $gray-500;
+$font-display: 'Roboto Condensed', sans-serif;
+$font-body: 'Pretendard', 'Roboto', sans-serif;
+
+// ── Complete Page ─────────────────────────────────────────
 .complete-page {
-    padding-top: 100px;
-    padding-bottom: 160px;
+    font-family: $font-body;
+    color: $black;
+    padding: 0 160px 120px;
+    margin-top: 60px;
+    margin-bottom: 200px;
+}
+
+// ── Title ─────────────────────────────────────────────────
+.complete-page__title {
+    font-family: $font-display;
+    font-size: clamp(60px, 12vw, 160px);
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: clamp(-8px, -0.5vw, -2px);
+    padding: 30px 0 16px;
+}
+
+.complete-page__sub {
+    font-size: 14px;
+    color: $gray-text;
+    margin-bottom: 24px;
+}
+
+// ── 상단 링크 — Empty Cart 스타일과 동일 ──────────────────
+.complete-links {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: 48px;
 
-    .complete-box {
+    a {
+        font-family: $font-display;
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        color: $black;
+        text-decoration: none;
+        text-transform: uppercase;
+        line-height: 1.3;
+
+        &:hover {
+            &::after {
+                content: '→';
+                display: inline-block;
+                margin-left: 8px;
+            }
+        }
+    }
+}
+
+// ── Accordion Section ─────────────────────────────────────
+.complete-section {
+    border-top: 1px solid $gray-mid;
+
+    &:last-of-type {
+        border-bottom: 1px solid $gray-mid;
+        margin-bottom: 40px;
+    }
+
+    &__head {
         width: 100%;
-        max-width: 600px;
-        text-align: center;
-        background: $gray-100;
-        padding: 60px 40px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 20px 0;
+        background: none;
+        border: none;
+        cursor: pointer;
+        text-align: left;
 
-        .icon-success {
-            color: $point_orange;
-            margin-bottom: 24px;
-        }
-
-        h2 {
-            font-size: 32px;
-            font-weight: 800;
-            color: $black;
-            margin-bottom: 16px;
-            letter-spacing: 1px;
-        }
-
-        .order-number {
+        .section-title {
+            font-family: $font-body;
             font-size: 16px;
-            color: $gray-600;
-            margin-bottom: 40px;
-
-            strong {
-                color: $black;
-                font-weight: 700;
-            }
+            font-weight: 700;
+            color: $black;
+            letter-spacing: 0.02em;
+            flex-shrink: 0;
         }
 
-        .order-summary-box {
-            background: $white;
-            padding: 32px;
-            border: 1px solid $gray-200;
-            text-align: left;
-            margin-bottom: 40px;
-
-            .summary-item {
-                display: flex;
-                justify-content: space-between;
-                margin-bottom: 16px;
-                font-size: 14px;
-
-                &:last-child {
-                    margin-bottom: 0;
-                }
-
-                .label {
-                    color: $gray-500;
-                    font-weight: 600;
-                }
-                .value {
-                    color: $black;
-                    text-align: right;
-                    max-width: 60%;
-                    word-break: keep-all;
-                }
-                .highlight {
-                    font-size: 16px;
-                    font-weight: 800;
-                    color: $point_orange;
-                }
-            }
+        .section-preview {
+            flex: 1;
+            font-size: 13px;
+            color: $gray-text;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
         }
 
-        .action-buttons {
+        .section-arrow {
+            flex-shrink: 0;
             display: flex;
-            flex-direction: column;
-            gap: 16px;
+            align-items: center;
+            color: $black;
+            transition: transform 0.2s;
 
-            .btn {
-                width: 100%;
-                height: 56px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 15px;
-                font-weight: 700;
-                letter-spacing: 1px;
-                transition: all 0.3s;
-
-                &-black {
-                    background: $black;
-                    color: $white;
-                    border: 1px solid $black;
-                    &:hover {
-                        background: $gray-800;
-                    }
-                }
-                &-outline {
-                    background: transparent;
-                    color: $black;
-                    border: 1px solid $gray-300;
-                    &:hover {
-                        border-color: $black;
-                    }
-                }
+            svg {
+                width: 20px;
+                height: 20px;
             }
+
+            &.open {
+                transform: rotate(0deg);
+            }
+
+            &:not(.open) {
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+    &__body {
+        padding-bottom: 28px;
+    }
+}
+
+// ── 주문 상품 목록 ─────────────────────────────────────────
+.order-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.order-item {
+    display: flex;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid $gray-light;
+
+    &:first-child {
+        border-top: none;
+    }
+
+    &__img-wrap {
+        position: relative;
+        width: 80px;
+        height: 80px;
+        flex-shrink: 0;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__qty {
+        position: absolute;
+        top: -6px;
+        left: -6px;
+        width: 20px;
+        height: 20px;
+        background: $black;
+        color: $white;
+        border-radius: 50%;
+        font-size: 11px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        justify-content: center;
+    }
+
+    &__name {
+        font-size: 13px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: $black;
+        margin: 0;
+    }
+
+    &__opt {
+        font-size: 12px;
+        color: $gray-text;
+        margin: 0;
+    }
+
+    &__price {
+        font-size: 13px;
+        font-weight: 700;
+        color: $black;
+        margin: 0;
+    }
+}
+
+// ── 정보 그리드 (결제/배송) ────────────────────────────────
+.info-grid {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 12px 24px;
+    padding: 4px 0;
+
+    .info-label {
+        font-size: 13px;
+        font-weight: 600;
+        color: $gray-text;
+    }
+
+    .info-value {
+        font-size: 13px;
+        color: $black;
+        word-break: keep-all;
+        line-height: 1.5;
+    }
+}
+
+// ── 하단 버튼 ─────────────────────────────────────────────
+.complete-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.btn-complete {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    padding: 0 32px;
+    font-family: $font-body;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+
+    &--black {
+        background: $black;
+        color: $white;
+        border: 1px solid $black;
+
+        &:hover {
+            background: #333;
+            border-color: #333;
+        }
+    }
+
+    &--outline {
+        background: $white;
+        color: $black;
+        border: 1px solid $gray-mid;
+
+        &:hover {
+            border-color: $black;
         }
     }
 }

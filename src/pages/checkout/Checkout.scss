@@ -2,98 +2,309 @@
 @use '../../styles/mixins' as *;
 @use 'sass:color';
 
+// ── Cart 디자인과 동일한 변수 ───────────────────────────────
+$black: $black-solid;
+$white: $white-solid;
+$gray-light: $gray-100;
+$gray-mid: $gray-300;
+$gray-text: $gray-500;
+$accent: $point-khaki;
+$font-display: 'Roboto Condensed', sans-serif;
+$font-body: 'Pretendard', 'Roboto', sans-serif;
+
+// ── Checkout Page ─────────────────────────────────────────
 .checkout-page {
-    padding-top: 60px;
-    padding-bottom: 120px;
-
-    &__title {
-        font-size: 32px;
-        font-weight: 800;
-        text-align: center;
-        margin-bottom: 60px;
-        letter-spacing: 2px;
-    }
+    font-family: $font-body;
+    color: $black;
+    padding: 0 160px 120px;
+    margin-top: 60px;
+    margin-bottom: 200px;
 }
 
+// ── Title ─────────────────────────────────────────────────
+.checkout-page__title {
+    font-family: $font-display;
+    font-size: clamp(60px, 12vw, 160px);
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: clamp(-8px, -0.5vw, -2px);
+    padding: 30px 0 24px;
+}
+
+// ── Layout ────────────────────────────────────────────────
 .checkout-container {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-
-    @include desktop {
-        flex-direction: row;
-        align-items: flex-start;
-    }
+    display: grid;
+    grid-template-columns: 1fr 410px;
+    gap: 50px; //바꾸지말라고
+    align-items: start;
 }
 
+// ── Form Section ──────────────────────────────────────────
 .checkout-form-section {
     flex: 1;
 
     .form-group-box {
-        margin-bottom: 60px;
+        margin-bottom: 56px;
+
+        // 섹션 헤더 (타이틀 + 주문자동일 체크박스 나란히)
+        &__head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px solid $black;
+            padding-bottom: 14px;
+            margin-bottom: 24px;
+        }
 
         h3 {
-            font-size: 16px;
-            font-weight: 800;
-            margin-bottom: 24px;
-            letter-spacing: 1px;
+            font-family: $font-display;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
             border-bottom: 2px solid $black;
-            padding-bottom: 16px;
+            padding-bottom: 14px;
+            margin-bottom: 24px;
+        }
+
+        // __head 안에 있는 h3는 border/margin 제거
+        &__head h3 {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
         }
 
         .form-row {
-            margin-bottom: 24px;
+            display: grid;
+            grid-template-columns: 130px 1fr;
+            align-items: start;
+            gap: 10px 16px;
+            margin-bottom: 18px;
 
             label {
                 display: block;
                 font-size: 13px;
-                font-weight: 700;
-                margin-bottom: 8px;
+                font-weight: 600;
                 color: $black;
+                letter-spacing: 0.02em;
+                padding-top: 13px;
             }
 
-            input[type='text'] {
+            input[type='text'],
+            input[type='password'] {
                 width: 100%;
-                height: 48px;
-                padding: 0 16px;
-                border: 1px solid $gray-300;
+                height: 44px;
+                padding: 0 14px;
+                border: 1px solid $gray-mid;
+                font-family: $font-body;
                 font-size: 14px;
+                color: $black;
+                background: $white;
                 outline: none;
+                transition: border-color 0.15s;
+
+                &::placeholder {
+                    color: $gray-text;
+                }
 
                 &:focus {
                     border-color: $black;
+                }
+
+                &[readonly],
+                &.disabled {
+                    background: $gray-light;
+                    color: $gray-text;
+                    cursor: default;
                 }
             }
 
             &.address-row {
                 .zipcode-box {
                     display: flex;
-                    gap: 12px;
+                    gap: 10px;
 
                     input {
-                        width: 150px;
+                        width: 140px !important;
+                        flex-shrink: 0;
                     }
+
                     button {
-                        height: 48px;
-                        padding: 0 24px;
+                        height: 44px;
+                        padding: 0 18px;
                         background: $black;
                         color: $white;
+                        font-family: $font-body;
                         font-size: 13px;
-                        font-weight: 700;
+                        font-weight: 600;
+                        border: none;
+                        cursor: pointer;
                         white-space: nowrap;
+                        transition: background 0.15s;
+
+                        &:hover {
+                            background: #333;
+                        }
                     }
                 }
 
-                .mt-8 {
+                .address-inputs {
+                    grid-column: 2;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
                     margin-top: 8px;
                 }
+            }
+        }
+
+        // ── 휴대전화 박스 ──────────────────────────────────
+        .phone-box {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+
+            select {
+                width: 80px;
+                height: 44px;
+                padding: 0 8px;
+                border: 1px solid $gray-mid;
+                font-family: $font-body;
+                font-size: 14px;
+                color: $black;
+                background: $white;
+                outline: none;
+                cursor: pointer;
+                appearance: none;
+                text-align: center;
+                transition: border-color 0.15s;
+
+                &:focus {
+                    border-color: $black;
+                }
+            }
+
+            input[type='text'] {
+                width: 90px !important;
+                flex-shrink: 0;
+            }
+
+            .phone-dash {
+                font-size: 16px;
+                color: $gray-text;
+                flex-shrink: 0;
+            }
+        }
+
+        // ── 이메일 박스 ────────────────────────────────────
+        .email-box {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+
+            input[type='text'] {
+                width: 160px !important;
+                flex-shrink: 0;
+            }
+
+            .email-at {
+                font-size: 16px;
+                color: $gray-text;
+                flex-shrink: 0;
+            }
+
+            select {
+                width: 140px;
+                height: 44px;
+                padding: 0 10px;
+                border: 1px solid $gray-mid;
+                font-family: $font-body;
+                font-size: 13px;
+                color: $black;
+                background: $white;
+                outline: none;
+                cursor: pointer;
+                appearance: none;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23111' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+                background-repeat: no-repeat;
+                background-position: right 10px center;
+                transition: border-color 0.15s;
+
+                &:focus {
+                    border-color: $black;
+                }
+            }
+        }
+
+        // ── 주문자 정보와 동일 체크박스 ─────────────────────
+        .same-as-orderer {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            color: $black;
+            white-space: nowrap;
+
+            input[type='checkbox'] {
+                appearance: none;
+                width: 16px;
+                height: 16px;
+                border: 1.5px solid $gray-mid;
+                background: $white;
+                cursor: pointer;
+                flex-shrink: 0;
+                position: relative;
+                transition: background 0.15s, border-color 0.15s;
+
+                &:checked {
+                    background: $black;
+                    border-color: $black;
+
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        left: 4px;
+                        top: 1px;
+                        width: 5px;
+                        height: 9px;
+                        border: 2px solid $white;
+                        border-top: none;
+                        border-left: none;
+                        transform: rotate(45deg);
+                    }
+                }
+            }
+        }
+
+        // ── 배송요청사항 select ─────────────────────────────
+        .memo-select {
+            width: 100%;
+            height: 44px;
+            padding: 0 14px;
+            border: 1px solid $gray-mid;
+            font-family: $font-body;
+            font-size: 14px;
+            color: $black;
+            background: $white;
+            outline: none;
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23111' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            transition: border-color 0.15s;
+
+            &:focus {
+                border-color: $black;
             }
         }
 
         .payment-radios {
             display: flex;
             gap: 32px;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
+            padding-left: 146px;
 
             .radio-label {
                 display: inline-flex;
@@ -101,81 +312,119 @@
                 gap: 8px;
                 cursor: pointer;
                 font-size: 14px;
-                font-weight: 600;
+                font-weight: 500;
 
                 input[type='radio'] {
+                    appearance: none;
                     width: 18px;
                     height: 18px;
+                    border: 1.5px solid $gray-mid;
+                    border-radius: 50%;
                     cursor: pointer;
+                    position: relative;
+                    transition: border-color 0.15s;
+
+                    &:checked {
+                        border-color: $black;
+
+                        &::after {
+                            content: '';
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            width: 9px;
+                            height: 9px;
+                            border-radius: 50%;
+                            background: $black;
+                        }
+                    }
                 }
             }
         }
 
         .card-select {
+            padding-left: 146px;
+
             select {
-                width: 100%;
-                max-width: 300px;
-                height: 48px;
-                padding: 0 16px;
-                border: 1px solid $black;
+                width: 280px;
+                height: 44px;
+                padding: 0 14px;
+                border: 1px solid $gray-mid;
+                font-family: $font-body;
                 font-size: 14px;
+                color: $black;
+                background: $white;
                 outline: none;
-                background: transparent;
                 cursor: pointer;
+                appearance: none;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23111' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+                background-repeat: no-repeat;
+                background-position: right 14px center;
+                transition: border-color 0.15s;
+
+                &:focus {
+                    border-color: $black;
+                }
             }
         }
 
         .bank-info {
-            background: $gray-100;
-            padding: 24px;
+            background: $gray-light;
+            padding: 20px 24px;
+            margin-left: 146px;
+            border-left: 3px solid $black;
+
             p {
-                font-size: 14px;
-                color: $gray-600;
-                line-height: 1.6;
-                margin-bottom: 8px;
+                font-size: 13px;
+                color: $gray-text;
+                line-height: 1.7;
+                margin-bottom: 4px;
+
                 strong {
                     color: $black;
+                    font-weight: 700;
                 }
             }
         }
     }
 }
 
+// ── Summary — Cart TOTAL 박스와 동일한 스타일 ─────────────
 .checkout-summary-section {
-    width: 100%;
-
-    @include desktop {
-        width: 380px;
-        position: sticky;
-        top: 100px;
-    }
+    position: sticky;
+    top: 80px;
 
     .summary-box {
-        background: $gray-100;
-        padding: 32px;
+        background: $gray-light;
+        border: 1px solid $gray-mid;
 
         h3 {
-            font-size: 16px;
-            font-weight: 800;
-            margin-bottom: 24px;
-            letter-spacing: 1px;
-            border-bottom: 2px solid $black;
-            padding-bottom: 16px;
+            font-family: $font-display;
+            font-size: 60px;
+            font-weight: 700;
+            line-height: 100%;
+            letter-spacing: -3px;
+            color: $black;
+            padding: 24px 24px 16px;
         }
 
         .order-items-preview {
-            border-bottom: 1px solid $gray-300;
-            padding-bottom: 24px;
+            margin: 0 24px;
+            border-top: 1px solid $gray-mid;
 
             .preview-item {
                 display: flex;
-                gap: 16px;
-                margin-bottom: 16px;
+                gap: 12px;
+                padding: 16px 0;
+
+                border-bottom: 1px solid $gray-mid;
 
                 .img {
-                    width: 60px;
-                    height: 80px;
+                    width: 64px;
+                    height: 64px;
                     flex-shrink: 0;
+
                     img {
                         width: 100%;
                         height: 100%;
@@ -185,17 +434,22 @@
 
                 .info {
                     flex: 1;
+
                     .name {
                         font-size: 13px;
                         font-weight: 700;
-                        margin-bottom: 4px;
+                        letter-spacing: 0.01em;
+                        text-transform: uppercase;
                         color: $black;
+                        margin-bottom: 3px;
                     }
+
                     .opt {
                         font-size: 12px;
-                        color: $gray-500;
-                        margin-bottom: 4px;
+                        color: $gray-text;
+                        margin-bottom: 3px;
                     }
+
                     .qty-price {
                         font-size: 13px;
                         font-weight: 600;
@@ -208,42 +462,65 @@
         .summary-row {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 16px;
-            font-size: 14px;
-            color: $gray-600;
+            font-size: 16px;
+            padding: 4px 24px;
+            color: $black;
+
+            span:last-child {
+                font-weight: 500;
+            }
 
             &.mt-24 {
-                margin-top: 24px;
+                margin-top: 16px;
             }
 
             &.total {
-                margin-top: 24px;
-                padding-top: 24px;
-                border-top: 1px solid $gray-300;
-                font-size: 18px;
-                font-weight: 800;
-                color: $black;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 16px 0 20px;
+                border-top: 1px solid $gray-mid;
+                margin: 12px 24px 0;
+
+                span:first-child {
+                    font-size: 18px;
+                    font-weight: 700;
+                }
+
+                span:last-child {
+                    font-size: 16px;
+                    font-weight: 700;
+                }
             }
         }
 
         .btn-pay {
+            display: block;
             width: 100%;
-            height: 60px;
-            background: $point_orange;
+            border: none;
+            cursor: pointer;
+            font-family: $font-display;
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: -1px;
             color: $white;
-            font-size: 16px;
-            font-weight: 800;
-            letter-spacing: 1px;
-            margin-top: 32px;
-            transition: background 0.3s;
+            background: $accent;
+            padding: 16px 0;
+            transition: background 0.2s;
 
             &:hover {
-                background: color.adjust($point_orange, $lightness: -10%);
+                background: color.adjust($accent, $lightness: -8%);
+            }
+
+            &:disabled {
+                background: $gray-mid;
+                cursor: not-allowed;
             }
         }
     }
 }
 
+// ── Postcode Modal ────────────────────────────────────────
 .postcode-modal {
     position: fixed;
     top: 0;
@@ -280,6 +557,13 @@
             height: 30px;
             font-size: 16px;
             color: $black;
+            background: none;
+            border: none;
+            cursor: pointer;
+
+            &:hover {
+                color: $gray-text;
+            }
         }
     }
 }
