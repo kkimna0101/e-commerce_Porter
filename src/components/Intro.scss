@@ -1,44 +1,61 @@
 @use '../styles/variables' as *;
+
 /* ===== Intro 프리로더 ===== */
 
 // 프리로더 전체 래퍼
 .intro-preloader-wrap {
-    position: relative;
-    overflow: hidden;
+  position: relative;
+  overflow: hidden;
 }
 
 // 프리로더: 올리브 배경, 고정 전체화면
 .intro-preloader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: $black-solid;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-start;
-    padding: 3rem;
-    z-index: 9999;
-    overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: $black-solid;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 3rem;
+  z-index: 9999;
+  overflow: hidden;
 }
 
 // 로고 텍스트: 좌측 하단 고정
 .intro-preloader__logo {
-    position: fixed;
-    bottom: 0;
-    left: 3rem;
-    font-family: 'Roboto Condensed', sans-serif;
-    font-size: 12vw;
-    font-weight: 900;
-    transform: scaleX(0.8);
-    color: $point_orange;
-    letter-spacing: -0.09em;
-    line-height: 1;
-    font-family: 'Outfit', sans-serif;
+  position: fixed;
+  bottom: 0;
+  left: 3rem;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 12vw;
+  font-weight: 900;
+  color: $point_orange;
+  letter-spacing: -0.09em;
+  line-height: 1;
+  font-family: 'Outfit', sans-serif;
+}
+
+/* 이미지 글자 스타일 */
+.intro-preloader__char-img {
+  height: 370px;
+  display: inline-block;
+  margin: 0 8px;
+
+  &:nth-child(4) {
+    transform: translateX(-8px);
+  }
+  &:nth-child(5) {
+    transform: translateX(-8px);
+  }
+  &:nth-child(6) {
+    transform: translateX(-8px);
+  }
 }
 
 // 한 글자씩 올라오는 애니메이션용 inline-block 처리
 .intro-preloader__char {
-    display: inline-block;
+  display: inline-block;
 }
