@@ -4,16 +4,17 @@
 
 .product-section {
   width: 100%;
-  margin-top: 170px;
-  margin-bottom: 670px;
+  padding-top: 192px; 
+  padding-bottom: 192px; 
+  background-color: #fff;
+  overflow: hidden; 
 
   .product-content {
     width: 1920px;
     max-width: 100%;
     margin: 0 auto;
-    padding: 60px;
+    padding: 0 60px;
     
-    /* 1. 상단 타이틀 영역 */
     .section-header {
       display: flex;
       justify-content: space-between; 
@@ -38,15 +39,13 @@
       }
     }
 
-    /* 2. 상품 슬라이더 컨테이너 */
     .slider-container {
       position: relative;
       width: 100%;
 
-      /* 3. 뒤로 가기 화살표 버튼 (왼쪽 배치) */
       .back-arrow {
         position: absolute;
-        left: 20px; 
+        left: 0; 
         top: 40%; 
         transform: translateY(-50%);
         background-color: rgba(255, 255, 255, 0.9);
@@ -72,16 +71,7 @@
       .product-slider {
         display: flex;
         gap: 24px; 
-        overflow-x: auto; 
-        scroll-behavior: smooth; 
-
-        scrollbar-width: none; 
-        -ms-overflow-style: none; 
-
-        &::-webkit-scrollbar {
-          display: none; 
-        }
-
+        width: max-content;
         cursor: default; 
 
         .product-card {
@@ -104,19 +94,14 @@
           }
 
           .info-box {
-            color: #000000; 
+            color: #000; 
             font-family: 'Roboto', sans-serif;
             font-weight: 500; 
             font-size: 18px;
             letter-spacing: -0.02em; 
             
-            p {
-              margin: 0;
-            }
-
-            .product-name {
-              margin-bottom: 8px; 
-            }
+            p { margin: 0; }
+            .product-name { margin-bottom: 8px; }
           }
         }
       }

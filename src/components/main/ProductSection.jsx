@@ -1,5 +1,9 @@
 import React, { useRef, useEffect, useState } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './ProductSection.scss';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const productList = [
   { id: 1, name: 'TANKER SQUARE TOTE BAG(L)', price: '₩ 818,000', src: '/images/main/recommended1.png' },
@@ -13,47 +17,49 @@ const productList = [
 ];
 
 const ProductSection = () => {
-  const contentRef = useRef(null);
-  const sliderRef = useRef(null);
+  const sectionRef = useRef(null);
+  const trackRef = useRef(null);
   const [showArrow, setShowArrow] = useState(false);
 
   useEffect(() => {
-    const content = contentRef.current;
-    const slider = sliderRef.current;
-    if (!content || !slider) return;
+    const track = trackRef.current;
+    const scrollWidth = track.scrollWidth - window.innerWidth + 120;
 
-    const handleWheel = (e) => {
-      e.preventDefault(); 
-      slider.scrollLeft += e.deltaY * 1.0; 
-    };
+    const tl = gsap.to(track, {
+      x: -scrollWidth,
+      ease: "none",
+    });
 
-    content.addEventListener('wheel', handleWheel, { passive: false });
+    ScrollTrigger.create({
+      animation: tl,
+      trigger: sectionRef.current,
+      start: "center center", 
+      end: () => `+=${scrollWidth}`, 
+      scrub: 1, 
+      pin: true, 
+      onUpdate: (self) => {
+        setShowArrow(self.progress > 0.95);
+      }
+    });
 
     return () => {
-      content.removeEventListener('wheel', handleWheel);
+      tl.kill();
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
 
-  const handleScroll = () => {
-    if (!sliderRef.current) return;
-    const { scrollLeft, scrollWidth, clientWidth } = sliderRef.current;
-    
-    if (scrollLeft + clientWidth >= scrollWidth - 10) {
-      setShowArrow(true);
-    } else {
-      setShowArrow(false);
-    }
-  };
-
   const scrollToStart = () => {
-    if (sliderRef.current) {
-      sliderRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+    if (sectionRef.current) {
+      window.scrollTo({
+        top: sectionRef.current.offsetTop,
+        behavior: 'smooth'
+      });
     }
   };
 
   return (
-    <section className="product-section">
-      <div className="product-content" ref={contentRef}>
+    <section className="product-section" ref={sectionRef}>
+      <div className="product-content">
         
         <div className="section-header">
           <h2>Recommended Product</h2>
@@ -61,18 +67,13 @@ const ProductSection = () => {
         </div>
 
         <div className="slider-container">
-          
           {showArrow && (
             <button className="back-arrow" onClick={scrollToStart}>
               ←
             </button>
           )}
 
-          <div 
-            className="product-slider"
-            ref={sliderRef} 
-            onScroll={handleScroll}
-          >
+          <div className="product-slider" ref={trackRef}>
             {productList.map((product) => (
               <div key={product.id} className="product-card">
                 <div className="img-box">
@@ -85,7 +86,6 @@ const ProductSection = () => {
               </div>
             ))}
           </div>
-
         </div>
       </div>
     </section>
