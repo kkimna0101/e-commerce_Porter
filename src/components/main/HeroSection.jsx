@@ -6,7 +6,7 @@ const HeroSection = () => {
         <section className="hero">
             <div className="hero__frame">
                 <video
-                    src="/videos/PALACExPORTER.mp4"
+                    src="/videos/PALACExPORTER2.mp4"
                     className="hero__video"
                     autoPlay
                     loop
