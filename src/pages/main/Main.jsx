@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
-import Header from '../../components/common/Header';
-import HeroSection from '../../components/main/HeroSection';
 import Intro from '../../components/Intro';
+import HeroSection from '../../components/main/HeroSection';
+import Header from '../../components/common/Header';
+
 
 import BrandStory from '../../components/main/Brandstory';
+import PorterSection from '../../components/main/PorterSection';
 import PotrSection from '../../components/main/PotrSection';
 import LLSection from '../../components/main/LLSection';
 import './Main.scss';
-import PorterSection from '../../components/main/PorterSection';
 import MainAboutSection from '../../components/main/MainAboutSection';
 import ProductSection from '../../components/main/ProductSection';
 

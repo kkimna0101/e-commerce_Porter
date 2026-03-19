@@ -5,11 +5,14 @@ const HeroSection = () => {
     return (
         <section className="hero">
             <div className="hero__frame">
-                <img
-                    src="https://placehold.co/1870x550"
-                    alt="Porter collection"
-                    className="hero__img"
-                />
+                <video
+                    src="/videos/PALACExPORTER.mp4"
+                    className="hero__video"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                ></video>
             </div>
         </section>
     );

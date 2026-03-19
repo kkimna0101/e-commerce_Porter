@@ -1,14 +1,10 @@
 @use '../styles/variables' as *;
 
-/* ===== Intro 프리로더 ===== */
-
-// 프리로더 전체 래퍼
 .intro-preloader-wrap {
   position: relative;
   overflow: hidden;
 }
 
-// 프리로더: 올리브 배경, 고정 전체화면
 .intro-preloader {
   position: fixed;
   top: 0;
@@ -24,7 +20,6 @@
   overflow: hidden;
 }
 
-// 로고 텍스트: 좌측 하단 고정
 .intro-preloader__logo {
   position: fixed;
   bottom: 0;
@@ -37,13 +32,11 @@
   line-height: 1;
   font-family: 'Outfit', sans-serif;
 }
-
-/* 이미지 글자 스타일 */
 .intro-preloader__char-img {
   height: 370px;
+
   display: inline-block;
   margin: 0 8px;
-
   &:nth-child(4) {
     transform: translateX(-8px);
   }
@@ -55,7 +48,6 @@
   }
 }
 
-// 한 글자씩 올라오는 애니메이션용 inline-block 처리
 .intro-preloader__char {
   display: inline-block;
 }
