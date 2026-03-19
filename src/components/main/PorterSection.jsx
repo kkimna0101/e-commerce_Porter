@@ -4,30 +4,22 @@ import './PorterSection.scss';
 const productList = [
     {
         id: 1,
-        src: '/images/main/main_porter05.png',
-        width: 570,
-        height: 590,
+        src: 'https://via.placeholder.com/465x376/838E4F/ffffff?text=Product+1',
         boxClass: 'box-top-left',
     },
     {
         id: 2,
-        src: '/images/main/main_porter06.png',
-        width: 1080,
-        height: 690,
+        src: 'https://via.placeholder.com/490x447/838E4F/ffffff?text=Product+2',
         boxClass: 'box-top-right',
     },
     {
         id: 3,
-        src: '/images/main/main_porter07.png',
-        width: 726,
-        height: 736,
+        src: 'https://via.placeholder.com/450x450/838E4F/ffffff?text=Product+3',
         boxClass: 'box-bot-left',
     },
     {
         id: 4,
-        src: '/images/main/main_porter08.png',
-        width: 726,
-        height: 736,
+        src: 'https://via.placeholder.com/497x466/838E4F/ffffff?text=Product+4',
         boxClass: 'box-bot-right',
     },
 ];
@@ -61,109 +53,83 @@ const PorterSection = () => {
     }, []);
 
     return (
-        <section className="main-porter-section">
-            <div className="main-porter-container">
+        <section className="porter-section">
+            <div className="porter-container">
                 {/* 상단: 헤더/미디어 영역 */}
-                <div className="main-porter-header-content">
-                    <div className="main-porter-media-grid">
-                        <div className="main-porter-left-box">
+                <div className="header-content">
+                    <div className="media-grid">
+                        <div className="gif-box">
                             <img
-                                src="/images/main/main_porter03.png"
-                                alt="porter_character"
-                                width="460"
-                                height="310"
-                            />
-                            <img
-                                src="/images/main/main_portertxt.svg"
-                                alt="PORTER"
-                                width="590"
-                                height="236"
-                                className="main-porter-txt"
+                                src="https://via.placeholder.com/200x150?text=GIF+Area"
+                                alt="Porter Character"
                             />
                         </div>
-
-                        <div className="main-porter-right-box">
+                        <div className="video-box">
                             <video
                                 ref={videoRef}
-                                src="/videos/Main_PORTER.mp4"
+                                src="/videos/porter_making.mp4"
                                 muted
-                                autoPlay // 자동 재생을 위해 추가
-                                loop={true}
+                                loop
                                 playsInline
                             ></video>
                         </div>
                     </div>
 
-                    <div className="main-porter-brand-text">
-                        <p className="main-porter-desc">
-                            시대가 흘러도 변하지 않는 일침입혼의 정수
-                        </p>
-                        <p className="main-porter-sub-desc">
-                            1962년 시작된 포터는 <span>'일침입혼(一針入魂)'</span> 정신을 계승하는
-                            요시다 가방의 메인 브랜드로 상징적인 탠커 시리즈와 견고한 나일론 본딩
-                            소재는 시대를 초월한 신뢰를 약속하며 상징적인 탠커 시리즈와 견고한
-                            나일론본딩 소재는 시대를 초월한 신뢰를 약속합니다.
-                        </p>
-                        <p className="main-porter-sub-desc-m">
-                            단순히 가방을 넘어, 세월이 흐를수록 당신의 일상에 깊게 스며드는 영속적인
-                            동반자를 지향합니다.
-                        </p>
-                        <div className="view-more">
-                            <span>VIEW MORE</span>
-                            <div className="line"></div>
-                            <span>PRODUCT</span>
+                    <div className="brand-intro">
+                        <h1 className="brand-logo">PORTER</h1>
+                        <div className="brand-text">
+                            <p className="main-desc">시대가 흘러도 변하지 않는 일점입혼의 정수</p>
+                            <p className="sub-desc">
+                                요시다 가방의 철학은 1935년부터 시작되었습니다. 한 땀 한 땀 장인의
+                                혼을 담아내는 바느질은 <br />
+                                사용자의 삶과 함께하며 시간이 흐를수록 깊이를 더해갑니다. 포터의
+                                디자인은 유행을 타지 않는 <br />
+                                클래식함과 동시에 현대적인 감각을 놓치지 않습니다.
+                            </p>
                         </div>
                     </div>
                 </div>
 
-                {/* 스크롤 텍스트 및 상품 리스트 영역 */}
-                <div className="sticky-container">
-                    <div className="sticky-text">
-                        <h2>
-                            Timeless Mastery
-                            <br />
-                            <span className="thin">Woven in</span>Every Stitch{' '}
-                        </h2>
-                        <p>한 땀의 바느질에 새겨진 시대를 초월한 숙련미</p>
+                {/* 중단: 스티키 텍스트 & 상품 리스트 */}
+                <div className="sticky-wrapper">
+                    <div className="sticky-text-area">
+                        <div className="sticky-inner">
+                            <h2 className="display-text">
+                                Timeless Mastery
+                                <br />
+                                Woven In <span className="highlight">Every Stitch</span>
+                            </h2>
+                            <p className="caption">장인의 바느질 하나하나에 깃든 영원한 숙련미</p>
+                        </div>
                     </div>
-                    <div className="product-grid">
+
+                    <div className="product-list-grid">
                         {productList.map((item) => (
-                            <div key={item.id} className={`product-box ${item.boxClass}`}>
-                                <img
-                                    src={item.src}
-                                    alt={`Product ${item.id}`}
-                                    width={item.width}
-                                    height={item.height}
-                                />
+                            <div key={item.id} className={`product-card ${item.boxClass}`}>
+                                <div className="img-bg">
+                                    <img src={item.src} alt={`Porter product ${item.id}`} />
+                                </div>
                             </div>
                         ))}
                     </div>
                 </div>
 
-                {/* 하단 영역 */}
-                <div className="bottom-content">
-                    <div className="bottom-left">
+                {/* 하단: 라이프스타일/일러스트 영역 */}
+                <div className="footer-visual">
+                    <div className="lifestyle-image">
                         <img
-                            src="/images/main/main_porter09.png"
-                            alt="main_porter_image"
-                            width="930"
-                            height="779"
+                            src="https://via.placeholder.com/800x600?text=Lifestyle+Image"
+                            alt="Bike Lifestyle"
                         />
                     </div>
-                    <div className="bottom-right">
-                        <img
-                            src="/images/main/main_porter10.png"
-                            alt="main_porter_image"
-                            width="520"
-                            height="338"
-                        />
-                        <img
-                            src="/images/main/main_porter11.png"
-                            alt="POTR"
-                            width="122"
-                            height="50"
-                            className="ll-logo"
-                        />
+                    <div className="illust-section">
+                        <div className="illust-image">
+                            <img
+                                src="https://via.placeholder.com/400x300?text=Illustration"
+                                alt="Art Illust"
+                            />
+                        </div>
+                        <div className="bottom-label">P.O.T.R.</div>
                     </div>
                 </div>
             </div>

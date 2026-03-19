@@ -1,6 +1,13 @@
 import React, { useRef, useEffect } from 'react';
 import './PotrSection.scss';
 
+const productList = [
+  { id: 1, src: '/images/main/mainpotrimage2.png', width: 465, height: 376, boxClass: 'box-top-left' },
+  { id: 2, src: '/images/main/mainpotrimage3.png', width: 490, height: 447, boxClass: 'box-top-right' },
+  { id: 3, src: '/images/main/mainpotrimage4.png', width: 450, height: 450, boxClass: 'box-bot-left' },
+  { id: 4, src: '/images/main/mainpotrimage5.png', width: 497, height: 466, boxClass: 'box-bot-right' },
+];
+
 const PotrSection = () => {
   const videoRef = useRef(null);
 
@@ -37,6 +44,10 @@ const PotrSection = () => {
 
   return (
     <section className="potr-section">
+      <div className="temp-space">
+        <p>상단 작업 영역 (임시 공간 1143px)</p>
+      </div>
+
       <div className="potr-content">
 
         {/* 상단 영역 */}
@@ -75,30 +86,22 @@ const PotrSection = () => {
           </div>
         </div>
 
-       {/* 2. 스티키 텍스트 영역 */}
+        {/* 스크롤 텍스트 및 상품 리스트 영역 */}
         <div className="sticky-container">
           <div className="sticky-text">
             <h2>Essential Gear <span className="thin">For</span><br />Modern Urban Life</h2>
             <p>현대적 도시의 삶을 지탱하는 본질적인 도구</p>
           </div>
-          
-          {/* 3. 상품 리스트 박스 영역*/}
           <div className="product-grid">
-            <div className="potr-box box-top-left">
-              <img src="/images/main/mainpotrimage2.png" alt="Potr Product 1" />
-            </div>
-            <div className="potr-box box-top-right">
-              <img src="/images/main/mainpotrimage3.png" alt="Potr Product 2" />
-            </div>
-            <div className="potr-box box-bot-left">
-              <img src="/images/main/mainpotrimage4.png" alt="Potr Product 3" />
-            </div>
-            <div className="potr-box box-bot-right">
-              <img src="/images/main/mainpotrimage5.png" alt="Potr Product 4" />
-            </div>
+            {productList.map((item) => (
+              <div key={item.id} className={`product-box ${item.boxClass}`}>
+                <img src={item.src} alt={`Product ${item.id}`} width={item.width} height={item.height} />
+              </div>
+            ))}
           </div>
         </div>
-        {/* 4. 하단 Force 사진 영역 */}
+
+        {/* 하단 영역 */}
         <div className="bottom-content">
           <div className="bottom-left">
             <img src="/images/main/mainpotrimage6.png" alt="Force" width="452" height="300" />
@@ -108,6 +111,7 @@ const PotrSection = () => {
             <img src="/images/main/mainpotrimage7.png" alt="Right Bottom" width="1060" height="680" />
           </div>
         </div>
+
       </div>
     </section>
   );

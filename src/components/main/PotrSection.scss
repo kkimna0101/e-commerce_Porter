@@ -1,207 +1,216 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .potr-section {
+  width: 100%;
+  
+  .temp-space {
+    height: 1143px;
     width: 100%;
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999999;
+    font-size: 20px;
+  }
 
-    .potr-content {
-        width: 1920px;
-        max-width: 100%;
-        margin: 0 auto;
-        margin-top: 168px;
-        font-family: 'Pretendard', sans-serif;
-        color: #000;
+  .potr-content {
+    width: 1920px;
+    max-width: 100%;
+    margin: 0 auto;
+    margin-top: 168px;
+    font-family: 'Pretendard', sans-serif;
+    color: #000;
 
-        /* 1. 상단 영역*/
-        .top-content {
-            padding: 0 60px;
+    /* 1. 상단 영역*/
+    .top-content {
+      padding: 0 60px;
+      display: flex;
+      justify-content: space-between;
+
+      .top-right {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        .video-wrapper {
+          width: 520px;
+          height: 338px;
+          overflow: hidden;
+          
+          video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* 앞의 50%는 가로 중앙, 뒤의 20%는 위에서부터 얼만큼 내려올지 */
+            object-position: 50% 35%;
+          }
+        }
+
+        .potr-info {
+          margin-top: 264px;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          text-align: right;
+        }
+
+        .text-group {
+          margin-top: 44px;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+
+          .subtitle {
+            font-weight: 500;
+            font-size: 30px;
+            line-height: 1.3;
+            letter-spacing: -0.02em;
+            margin: 0;
+            word-break: keep-all;
+          }
+
+          .body-text {
+            font-weight: 300;
+            font-size: 20px;
+            line-height: 1.3;
+            letter-spacing: -0.02em;
+            margin: 0;
+            margin-top: 20px;
+            word-break: keep-all;
+
+            /* 원래는 500이 맞는데 잘 안보여서 600으로 임의 수정 */
+            .medium-text {
+              font-weight: 600 !important;
+            }
+          }
+
+          .body-text-m {
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 1.3;
+            letter-spacing: -0.02em;
+            margin: 0;
+            margin-top: 10px;
+            word-break: keep-all;
+          }
+
+          .view-more {
             display: flex;
-            justify-content: space-between;
-
-            .top-right {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-end;
-
-                .video-wrapper {
-                    width: 520px;
-                    height: 338px;
-                    overflow: hidden;
-
-                    video {
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
-                        /* 앞의 50%는 가로 중앙, 뒤의 20%는 위에서부터 얼만큼 내려올지 */
-                        object-position: 50% 35%;
-                    }
-                }
-
-                .potr-info {
-                    margin-top: 264px;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: flex-end;
-                    text-align: right;
-                }
-
-                .text-group {
-                    margin-top: 44px;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: flex-end;
-
-                    .subtitle {
-                        font-weight: 500;
-                        font-size: 30px;
-                        line-height: 1.3;
-                        letter-spacing: -0.02em;
-                        margin: 0;
-                        word-break: keep-all;
-                    }
-
-                    .body-text {
-                        font-weight: 300;
-                        font-size: 20px;
-                        line-height: 1.3;
-                        letter-spacing: -0.02em;
-                        margin: 0;
-                        margin-top: 20px;
-                        word-break: keep-all;
-
-                        .medium-text {
-                            font-weight: 600 !important;
-                        }
-                    }
-
-                    .body-text-m {
-                        font-weight: 500;
-                        font-size: 20px;
-                        line-height: 1.3;
-                        letter-spacing: -0.02em;
-                        margin: 0;
-                        margin-top: 10px;
-                        word-break: keep-all;
-                    }
-
-                    .view-more {
-                        display: flex;
-                        align-items: center;
-                        gap: 16px;
-                        margin-top: 20px;
-                        font-family: 'Roboto Condensed', sans-serif;
-                        font-weight: 700;
-                        font-size: 16px;
-                        letter-spacing: -0.02em;
-                        color: #666666;
-
-                        .line {
-                            width: 352px;
-                            height: 5px;
-                            background-color: #000;
-                        }
-                    }
-                }
+            align-items: center;
+            gap: 16px;
+            margin-top: 20px;
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: -0.02em;
+            color: #666666;
+            
+            .line {
+              width: 352px;
+              height: 5px;
+              background-color: #000;
             }
+          }
         }
-
-        /* 2. 스티키 텍스트 영역 */
-        .sticky-container {
-            margin-top: 392px;
-            position: relative;
-
-            .sticky-text {
-                position: sticky;
-                top: 50%;
-                transform: translateY(-50%);
-                z-index: 10;
-                text-align: center;
-                cursor: default;
-
-                h2 {
-                    font-family: 'Roboto Condensed', sans-serif;
-                    font-size: 160px;
-                    line-height: 0.85;
-                    letter-spacing: -0.04em;
-                    margin: 0;
-                    font-weight: 700;
-                    cursor: default;
-
-                    .thin {
-                        font-weight: 100;
-                    }
-                }
-
-                p {
-                    font-weight: 300;
-                    font-size: 24px;
-                    letter-spacing: -0.04em;
-                    margin: 0;
-                    margin-top: 20px;
-                    cursor: default;
-                }
-            }
-
-            /* 3. 상품 리스트 박스 영역*/
-            .product-grid {
-                padding: 0 60px;
-                margin-top: -92px;
-                padding-bottom: 661px;
-
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: space-between;
-                row-gap: 84px;
-                align-items: center;
-
-                .potr-box {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-
-                    img {
-                        width: 100%;
-                        height: auto;
-                        object-fit: cover;
-                    }
-                }
-
-                .box-top-left {
-                    width: 739px;
-                    height: 850px;
-                }
-
-                .box-top-right {
-                    width: 739px;
-                    height: 850px;
-                }
-
-                .box-bot-left {
-                    width: 739px;
-                    height: 770px;
-                }
-
-                .box-bot-right {
-                    width: 888px;
-                    height: 736px;
-                }
-            }
-        }
-
-        /* 4. 하단 Force 사진 영역 */
-        .bottom-content {
-            padding: 0 62px 0 126px;
-            margin-top: 0px;
-            margin-bottom: 60px;
-            display: flex;
-            justify-content: space-between;
-
-            .bottom-left {
-                display: flex;
-                flex-direction: column;
-                gap: 336px;
-            }
-        }
+      }
     }
+
+    /* 2. 스티키 텍스트 영역 */
+    .sticky-container {
+      margin-top: 300px;
+      position: relative;        
+
+      .sticky-text {
+        position: sticky;
+        top: 100px;
+        z-index: 10;
+        text-align: center;
+        cursor: default;
+
+        h2 {
+          font-family: 'Roboto Condensed', sans-serif;
+          font-size: 160px;
+          line-height: 0.85;
+          letter-spacing: -0.04em;
+          margin: 0;
+          font-weight: 700;
+          cursor: default;
+
+          .thin {
+            font-weight: 100;
+          }
+        }
+
+        p {
+          font-weight: 300;
+          font-size: 24px;
+          letter-spacing: -0.04em;
+          margin: 0;
+          margin-top: 20px;
+          cursor: default;
+        }
+      }
+
+      /* 3. 상품 리스트 */
+      .product-grid {
+        padding: 0 60px;
+        /* text 하단과 상품 리스트 첫 상자 간의 초기 시작 간격 */
+        margin-top: 100px;
+        /* 🔥 여기가 핵심입니다! 🔥
+           가장 긴 상자(하단 좌측 770px)를 기준으로 스티키 요소가 240px 더 내려가게 하기 위해
+           부모 컨테이너가 끝나는 바닥 공간을 늘려주는 역할입니다.
+           * (스티키 요소의 총 높이 약 185px) + (원하는 간격 240px) = 총 425px 만큼의 여유 공간을 줍니다. 
+        */
+        padding-bottom: 425px;
+
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        row-gap: 84px;
+
+        .product-box {
+          background-color: rgba(93, 103, 91, 0.15);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .box-top-left, .box-top-right, .box-bot-left {
+          width: 739px;
+        }
+        
+        .box-top-left, .box-top-right {
+          height: 850px;
+        }
+
+        .box-bot-left {
+          height: 770px;
+        }
+
+        .box-bot-right {
+          width: 888px;
+          height: 736px;
+        }
+      }
+    }
+
+    /* 4. 하단 Force 사진 영역 */
+    .bottom-content {
+      padding: 0 62px 0 126px;
+      /* 스티키 텍스트가 정확히 멈춘 곳(sticky-container 패딩의 끝 지점)으로부터의 간격 100px */
+      margin-top: 100px;
+      margin-bottom: 60px;
+      display: flex;
+      justify-content: space-between;
+
+      .bottom-left {
+        display: flex;
+        flex-direction: column;
+        gap: 336px;
+      }
+    }
+  }
 }

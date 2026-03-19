@@ -2,138 +2,120 @@
 
 $font-stack: 'Roboto Condensed', 'Arial Narrow', Arial, sans-serif;
 
-.brand-story-content {
-    width: 100%;
-    display: flex; // [추가] 자식들을 중앙으로 모으기 위함
-    flex-direction: column; // [추가]
-    align-items: center; // [추가] 모든 섹션을 가로 중앙 정렬
+.brand-story {
+    display: flex;
+    align-items: center;
+    padding: 200px 60px;
+    gap: 60px;
     background-color: #fff;
-    .brand-story {
-        width: 100%;
-        max-width: 1920px;
-        // margin: 0 auto;
+}
+
+.brand-story__left {
+    flex: 1;
+    min-width: 0;
+    
+}
+
+.bs-viewport {
+    position: relative;
+    overflow: hidden;
+}
+
+/* PORTER 고정 */
+.bs-porter {
+    position: absolute;
+    left: 0;
+    z-index: 2;
+    pointer-events: none;
+    font-family: $font-stack;
+    font-weight: 900;
+    font-size: 104px;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: #000;
+    text-transform: uppercase;
+}
+
+/* 각 고정 슬롯: top/height/fontSize/paddingLeft 는 JSX 인라인 */
+.bs-slot {
+    position: absolute;
+    left: 0;
+    overflow: hidden; // 슬라이드 애니메이션 클리핑
+    display: flex;
+    align-items: flex-end; // baseline 맞춤
+    font-family: $font-stack;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    color: #cecece;
+    text-transform: uppercase;
+    white-space: nowrap;
+    line-height: 1;
+    box-sizing: content-box;
+}
+
+/* ── 우측 ── */
+.brand-story__right {
+    width: 440px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.brand-story__title {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    color: #000;
+    margin: 0;
+}
+
+.brand-story__subtitle {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    color: #000;
+    margin: 0;
+}
+
+.brand-story__body-ko {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    color: #000;
+    margin: 0;
+    word-break: keep-all;
+}
+
+.brand-story__body-en {
+    font-family: 'Roboto', Arial, sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    color: #000;
+    margin: 0;
+}
+
+// 하단영역
+.bs__bottom-content {
+    padding: 0 72px 0 124px;
+    margin: 250px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    .bs__bottom-left {
         display: flex;
-        align-items: center;
-        padding: 200px 60px;
-        justify-content: space-between;
-        box-sizing: border-box;
-        // gap: 60px;
-        .brand-story__left {
-            flex: 1;
-            min-width: 0;
-            .bs-viewport {
-                position: relative;
-                overflow: hidden;
-                .bs-porter {
-                    position: absolute;
-                    left: 0;
-                    z-index: 2;
-                    pointer-events: none;
-                    font-family: $font-stack;
-                    font-weight: 900;
-                    font-size: 104px;
-                    line-height: 1;
-                    letter-spacing: -0.03em;
-                    color: #000;
-                    text-transform: uppercase;
-                }
-                /* 각 고정 슬롯: top/height/fontSize/paddingLeft 는 JSX 인라인 */
-                .bs-slot {
-                    position: absolute;
-                    left: 0;
-                    overflow: hidden; // 슬라이드 애니메이션 클리핑
-                    display: flex;
-                    align-items: flex-end; // baseline 맞춤
-                    font-family: $font-stack;
-                    font-weight: 900;
-                    letter-spacing: -0.03em;
-                    color: #cecece;
-                    text-transform: uppercase;
-                    white-space: nowrap;
-                    line-height: 1;
-                    box-sizing: content-box;
-                }
-            }
-        }
-        /* ── 우측 ── */
-        .brand-story__right {
-            width: 652px;
-            flex-shrink: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            .brand-story__tit {
-                .brand-story__title {
-                    font-family: 'Pretendard', sans-serif;
-                    font-weight: 700;
-                    font-size: 30px;
-                    line-height: 1.3;
-                    letter-spacing: -0.02em;
-                    color: #000;
-                    margin: 0;
-                }
-                .brand-story__subtitle {
-                    font-family: 'Pretendard', sans-serif;
-                    font-weight: 500;
-                    font-size: 20px;
-                    line-height: 1.3;
-                    letter-spacing: -0.02em;
-                    color: #000;
-                    margin: 0;
-                }
-            }
-
-            .brand-story__body-ko {
-                font-family: 'Pretendard', sans-serif;
-                font-weight: 300;
-                font-size: 20px;
-                line-height: 1.3;
-                letter-spacing: -0.02em;
-                color: #000;
-                margin: 0;
-                word-break: keep-all;
-
-                span {
-                    font-weight: 600;
-                }
-            }
-            .brand-story__body-en {
-                font-family: 'Roboto', Arial, sans-serif;
-                font-weight: 300;
-                font-size: 16px;
-                line-height: 1.3;
-                letter-spacing: -0.02em;
-                color: #000;
-                margin: 0;
-            }
-        }
-    }
-
-    /* PORTER 고정 */
-
-    // 하단영역
-
-    .brand-story__bottom {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        .bs__bottom-content {
-            width: 100%;
-            max-width: 1920px;
-            padding: 0 72px 0 124px;
-            margin: 250px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            box-sizing: border-box;
-
-            .bs__bottom-left {
-                display: flex;
-                width: 460px;
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 404px;
-            }
-        }
+        width: 460px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 404px;
     }
 }
