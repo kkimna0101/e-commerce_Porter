@@ -1,61 +1,71 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './MainAboutSection.scss';
 
+gsap.registerPlugin(ScrollTrigger);
+
 const MainAboutSection = () => {
-  const imageRef = useRef(null);
+  const triggerRef = useRef(null); 
+  const mainTextRef = useRef(null); 
+  const subTextRef = useRef(null);  
 
-  // 마우스 이동 시 이미지 패닝 효과
-  const handleMouseMove = (e) => {
-    if (!imageRef.current) return;
+useEffect(() => {
+    const tl = gsap.timeline();
 
-    const { clientX, clientY, currentTarget } = e;
-    const rect = currentTarget.getBoundingClientRect();
-    
-    // 중심점으로부터의 상대적 위치 계산 (-0.5 ~ 0.5)
-    const relX = (clientX - rect.left) / rect.width - 0.5;
-    const relY = (clientY - rect.top) / rect.height - 0.5;
+    tl.to({}, { duration: 15 }) 
+      .fromTo(mainTextRef.current, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 15 }) 
+      .to({}, { duration: 5 }) 
+      .fromTo(subTextRef.current, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 15 }) 
+      .to({}, { duration: 25 }) 
+      .to(mainTextRef.current, { opacity: 0, y: -150, duration: 15 }) 
+      .to(subTextRef.current, { opacity: 0, y: -150, duration: 15 }, "-=10") 
+      .to({}, { duration: 15 }); 
 
-    // 움직임 범위 설정 (반대로 움직여서 시야를 이동시키는 느낌)
-    const moveX = relX * -60; 
-    const moveY = relY * -60;
+    ScrollTrigger.create({
+      animation: tl,
+      trigger: triggerRef.current, 
+      start: "top top", 
+      end: "bottom bottom", 
+      scrub: 1, 
+    });
 
-    // 이미지 transform 업데이트
-    imageRef.current.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.1)`;
-  };
-
-  // 마우스가 나가면 부드럽게 제자리로
-  const handleMouseLeave = () => {
-    if (!imageRef.current) return;
-    imageRef.current.style.transform = `translate(0, 0) scale(1.1)`;
-  };
+    return () => {
+      tl.kill();
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
 
   return (
     <section className="main-about-section">
       <div className="about-content">
-        
-        {/* 상단 이미지 영역 (마우스 패닝 효과) */}
-        <div 
-          className="image-wrap" 
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
-        >
-          <div 
-            className="panning-image" 
-            ref={imageRef}
-            style={{ transform: 'scale(1.1)', cursor: 'default' }}
-          ></div>
+                <div className="scroll-wrapper" ref={triggerRef}>
+          
+          <div className="sticky-container">
+            <div className="background-image"></div>
+            
+            <div className="text-layer">
+              <img 
+                src="/images/main/mainabouttxt1.png" 
+                alt="PORTER ESSENCE" 
+                ref={mainTextRef} 
+              />
+              
+              <p ref={subTextRef} className="sub-title">
+                <span>장인의 손길로 완성한 본질 :</span> 가방 그 이상의 가치
+              </p>
+            </div>
+          </div>
+          
         </div>
 
-        {/* 하단 오렌지색 박스 영역 */}
+        {/* 2. 하단 주황색 섹션 */}
         <div className="orange-box">
-          
-          {/* 좌측 텍스트 묶음 */}
           <div className="left-text">
             <h2>THE SINGLE STITCH</h2>
             <p className="explore-text">Explore About PORTER</p>
           </div>
 
-          {/* 우측 텍스트 묶음 */}
           <div className="right-text">
             <h3 className="title-ko">일침입혼(一針入魂), 한 땀에 담은 타협 없는 장인 정신</h3>
             <p className="desc-ko">
@@ -70,8 +80,8 @@ const MainAboutSection = () => {
               functionalism born from invisible details. Discover the perfect 'Tool for Life'
             </p>
           </div>
-          
         </div>
+        
       </div>
     </section>
   );
