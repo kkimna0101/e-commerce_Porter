@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, ChevronUp, X, Search } from 'lucide-react';
-import './FilterPanel.scss';
+import './Filterpanel.scss';
 
 // ─── 정적 데이터 (productData.js의 실제 필드값에 맞게 매핑) ───────────────────
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useStore } from '../../store/useStore';
 import ProductItem from '../../components/ProductItem';
-import FilterPanel from '../../components/FilterPanel';
+import FilterPanel from '../../components/Filterpanel';
 import { BiSortAlt2 } from 'react-icons/bi';
 import { PiSlidersHorizontal } from 'react-icons/pi';
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
