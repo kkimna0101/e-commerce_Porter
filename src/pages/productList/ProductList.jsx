@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useStore } from '../../store/useStore';
 import ProductItem from '../../components/ProductItem';
@@ -33,18 +33,36 @@ const ProductList = () => {
 
     const [filterOpen, setFilterOpen] = useState(false);
 
+    // ── 정렬 적용 ─────────────────────────────────────────────────────────
+    const sortedProducts = useMemo(() => {
+        const arr = [...filteredProducts];
+        switch (activeSort.value) {
+            case 'newest':
+                return arr.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+            case 'price_asc':
+                return arr.sort((a, b) => a.price - b.price);
+            case 'price_desc':
+                return arr.sort((a, b) => b.price - a.price);
+            case 'name_asc':
+                return arr.sort((a, b) => a.name.localeCompare(b.name));
+            case 'recommend':
+            default:
+                return arr;
+        }
+    }, [filteredProducts, activeSort]);
+
     // ── 페이지네이션 ──────────────────────────────────────────────────────
     const [currentPage, setCurrentPage] = useState(1);
-    const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
-    const pagedProducts = filteredProducts.slice(
+    const totalPages = Math.ceil(sortedProducts.length / ITEMS_PER_PAGE);
+    const pagedProducts = sortedProducts.slice(
         (currentPage - 1) * ITEMS_PER_PAGE,
         currentPage * ITEMS_PER_PAGE
     );
 
-    // 필터/카테고리 바뀌면 1페이지로 초기화
+    // 필터/정렬 바뀌면 1페이지로 초기화
     useEffect(() => {
         setCurrentPage(1);
-    }, [filteredProducts]);
+    }, [sortedProducts]);
 
     useEffect(() => {
         fetchProducts();
@@ -71,7 +89,6 @@ const ProductList = () => {
     const handleSortSelect = (option) => {
         setActiveSort(option);
         setSortOpen(false);
-        // TODO: 실제 정렬 로직 연결
     };
 
     const handlePageChange = (page) => {

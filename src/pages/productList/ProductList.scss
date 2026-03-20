@@ -33,6 +33,16 @@
             color: $black;
             text-transform: uppercase;
             margin-bottom: 28px;
+
+            @include tablet {
+                font-weight: 800;
+                letter-spacing: -6px;
+            }
+
+            @include mobile {
+                font-weight: 700;
+                letter-spacing: -3px;
+            }
         }
 
         .search-keyword {
@@ -113,7 +123,7 @@
         .toolbar-btn {
             font-family: 'Roboto', sans-serif;
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 700;
             text-transform: uppercase;
             color: $txt-body;
             background: none;

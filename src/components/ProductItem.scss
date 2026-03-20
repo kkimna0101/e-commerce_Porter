@@ -32,27 +32,27 @@
     &__image-wrap {
         position: relative;
         width: 100%;
-        height: 560px;
+        aspect-ratio: 3 / 4;
         overflow: hidden;
         background: $gray-100;
         margin-bottom: 16px;
 
-        @media (max-width: 1023px) {
-            height: 400px;
-        }
-
-        @media (max-width: 600px) {
-            height: 240px;
-        }
-
         img {
             position: absolute;
             top: 0;
-            left: 0;
-            width: 100%;
+            left: 60px;
+            right: 60px;
+            bottom: 0;
+            width: calc(100% - 120px);
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             transition: transform 0.5s ease;
+
+            @media (max-width: 600px) {
+                left: 30px;
+                right: 30px;
+                width: calc(100% - 60px);
+            }
         }
     }
 
@@ -145,7 +145,12 @@
         text-transform: uppercase;
         color: $black;
         margin-bottom: 8px;
-        line-height: 1;
+        line-height: 1.3;
+        height: calc(1.3em * 2);
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
     }
 
     &__price {

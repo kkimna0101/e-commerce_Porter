@@ -207,19 +207,16 @@
             }
         }
 
-        .fp-brand-logo {
-            font-family: 'Roboto Condensed', sans-serif;
-            font-size: 8px;
-            font-weight: 700;
-            letter-spacing: 0.3px;
-            text-align: center;
-            padding: 0 4px;
-            color: $black;
+        // 로고 이미지
+        .fp-brand-logo-img {
+            width: 64px;
+            height: 48px;
+            object-fit: contain;
         }
 
         .fp-brand-name {
             font-family: 'Roboto', sans-serif;
-            font-size: 13px;
+            font-size: 11px;
             font-weight: 500;
             letter-spacing: 0.5px;
             text-transform: uppercase;
@@ -414,11 +411,9 @@
 
 .fp-range-wrap {
     position: relative;
-    // 트랙 베이스 라인 — 회색 배경선 한 줄만 표시
     height: 20px;
     margin-bottom: 20px;
 
-    // 회색 베이스 트랙
     &::before {
         content: '';
         position: absolute;
@@ -432,7 +427,6 @@
         z-index: 0;
     }
 
-    // 초록 활성 구간
     .fp-range-fill {
         position: absolute;
         top: 50%;
@@ -449,14 +443,13 @@
         top: 50%;
         transform: translateY(-50%);
         width: 100%;
-        height: 20px; // 클릭 영역 확보
+        height: 20px;
         appearance: none;
         background: transparent;
         outline: none;
         pointer-events: none;
         margin: 0;
 
-        // 트랙은 완전 투명 — 베이스/활성 라인은 위 ::before / .fp-range-fill 처리
         &::-webkit-slider-runnable-track {
             height: 16px;
             background: transparent;
@@ -474,7 +467,6 @@
             cursor: pointer;
             position: relative;
             z-index: 2;
-            // margin-top 불필요 — track height = input height 이므로 자동 중앙 정렬
         }
     }
 }
@@ -483,11 +475,9 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    // 가로 넘침 방지
     overflow: hidden;
 
     .fp-price-input-wrap {
-        // flex: 1 + min-width: 0 으로 패널 너비 안에서 수축
         flex: 1;
         min-width: 0;
         display: flex;
@@ -503,7 +493,7 @@
 
     .fp-price-input {
         flex: 1;
-        min-width: 0; // flex child 수축 허용
+        min-width: 0;
         border: none;
         outline: none;
         background: transparent;

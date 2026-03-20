@@ -2,12 +2,27 @@ import React, { useState, useEffect } from 'react';
 import { ChevronDown, ChevronUp, X, Search } from 'lucide-react';
 import './Filterpanel.scss';
 
-// ─── 정적 데이터 (productData.js의 실제 필드값에 맞게 매핑) ───────────────────
+// ─── 정적 데이터 ───────────────────────────────────────────────────────────────
 
 const BRANDS = [
-    { id: 'porter', label: 'PORTER', value: 'PORTER' },
-    { id: 'potr', label: 'POTR', value: 'POTR' },
-    { id: 'luggage_label', label: 'LUGGAGE LABEL', value: 'LUGGAGE LABEL' },
+    {
+        id: 'porter',
+        label: 'PORTER',
+        value: 'PORTER',
+        logo: '/images/product/porter_logo 1.png',
+    },
+    {
+        id: 'potr',
+        label: 'POTR',
+        value: 'POTR',
+        logo: '/images/product/potr_logo 1.png',
+    },
+    {
+        id: 'luggage_label',
+        label: 'LUGGAGE LABEL',
+        value: 'LUGGAGE LABEL',
+        logo: '/images/product/ll_logo 1.png',
+    },
 ];
 
 // children 값 = data.type 의 실제 string
@@ -26,15 +41,14 @@ const TYPE_TREE = [
     { id: 'handbag', label: '핸드백', children: ['Handbag'] },
     { id: 'duffle', label: '더플백', children: ['Duffle Bag', 'Boston Bag'] },
     { id: 'helmet', label: '헬멧백', children: ['Helmet Bag'] },
-    { id: 'pouch', label: '파우치', children: null }, // leaf: type === 'Pouch'
-    { id: 'wallet', label: '지갑', children: null }, // leaf: type === 'Wallet'
+    { id: 'pouch', label: '파우치', children: null },
+    { id: 'wallet', label: '지갑', children: null },
     { id: 'accessory', label: '액세서리', children: null },
     { id: 'clothing', label: '의류', children: null },
     { id: 'shoes', label: '신발', children: null },
     { id: 'misc', label: '잡화', children: null },
 ];
 
-// leaf type 의 data.type 매핑
 const TYPE_LEAF_VALUE = {
     pouch: 'Pouch',
     wallet: 'Wallet',
@@ -63,7 +77,6 @@ const SERIES_GROUPS = [
     { id: 'luggage_s', label: 'LUGGAGE', children: ['LUGGAGE LABEL', 'LUGGAGE ACCESSORIES'] },
 ];
 
-// color.value = data.color[] 의 실제 string
 const COLORS = [
     { id: 'white', label: '화이트', value: 'White', hex: '#ffffff', border: true },
     { id: 'black', label: '블랙', value: 'Black', hex: '#000000' },
@@ -82,7 +95,6 @@ const COLORS = [
     { id: 'olive', label: '올리브', value: 'Olive', hex: '#6b6b2a' },
 ];
 
-// id = data.sizeCategory, children = data.capacity 값
 const SIZE_TREE = [
     { id: 'Mini', label: '미니', children: ['ALL', '0 - 10 L'] },
     { id: 'Small', label: '스몰', children: ['ALL', '11 inch', '11 - 15 L'] },
@@ -135,18 +147,14 @@ const FilterPanel = ({ isOpen, onClose, onApply }) => {
 
     // ── 적용 ──────────────────────────────────────────────────────────────────
     const handleApply = () => {
-        // 브랜드: true 인 것만 value 추출 (전체 선택이면 빈 배열 = 필터 없음)
         const brands = BRANDS.filter((b) => selectedBrands[b.id]).map((b) => b.value);
         const allBrands = brands.length === BRANDS.length;
 
-        // 타입: 선택된 type string 모음
         const types = new Set();
         Object.entries(selectedTypes).forEach(([key, checked]) => {
             if (!checked) return;
-            // leaf 노드 (parent_child 형태)
             const underIdx = key.indexOf('_');
             if (underIdx === -1) {
-                // leaf id
                 if (TYPE_LEAF_VALUE[key]) types.add(TYPE_LEAF_VALUE[key]);
             } else {
                 const child = key.slice(underIdx + 1);
@@ -154,7 +162,6 @@ const FilterPanel = ({ isOpen, onClose, onApply }) => {
             }
         });
 
-        // 시리즈: 선택된 시리즈 string 모음
         const series = new Set();
         Object.entries(selectedSeries).forEach(([key, checked]) => {
             if (!checked) return;
@@ -164,10 +171,8 @@ const FilterPanel = ({ isOpen, onClose, onApply }) => {
             }
         });
 
-        // 컬러: 선택된 color value
         const colors = COLORS.filter((c) => selectedColors[c.id]).map((c) => c.value);
 
-        // 사이즈: { sizeCategories: Set, capacities: Set }
         const sizeCategories = new Set();
         const capacities = new Set();
         Object.entries(selectedSizes).forEach(([key, checked]) => {
@@ -272,7 +277,11 @@ const FilterPanel = ({ isOpen, onClose, onApply }) => {
                                         <div
                                             className={`fp-brand-box ${selectedBrands[brand.id] ? 'checked' : ''}`}
                                         >
-                                            <span className="fp-brand-logo">{brand.label}</span>
+                                            <img
+                                                src={brand.logo}
+                                                alt={brand.label}
+                                                className="fp-brand-logo-img"
+                                            />
                                         </div>
                                         <span className="fp-brand-name">{brand.label}</span>
                                     </label>

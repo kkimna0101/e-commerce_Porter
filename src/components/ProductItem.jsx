@@ -68,7 +68,7 @@ const ProductItem = ({ product }) => {
         <div className="product-item">
             <Link to={`/product/${product.id}`} className="product-item__link">
                 <div className="product-item__image-wrap">
-                    <img src={`/images/product/${product.image}`} alt={product.name} />
+                    <img src={`/images/product/${product.thumbnail}`} alt={product.name} />
 
                     {/* <div className="product-item__badges">
             {product.isNew && <span className="badge new">NEW</span>}
