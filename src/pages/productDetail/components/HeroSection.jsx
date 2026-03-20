@@ -16,7 +16,7 @@ const HeroSection = () => {
             { name: "아이언블루", code: "#262D3C" }
         ],
         thumbnails: [
-            { bg: "/images/productdetail/hero_product/thumbnail1.png", item: "/images/productdetail/hero_product/24.png" },
+            { bg: "/images/productdetail/hero_product/thumbnail1.png", item: "/images/productdetail/hero_product/24_heroproduct_1.png" },
             { bg: "/images/productdetail/hero_product/thumbnail2.png" },
             { bg: "/images/productdetail/hero_product/thumbnail3.png" },
             { bg: "/images/productdetail/hero_product/thumbnail4.png" }
