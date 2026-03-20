@@ -1,0 +1,295 @@
+﻿@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.mypage {
+    padding-top: 60px;
+    padding-bottom: 120px;
+
+    &__welcome {
+        margin-bottom: 60px;
+        h2 {
+            font-size: 24px;
+            font-weight: 400;
+            color: $gray-600;
+            strong {
+                font-weight: 800;
+                color: $black;
+            }
+        }
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+
+        @include desktop {
+            flex-direction: row;
+            gap: 60px;
+            align-items: flex-start;
+        }
+    }
+
+    &__sidebar {
+        width: 100%;
+
+        @include desktop {
+            width: 240px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 100px;
+        }
+
+        .menu-group {
+            margin-bottom: 40px;
+
+            h3 {
+                font-size: 15px;
+                font-weight: 800;
+                margin-bottom: 16px;
+                color: $black;
+                letter-spacing: 1px;
+            }
+
+            ul {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+
+                li {
+                    font-size: 14px;
+                    color: $gray-500;
+                    cursor: pointer;
+                    transition: color 0.2s;
+
+                    &:hover {
+                        color: $black;
+                    }
+                    &.active {
+                        color: $black;
+                        font-weight: 700;
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+
+    &__content {
+        flex: 1;
+        min-width: 0; // for flex overflow
+
+        .tab-section {
+            > h3 {
+                font-size: 20px;
+                font-weight: 800;
+                margin-bottom: 24px;
+                letter-spacing: 1px;
+                border-bottom: 2px solid $black;
+                padding-bottom: 16px;
+            }
+
+            .box {
+                padding: 40px;
+                background: $gray-100;
+                text-align: center;
+                color: $gray-600;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+
+            &.empty .box {
+                padding: 80px 0;
+            }
+
+            .form-like {
+                max-width: 600px;
+                label {
+                    display: block;
+                    font-size: 13px;
+                    font-weight: 700;
+                    margin-bottom: 8px;
+                    margin-top: 24px;
+                }
+                input[type='text'],
+                input[type='password'] {
+                    width: 100%;
+                    height: 48px;
+                    border: 1px solid $gray-300;
+                    padding: 0 16px;
+                    font-size: 14px;
+                    outline: none;
+                    &:read-only {
+                        background: $gray-100;
+                        color: $gray-500;
+                        cursor: default;
+                    }
+                    &:focus:not(:read-only) {
+                        border-color: $black;
+                    }
+                }
+            }
+
+            .btn-dark {
+                height: 48px;
+                padding: 0 24px;
+                background: $black;
+                color: $white;
+                font-size: 14px;
+                font-weight: 700;
+                transition: background 0.2s;
+                &:hover {
+                    background: $gray-800;
+                }
+            }
+            .btn-outline {
+                height: 48px;
+                padding: 0 24px;
+                background: transparent;
+                color: $black;
+                border: 1px solid $gray-300;
+                font-size: 14px;
+                font-weight: 700;
+                transition: border-color 0.2s;
+                &:hover {
+                    border-color: $black;
+                }
+            }
+            .mt-2 {
+                margin-top: 8px;
+            }
+            .mt-4 {
+                margin-top: 16px;
+            }
+            .mb-4 {
+                margin-bottom: 16px;
+            }
+            .relative {
+                position: relative;
+            }
+
+            .grid-2col {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+
+                @include mobile {
+                    grid-template-columns: 1fr;
+                }
+            }
+
+            /* Order List */
+            .order-list {
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
+
+                .order-card {
+                    border: 1px solid $gray-200;
+
+                    .order-head {
+                        display: flex;
+                        justify-content: space-between;
+                        padding: 16px 24px;
+                        background: $gray-100;
+                        font-size: 13px;
+                        font-weight: 600;
+                        border-bottom: 1px solid $gray-200;
+                        .oid {
+                            color: $gray-500;
+                        }
+                    }
+                    .order-body {
+                        display: flex;
+                        padding: 24px;
+                        gap: 24px;
+                        img {
+                            width: 80px;
+                            height: 100px;
+                            object-fit: cover;
+                        }
+                        .info {
+                            flex: 1;
+                            .name {
+                                font-size: 15px;
+                                font-weight: 700;
+                                margin-bottom: 8px;
+                                color: $black;
+                            }
+                            .price {
+                                font-size: 14px;
+                                color: $gray-500;
+                                margin-bottom: 16px;
+                            }
+                            .status {
+                                font-size: 14px;
+                                font-weight: 700;
+                                color: $point_orange;
+                            }
+                        }
+                    }
+                }
+            }
+
+            /* Board List (QnA, Inquiry) */
+            .board-list {
+                border-top: 1px solid $black;
+
+                li {
+                    border-bottom: 1px solid $gray-200;
+                    padding: 24px 0;
+
+                    .row-head {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin-bottom: 16px;
+                        strong {
+                            font-size: 15px;
+                            color: $black;
+                        }
+                        span {
+                            font-size: 13px;
+                            color: $gray-400;
+                        }
+                    }
+
+                    .html-content {
+                        font-size: 14px;
+                        color: $gray-600;
+                        line-height: 1.6;
+                        margin-bottom: 16px;
+                        img {
+                            max-width: 100%;
+                            height: auto;
+                        }
+                    }
+
+                    .actions {
+                        display: flex;
+                        gap: 16px;
+                        justify-content: flex-end;
+                        button {
+                            font-size: 13px;
+                            color: $gray-400;
+                            text-decoration: underline;
+                            &:hover {
+                                color: $black;
+                            }
+                        }
+                    }
+                }
+
+                &.review {
+                    .row-head {
+                        font-weight: 700;
+                    }
+                    .rev-edit-box {
+                        background: $gray-100;
+                        padding: 16px;
+                    }
+                }
+            }
+        }
+    }
+}

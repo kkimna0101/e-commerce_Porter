@@ -1,0 +1,199 @@
+﻿@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.board-page {
+    padding-top: 60px;
+    padding-bottom: 120px;
+
+    .page-title {
+        font-size: 32px;
+        font-weight: 800;
+        text-align: center;
+        margin-bottom: 60px;
+        letter-spacing: 2px;
+    }
+
+    .board-tabs {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        margin-bottom: 60px;
+        border-bottom: 1px solid $gray-200;
+
+        a {
+            font-size: 16px;
+            font-weight: 700;
+            color: $gray-400;
+            padding-bottom: 16px;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+
+            &:hover {
+                color: $black;
+            }
+            &.active {
+                color: $black;
+                border-bottom-color: $black;
+            }
+        }
+    }
+
+    .board-content {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    // Notice styles
+    .notice-list {
+        border-top: 2px solid $black;
+
+        .notice-item {
+            border-bottom: 1px solid $gray-200;
+            padding: 24px 16px;
+
+            .notice-row {
+                display: flex;
+                align-items: center;
+
+                .col-id {
+                    width: 60px;
+                    font-size: 14px;
+                    color: $gray-500;
+                }
+                .col-title {
+                    flex: 1;
+                    font-size: 15px;
+                    font-weight: 600;
+                    cursor: pointer;
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+                .col-date {
+                    width: 100px;
+                    text-align: right;
+                    font-size: 14px;
+                    color: $gray-500;
+                }
+            }
+        }
+    }
+
+    // FAQ styles
+    .faq-list {
+        border-top: 2px solid $black;
+
+        .faq-item {
+            border-bottom: 1px solid $gray-200;
+
+            .faq-q {
+                display: flex;
+                align-items: center;
+                padding: 24px 16px;
+                cursor: pointer;
+                transition: background 0.2s;
+
+                &:hover {
+                    background: $gray-100;
+                }
+
+                .q-mark {
+                    font-size: 18px;
+                    font-weight: 800;
+                    color: $point_orange;
+                    margin-right: 16px;
+                }
+                .title {
+                    flex: 1;
+                    font-size: 15px;
+                    font-weight: 600;
+                    color: $black;
+                }
+                .icon {
+                    color: $gray-500;
+                }
+            }
+
+            .faq-a {
+                display: flex;
+                padding: 32px 16px;
+                background: $gray-100;
+
+                .a-mark {
+                    font-size: 18px;
+                    font-weight: 800;
+                    color: $black;
+                    margin-right: 16px;
+                }
+                p {
+                    flex: 1;
+                    font-size: 15px;
+                    color: $gray-600;
+                    line-height: 1.6;
+                    white-space: pre-wrap;
+                }
+            }
+        }
+    }
+
+    // Inquiry Form styles
+    .inquiry-form {
+        .btn-dark {
+            height: 48px;
+            padding: 0 32px;
+            background: $black;
+            color: $white;
+            font-size: 15px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            &:hover {
+                background: $gray-800;
+            }
+        }
+
+        .login-prompt {
+            text-align: center;
+            padding: 80px 0;
+            background: $gray-100;
+            p {
+                margin-bottom: 24px;
+                font-size: 16px;
+                color: $gray-600;
+            }
+        }
+
+        .form-inner {
+            .form-group {
+                margin-bottom: 32px;
+                label {
+                    display: block;
+                    font-size: 14px;
+                    font-weight: 700;
+                    margin-bottom: 12px;
+                    color: $black;
+                }
+                input[type='text'] {
+                    width: 100%;
+                    height: 52px;
+                    padding: 0 16px;
+                    border: 1px solid $gray-300;
+                    font-size: 15px;
+                    outline: none;
+                    &:focus {
+                        border-color: $black;
+                    }
+                }
+            }
+
+            .form-actions {
+                text-align: center;
+                button {
+                    width: 100%;
+                    max-width: 300px;
+                    height: 56px;
+                }
+            }
+        }
+    }
+}

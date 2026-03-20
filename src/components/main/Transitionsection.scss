@@ -1,0 +1,102 @@
+@use '../../styles/variables' as *;
+
+.ts-section {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background: #fff;
+    // 섹션 전체를 GPU 컴포지터 레이어로 올려 pin 전환 시 버벅임 방지
+    transform: translateZ(0);
+}
+
+.ts-bg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: $main_bg_yellow;
+    z-index: 0;
+    will-change: transform;
+    overflow: hidden; // 배경만 클리핑
+}
+
+.ts-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 0 72px 40px 124px;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    box-sizing: border-box;
+}
+
+// 왼쪽: 고정 높이로 이미지·SVG 위치 기준 확보
+.ts-left {
+    position: relative;
+    width: 460px;
+    flex-shrink: 0;
+    // 이미지(310px) + gap(404px) + SVG 초기높이(48px) = 762px
+    height: 762px;
+}
+
+// 이미지 스택: 상단 절대 고정
+.ts-img-stack {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 460px;
+    aspect-ratio: 460 / 310;
+
+    &--right {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 979 / 720;
+    }
+}
+
+.ts-img-card {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+
+    img,
+    video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    &:nth-child(1) {
+        z-index: 1;
+    }
+
+    &--top {
+        z-index: 2;
+        clip-path: inset(0 0 0% 0);
+        // clip-path가 매 프레임 바뀌므로 GPU 레이어 분리
+        will-change: clip-path;
+    }
+}
+
+// SVG: 하단 왼쪽 절대 고정
+// scale()로만 확대 → 레이아웃 재계산 없음 → 이미지 위치 절대 불변
+// transform-origin: bottom left → 좌측 하단 기준으로 위+오른쪽으로 자람
+.ts-porter-svg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform-origin: bottom left;
+    will-change: transform;
+    overflow: visible; // SVG 자체 클리핑 방지
+}
+
+.ts-right {
+    width: 100%;
+    max-width: 979px;
+}

@@ -1,0 +1,356 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+// ── Variables ─────────────────────────────────────────────
+$black: $black-solid;
+$white: $white-solid;
+$gray-light: $gray-100;
+$gray-mid: $gray-300;
+$gray-text: $gray-500;
+$font-display: 'Roboto Condensed', sans-serif;
+$font-body: 'Pretendard', 'Roboto', sans-serif;
+
+// ── Page ──────────────────────────────────────────────────
+.signup-page {
+    font-family: $font-body;
+    color: $black;
+    padding: 0 160px 120px;
+    margin-top: 60px;
+    margin-bottom: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+// ── Title ─────────────────────────────────────────────────
+.signup-page__title {
+    font-family: $font-display;
+    font-size: clamp(60px, 10vw, 160px);
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: clamp(-6px, -0.5vw, -2px);
+    padding: 30px 0 20px;
+}
+
+// ── Divider ───────────────────────────────────────────────
+.signup-divider {
+    border: none;
+    border-top: 2px solid $black-solid;
+    margin: 0 0 32px;
+}
+
+// ── Form ──────────────────────────────────────────────────
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+// ── Row ───────────────────────────────────────────────────
+.signup-row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    align-items: center;
+    gap: 12px 20px;
+    // margin-bottom: 16px;
+
+    label:first-child {
+        font-size: 13px;
+        font-weight: 600;
+        color: $black;
+        letter-spacing: 0.02em;
+    }
+
+    input[type='text'],
+    input[type='email'],
+    input[type='password'] {
+        height: 44px;
+        padding: 0 14px;
+        border: 1px solid $gray-mid;
+        font-family: $font-body;
+        font-size: 14px;
+        color: $black;
+        background: $white;
+        outline: none;
+        transition: border-color 0.15s;
+        width: 100%;
+
+        &::placeholder {
+            color: $gray-text;
+        }
+
+        &:focus {
+            border-color: $black;
+        }
+
+        &.disabled,
+        &:disabled {
+            background: $gray-light;
+            color: $gray-text;
+            cursor: default;
+        }
+    }
+}
+
+// ── Email Box ─────────────────────────────────────────────
+.email-box {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    input[type='text'] {
+        width: 180px !important;
+        flex-shrink: 0;
+    }
+
+    .email-at {
+        font-size: 16px;
+        color: $gray-text;
+        flex-shrink: 0;
+    }
+
+    .select-wrap {
+        position: relative;
+        flex-shrink: 0;
+
+        select {
+            height: 44px;
+            padding: 0 36px 0 14px;
+            border: 1px solid $gray-mid;
+            font-family: $font-body;
+            font-size: 13px;
+            color: $black;
+            background: $white;
+            outline: none;
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23111' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            transition: border-color 0.15s;
+            min-width: 80px;
+
+            &:focus {
+                border-color: $black;
+            }
+        }
+    }
+
+    .email-hint {
+        font-size: 12px;
+        color: $gray-text;
+        white-space: nowrap;
+        margin-left: 8px;
+    }
+}
+
+// ── Radio Group ───────────────────────────────────────────
+.radio-group {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+
+.radio-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+
+    input[type='radio'] {
+        appearance: none;
+        width: 18px;
+        height: 18px;
+        border: 1.5px solid $gray-mid;
+        border-radius: 50%;
+        cursor: pointer;
+        position: relative;
+        flex-shrink: 0;
+        transition: border-color 0.15s;
+
+        &:checked {
+            border-color: $black;
+
+            &::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 9px;
+                height: 9px;
+                border-radius: 50%;
+                background: $black;
+            }
+        }
+    }
+}
+
+// ── Error ─────────────────────────────────────────────────
+.signup-error {
+    font-size: 13px;
+    color: #e03e3e;
+    margin: 4px 0 12px 140px;
+}
+
+// ── Terms Section ─────────────────────────────────────────
+.terms-section {
+    display: flex;
+    flex-direction: column;
+    margin: 40px 0;
+}
+
+.terms-row {
+    border-bottom: 1px solid $gray-mid;
+
+    &--all {
+        border-top: 2px solid $black-solid;
+
+        .terms-label span {
+            font-weight: 700;
+            font-size: 15px;
+        }
+    }
+
+    &__head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 0;
+        min-height: 60px;
+    }
+
+    // 아코디언 없는 행
+    > .terms-label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 0;
+        cursor: pointer;
+        min-height: 60px;
+    }
+    &:last-child {
+        border-bottom: 2px solid $black-solid;
+    }
+}
+
+.terms-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: $black;
+    flex: 1;
+
+    input[type='checkbox'] {
+        appearance: none;
+        width: 18px;
+        height: 18px;
+        border: 1.5px solid $gray-mid;
+        border-radius: 50%;
+        background: $white;
+        cursor: pointer;
+        flex-shrink: 0;
+        position: relative;
+        transition:
+            background 0.15s,
+            border-color 0.15s;
+
+        &:checked {
+            background: $black;
+            border-color: $black;
+
+            &::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: $white;
+            }
+        }
+    }
+}
+
+.terms-toggle {
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $black;
+    flex-shrink: 0;
+    transition: transform 0.2s;
+
+    svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    &.open {
+        transform: rotate(180deg);
+    }
+}
+
+.terms-content {
+    padding: 12px 16px 16px 28px;
+    background: $gray-light;
+    margin-bottom: 0;
+
+    p {
+        font-size: 12px;
+        color: $gray-text;
+        line-height: 1.7;
+    }
+}
+
+// ── Actions ───────────────────────────────────────────────
+.signup-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.btn-cancel {
+    width: 200px;
+    height: 52px;
+    background: $white;
+    color: $black;
+    border: 1px solid $gray-mid;
+    font-family: $font-body;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color 0.15s;
+
+    &:hover {
+        border-color: $black;
+    }
+}
+
+.btn-confirm {
+    width: 200px;
+    height: 52px;
+    background: $point_orange;
+    color: $white;
+    border: none;
+    font-family: $font-body;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity 0.15s;
+
+    &:hover {
+        opacity: 0.88;
+    }
+}
