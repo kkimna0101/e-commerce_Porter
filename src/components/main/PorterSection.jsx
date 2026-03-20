@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import './PorterSection.scss';
+import useScrollStagger from '../../hooks/useScrollStagger';
 
 const productList = [
     {
@@ -33,7 +34,10 @@ const productList = [
 ];
 
 const PorterSection = () => {
+    const sectionRef = useRef(null);
     const videoRef = useRef(null);
+
+    useScrollStagger(sectionRef, '.product-box');
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -61,7 +65,7 @@ const PorterSection = () => {
     }, []);
 
     return (
-        <section className="main-porter-section">
+        <section className="main-porter-section" ref={sectionRef}>
             <div className="main-porter-container">
 
                 {/* main-porter-header-content 제거 → TransitionSection으로 이동 */}

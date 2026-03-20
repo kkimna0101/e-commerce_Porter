@@ -1,8 +1,13 @@
 import React, { useRef, useEffect } from 'react';
 import './PotrSection.scss';
+import useScrollStagger from '../../hooks/useScrollStagger';
 
 const PotrSection = () => {
+  const sectionRef = useRef(null);
   const videoRef = useRef(null);
+  const gridRef = useRef(null);
+
+  useScrollStagger(gridRef, '.potr-box');
 
   // 스크롤 시 화면에 영상이 보일 때만 재생
   useEffect(() => {
@@ -36,7 +41,7 @@ const PotrSection = () => {
   }, []);
 
   return (
-    <section className="potr-section">
+    <section className="potr-section" ref={sectionRef}>
       <div className="potr-content">
 
         {/* 상단 영역 */}
@@ -83,7 +88,7 @@ const PotrSection = () => {
           </div>
           
           {/* 3. 상품 리스트 박스 영역*/}
-          <div className="product-grid">
+          <div className="product-grid" ref={gridRef}>
             <div className="potr-box box-top-left">
               <img src="/images/main/mainpotrimage2.png" alt="Potr Product 1" />
             </div>

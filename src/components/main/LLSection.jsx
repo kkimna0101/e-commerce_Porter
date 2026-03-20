@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import './LLSection.scss';
+import useScrollStagger from '../../hooks/useScrollStagger';
 
 const LLSection = () => {
+  const sectionRef = useRef(null);
+  const gridRef = useRef(null);
+
+  useScrollStagger(gridRef, '.luggage-box');
+
   return (
-    <section className="ll-section">
+    <section className="ll-section" ref={sectionRef}>
       <div className="ll-content">
 
         {/* 1. 상단 묶음 영역 */}
@@ -47,7 +53,7 @@ const LLSection = () => {
           </div>
           
           {/* 3. 상품 리스트 박스 영역 */}
-          <div className="product-grid">
+          <div className="product-grid" ref={gridRef}>
 
             <div className="luggage-box box-top-left">
               <img src="/images/main/mainluggageimage3.png" alt="Luggage Product 1" />
