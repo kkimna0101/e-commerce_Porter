@@ -140,3 +140,9 @@ a {
     text-decoration: none;
     color: inherit;
 }
+
+/* SweetAlert2 팝업 최상단으로 */
+.swal2-container {
+  z-index: 9999 !important;
+  padding-top: 60px !important;
+}

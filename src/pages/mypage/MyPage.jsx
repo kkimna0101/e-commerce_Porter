@@ -35,9 +35,10 @@ const MyPage = () => {
     useEffect(() => {
         if (!isLoggedIn) {
             Swal.fire({
+                position: 'top',
                 text: '로그인이 필요한 서비스입니다.',
                 icon: 'warning',
-                confirmButtonColor: '#1a1a1a',
+                confirmButtonColor: '#5D675B',
             }).then(() => {
                 navigate('/login');
             });
@@ -49,9 +50,10 @@ const MyPage = () => {
 
     const handleLogout = () => {
         Swal.fire({
+            position: 'top',
             text: '로그아웃 하시겠습니까?',
             showCancelButton: true,
-            confirmButtonColor: '#1a1a1a',
+            confirmButtonColor: '#5D675B',
         }).then((res) => {
             if (res.isConfirmed) {
                 logout();
@@ -287,7 +289,13 @@ const TabProfile = ({ user }) => (
             <button
                 className="btn-dark mt-4"
                 onClick={() =>
-                    Swal.fire('비밀번호 변경', '비밀번호 찾기를 통해 재설정 가능합니다.', 'info')
+                    Swal.fire({
+                        position: 'top',
+                        title: '비밀번호 변경',
+                        text: '비밀번호 찾기를 통해 재설정 가능합니다.',
+                        icon: 'info',
+                        confirmButtonColor: '#5D675B'
+                    })
                 }
             >
                 비밀번호 변경 안내
@@ -432,7 +440,13 @@ const TabQna = ({ user, getUserQnas, submitQna, updateQna, deleteQna }) => {
 
     const handleSave = () => {
         if (!title.trim() || !content.trim())
-            return Swal.fire('경고', '모든 항목을 입력하세요.', 'warning');
+            return Swal.fire({
+                position: 'top',
+                title: '경고',
+                text: '모든 항목을 입력하세요.',
+                icon: 'warning',
+                confirmButtonColor: '#5D675B'
+            });
         if (editId) {
             updateQna(editId, { title, content });
             Swal.fire({
@@ -468,9 +482,10 @@ const TabQna = ({ user, getUserQnas, submitQna, updateQna, deleteQna }) => {
     };
     const handleDelete = (id) => {
         Swal.fire({
+            position: 'top',
             text: '삭제하시겠습니까?',
             showCancelButton: true,
-            confirmButtonColor: '#111',
+            confirmButtonColor: '#5D675B',
         }).then((r) => {
             if (r.isConfirmed) deleteQna(id);
         });
@@ -570,7 +585,13 @@ const TabInquiry = ({
 
     const handleInqSave = () => {
         if (!title.trim() || !content.trim())
-            return Swal.fire('경고', '항목을 입력하세요.', 'warning');
+            return Swal.fire({
+                position: 'top',
+                title: '경고',
+                text: '항목을 입력하세요.',
+                icon: 'warning',
+                confirmButtonColor: '#5D675B'
+            });
         if (editId) updateInquiry(editId, { title, content });
         else submitInquiry({ userId: user.id, title, content });
         setIsWrite(false);
@@ -586,9 +607,10 @@ const TabInquiry = ({
     };
     const handleInqDel = (id) =>
         Swal.fire({
+            position: 'top',
             text: '삭제하시겠습니까?',
             showCancelButton: true,
-            confirmButtonColor: '#111',
+            confirmButtonColor: '#5D675B',
         }).then((r) => {
             if (r.isConfirmed) deleteInquiry(id);
         });
@@ -604,9 +626,10 @@ const TabInquiry = ({
     };
     const handleRevDel = (pid, rId) =>
         Swal.fire({
+            position: 'top',
             text: '삭제하시겠습니까?',
             showCancelButton: true,
-            confirmButtonColor: '#111',
+            confirmButtonColor: '#5D675B',
         }).then((r) => {
             if (r.isConfirmed) deleteReview(pid, rId);
         });

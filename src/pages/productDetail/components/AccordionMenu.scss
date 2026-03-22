@@ -1,0 +1,104 @@
+@use '../../../styles/variables' as *;
+
+/* 섹션: 스타일 변수 */
+$txt_body: #333333;
+$txt_caption: #666666;
+$txt_none_active: #929292;
+$box_color: #E2E2E2;
+
+/* 섹션: 믹스인 */
+@mixin kr_body_r {
+  font-family: 'Pretendard', sans-serif; font-weight: 400;
+  font-size: 18px; line-height: 1.3; letter-spacing: -0.02em;
+}
+
+/* 섹션: 레이아웃 */
+.accordion-menu-container {
+  width: 100%;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  /* 전체 열기/닫기 컨트롤 */
+  .accordion-controls {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 5px;
+
+    .toggle-all-btn {
+      background: none;
+      border: none;
+      padding: 0 5px;
+      font-family: 'Pretendard', sans-serif;
+      font-weight: 500;
+      font-size: 13px;
+      color: $txt_caption;
+      cursor: pointer;
+      transition: color 0.2s ease;
+     
+      &:hover {
+        color: $txt_body;
+        text-decoration: underline;
+        text-underline-position: under;
+      }
+    }
+  }
+
+  .menu-frame {
+    width: 100%;
+    padding: 5px 0;
+    transition: all 0.3s ease;
+
+    .menu-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      cursor: pointer;
+      height: 36px;
+
+      .icon-box {
+        width: 30px; height: 30px;
+        display: flex; align-items: center; justify-content: center;
+       
+        .plus-icon {
+          color: $txt_caption;
+          transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+      }
+
+      .menu-title {
+        @include kr_body_r;
+        color: $txt_caption;
+      }
+    }
+
+    /* 섹션: 컨텐츠 영역 */
+    .menu-content {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.4s ease, opacity 0.4s ease;
+      opacity: 0;
+     
+      .content-inner {
+        min-height: 0;
+        overflow: hidden;
+        padding: 10px 50px 0px;
+        @include kr_body_r;
+        color: $txt_none_active;
+        white-space: pre-wrap;
+      }
+    }
+
+    /* 섹션: 활성 상태 */
+    &.is-open {
+      .plus-icon {
+        transform: rotate(45deg);
+      }
+      .menu-content {
+        grid-template-rows: 1fr;
+        opacity: 1;
+      }
+    }
+  }
+}

@@ -71,23 +71,26 @@ const Signup = () => {
 
         if (!formData.emailId || (!formData.emailDomainCustom && !formData.emailDomain)) {
             return Swal.fire({
+                position: 'top',
                 text: '이메일을 입력해주세요.',
                 icon: 'warning',
-                confirmButtonColor: '#1a1a1a',
+                confirmButtonColor: '#5D675B',
             });
         }
         if (formData.password !== formData.passwordConfirm) {
             return Swal.fire({
+                position: 'top',
                 text: '비밀번호가 일치하지 않습니다.',
                 icon: 'warning',
-                confirmButtonColor: '#1a1a1a',
+                confirmButtonColor: '#5D675B',
             });
         }
         if (!terms.age || !terms.service || !terms.privacy) {
             return Swal.fire({
+                position: 'top',
                 text: '필수 약관에 동의해주세요.',
                 icon: 'warning',
-                confirmButtonColor: '#1a1a1a',
+                confirmButtonColor: '#5D675B',
             });
         }
 
@@ -99,10 +102,11 @@ const Signup = () => {
 
         if (success) {
             Swal.fire({
+                position: 'top',
                 title: '가입 완료',
                 text: '포터의 회원이 되신 것을 환영합니다.',
                 icon: 'success',
-                confirmButtonColor: '#1a1a1a',
+                confirmButtonColor: '#5D675B',
             }).then(() => navigate('/login'));
         }
     };

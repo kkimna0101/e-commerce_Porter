@@ -57,13 +57,17 @@ export const createProductSlice = (set, get) => ({
 
         // 4. 타입
         if (next.types && next.types.length > 0) {
-            result = result.filter((p) => next.types.includes(p.type));
+            const searchTypes = next.types.map(t => t.toLowerCase());
+            result = result.filter((p) => searchTypes.includes(p.type?.toLowerCase()));
         }
 
-        // 5. 시리즈 (부분 일치)
+        // 5. 시리즈 (부분 일치 + name 부분 일치 확장)
         if (next.series && next.series.length > 0) {
             result = result.filter((p) =>
-                next.series.some((s) => p.series?.toLowerCase().includes(s.toLowerCase()))
+                next.series.some((s) => {
+                    const searchStr = s.toLowerCase();
+                    return p.series?.toLowerCase().includes(searchStr) || p.name?.toLowerCase().includes(searchStr);
+                })
             );
         }
 

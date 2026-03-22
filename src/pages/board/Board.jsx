@@ -24,21 +24,29 @@ const Board = () => {
     const handleInquirySubmit = () => {
         if (!isLoggedIn) {
             return Swal.fire({
+                position: 'top',
                 text: '로그인 후 이용 가능합니다.',
                 icon: 'warning',
-                confirmButtonColor: '#1a1a1a',
+                confirmButtonColor: '#5D675B',
             }).then(() => navigate('/login'));
         }
         if (!inquiryTitle.trim() || !inquiryContent.trim()) {
-            return Swal.fire('경고', '모든 항목을 입력하세요.', 'warning');
+            return Swal.fire({
+                position: 'top',
+                title: '경고',
+                text: '모든 항목을 입력하세요.',
+                icon: 'warning',
+                confirmButtonColor: '#5D675B'
+            });
         }
 
         submitInquiry({ userId: user.id, title: inquiryTitle, content: inquiryContent });
         Swal.fire({
+            position: 'top',
             title: '접수 완료',
             text: '문의가 성공적으로 접수되었습니다. 마이페이지에서 확인 가능합니다.',
             icon: 'success',
-            confirmButtonColor: '#1a1a1a',
+            confirmButtonColor: '#5D675B',
         }).then(() => {
             navigate('/mypage');
         });

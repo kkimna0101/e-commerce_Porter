@@ -46,9 +46,10 @@ const Checkout = () => {
     useEffect(() => {
         if (selectedIds.length === 0) {
             Swal.fire({
+                position: 'top',
                 text: '주문할 상품이 없습니다.',
                 icon: 'error',
-                confirmButtonColor: '#1a1a1a',
+                confirmButtonColor: '#5D675B',
             }).then(() => {
                 navigate('/cart');
             });
@@ -123,16 +124,18 @@ const Checkout = () => {
             !ordererData.password
         ) {
             return Swal.fire({
+                position: 'top',
                 text: '주문자 정보를 모두 입력해주세요.',
                 icon: 'warning',
-                confirmButtonColor: '#1a1a1a',
+                confirmButtonColor: '#5D675B',
             });
         }
         if (ordererData.password !== ordererData.passwordConfirm) {
             return Swal.fire({
+                position: 'top',
                 text: '비밀번호가 일치하지 않습니다.',
                 icon: 'warning',
-                confirmButtonColor: '#1a1a1a',
+                confirmButtonColor: '#5D675B',
             });
         }
         if (
@@ -144,16 +147,18 @@ const Checkout = () => {
             !formData.detailAddress
         ) {
             return Swal.fire({
+                position: 'top',
                 text: '배송지 정보를 모두 입력해주세요.',
                 icon: 'warning',
-                confirmButtonColor: '#1a1a1a',
+                confirmButtonColor: '#5D675B',
             });
         }
         if (paymentMethod === 'card' && !selectedCard) {
             return Swal.fire({
+                position: 'top',
                 text: '결제할 카드를 선택해주세요.',
                 icon: 'warning',
-                confirmButtonColor: '#1a1a1a',
+                confirmButtonColor: '#5D675B',
             });
         }
 

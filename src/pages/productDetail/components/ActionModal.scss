@@ -1,0 +1,289 @@
+/* 섹션: 스타일 정의 */
+@use '../../../styles/variables' as *;
+
+$key-color: #5D675B;
+$wh-solid: #ffffff;
+$bk-solid: #000000;
+$txt-none-active: #929292;
+$box-color: #E2E2E2;
+
+@mixin kr_body_sb { font-family: 'Pretendard'; font-weight: 600; font-size: 16px; line-height: 1.3; letter-spacing: -0.02em; }
+@mixin kr_body_el { font-family: 'Pretendard'; font-weight: 200; font-size: 14px; line-height: 1.3; letter-spacing: -0.02em; }
+
+
+.action-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5000;
+}
+
+.action-modal-container {
+  width: 560px;
+  height: 308px;
+  background: $wh-solid;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  &.is-tall { height: auto; min-height: 380px; }
+
+  .modal-header {
+    height: 40px;
+    background: $key-color;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+    .header-title { @include kr_body_sb; color: $bk-solid; }
+    .close-btn { background: none; border: none; cursor: pointer; color: #000; }
+  }
+
+
+.modal-content {
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+   
+    .bg-watermark {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 372px; opacity: 0.4; pointer-events: none;
+    }
+
+
+    .text-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      z-index: 2;
+     
+      .main-msg { @include kr_body_sb; color: $bk-solid; margin-bottom: 10px; display: block; }
+      .sub-msg { @include kr_body_el; color: $bk-solid; }
+
+      /* 재입고 폼 특수 스타일 */
+      .restock-form {
+        width: 440px; text-align: left;
+        .title-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+        .form-msg { @include kr_body_sb; }
+       
+        .input-group {
+          margin-bottom: 15px;
+          display: flex;
+          align-items: center;
+          gap: 15px;
+          label { @include kr_body_el; color: $bk-solid; width: 80px; }
+          input {
+            flex: 1;    
+            height: 35px;
+            background: $box-color;
+            border: none;
+            padding: 0 10px;
+            @include kr_body_el;
+            outline: none;
+          }
+        }
+        .notice-box {
+          margin: 0 auto 15px;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          width: fit-content;
+          p { @include kr_body_el; color: $txt-none-active; margin: 2px 0; text-align: left; }
+        }
+        .checkbox-row {
+          display: flex;    
+          align-items: center;
+          gap: 10px;
+          justify-content: center;
+          cursor: pointer;
+          .check-box {
+            width: 18px;
+            height: 18px;
+            border: 1px solid $bk-solid;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            &.active { background: $bk-solid; }
+          }
+          span { @include kr_body_el; color: $bk-solid; }
+        }
+      }
+    }
+
+    .modal-btn-frame {
+      width: 560px;    
+      height: 75px;
+      padding-bottom: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 30px;
+      z-index: 2;
+
+      .modal-btn {
+        width: 140px;
+        height: 40px;
+        padding: 5px;
+        @include kr_body_sb;
+        cursor: pointer;
+        &.outline {
+            background: $wh-solid;
+            border: 1px solid $key-color;
+            color: $txt-none-active;
+        }
+        &.fill {
+            background: $key-color;
+            border: 1px solid $key-color;
+            color: $wh-solid;
+            &[data-is-inactive="true"] {
+                background: $wh-solid;
+                border: 1px solid #ddd;
+                color: #ccc;
+                transform: none;
+            }
+        }
+        &:hover:not(:disabled) { transform: scale(1.05); }
+        &:disabled { cursor: not-allowed; }
+      }
+    }
+  }
+}
+
+/* 가이드 전용 스타일 */
+.visitor-mode {
+  background: rgba(0, 0, 0, 0.6) !important;
+  backdrop-filter: blur(8px);
+
+  .action-modal-container {
+    background: transparent !important;
+    box-shadow: none !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .modal-content {
+      padding: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .visitor-layout {
+      text-align: left;
+      color: #ffffff;
+      position: relative;
+
+      .visitor-to {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        letter-spacing: 0.1em;
+        opacity: 0.5;
+      }
+
+      .visitor-msg-group {
+        margin-bottom: 58px;
+
+        .visitor-question {
+          font-family: 'Pretendard', sans-serif;
+          font-weight: 600;
+          font-size: 32px;
+          line-height: 1.3;
+          margin: 0;
+          word-break: keep-all;
+        }
+
+        .visitor-sub {
+          font-family: 'Pretendard', sans-serif;
+          font-weight: 200;
+          font-size: 16px;
+          opacity: 0.8;
+          color: #E2E2E2;
+          margin-top: 14px;
+          line-height: 1.6;
+
+          strong {
+            font-weight: 700;
+            font-size: 16px;
+            color: #fff;
+          }
+        }
+      }
+
+      .visitor-choices {
+        display: flex;
+        gap: 12px;
+
+        .visitor-text-btn {
+          font-family: 'Pretendard', sans-serif;
+          border: 1px solid rgba(255, 255, 255, 0.4);
+          border-radius: 20px;
+          font-weight: 500;
+          padding: 10px 24px;
+          font-size: 14px;
+          color: #ffffff;
+          background: transparent;
+          cursor: pointer;
+          transition: all 0.3s ease;
+
+          &:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+          }
+
+          &:first-child {
+            &:hover {
+              background-color: rgba(255, 255, 255, 0.1);
+            }
+          }
+
+          &:last-child {
+            background-color: #ffffff;
+            color: #000000;
+            border-color: #ffffff;
+            opacity: 1;
+
+            &:hover {
+              background-color: rgba(255, 255, 255, 0.9);
+            }
+          }
+        }
+      }
+
+      .visitor-close {
+        position: fixed;
+        top: 40px;
+        right: 40px;
+        background: none;
+        border: none;
+        color: #fff;
+        cursor: pointer;
+        opacity: 0.5;
+        &:hover { opacity: 1; }
+      }
+    }
+  }
+}

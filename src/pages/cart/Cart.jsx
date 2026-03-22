@@ -47,15 +47,16 @@ const Cart = () => {
         (acc, item) => acc + (item.discountPrice || item.price) * item.quantity,
         0
     );
-    const shippingFee = itemsPrice > 0 && itemsPrice < 100000 ? 3000 : 0;
+    const shippingFee = 0;
     const totalPrice = itemsPrice + shippingFee;
 
     const handleOrderSelected = () => {
         if (selectedIds.length === 0) {
             return Swal.fire({
+                position: 'top',
                 text: '주문할 상품을 선택해주세요.',
                 icon: 'warning',
-                confirmButtonColor: '#1a1a1a',
+                confirmButtonColor: '#5D675B',
             });
         }
         navigate('/checkout', { state: { selectedIds } });
@@ -65,9 +66,10 @@ const Cart = () => {
         const allIds = cartItems.map((item) => item.cartId);
         if (allIds.length === 0) {
             return Swal.fire({
+                position: 'top',
                 text: '장바구니가 비어 있습니다.',
                 icon: 'warning',
-                confirmButtonColor: '#1a1a1a',
+                confirmButtonColor: '#5D675B',
             });
         }
         navigate('/checkout', { state: { selectedIds: allIds } });
@@ -76,9 +78,10 @@ const Cart = () => {
     const handleDeleteSelected = () => {
         if (selectedIds.length === 0) {
             return Swal.fire({
+                position: 'top',
                 text: '삭제할 상품을 선택해주세요.',
                 icon: 'warning',
-                confirmButtonColor: '#1a1a1a',
+                confirmButtonColor: '#5D675B',
             });
         }
         removeMultipleFromCart(selectedIds);
@@ -203,7 +206,7 @@ const Cart = () => {
                                 <div className="item-info">
                                     <Link to={`/product/${item.id}`} className="item-thumb-link">
                                         <img
-                                            src={item.image}
+                                            src={`/images/product/${item.thumbnail}`}
                                             alt={item.name}
                                             className="item-thumb"
                                         />
@@ -227,7 +230,13 @@ const Cart = () => {
                                         >
                                             −
                                         </button>
-                                        <span>{item.quantity}</span>
+                                        <input 
+                                            type="number" 
+                                            className="qty-input"
+                                            value={item.quantity} 
+                                            onChange={(e) => updateCartQuantity(item.cartId, parseInt(e.target.value) || 1)}
+                                            min="1"
+                                        />
                                         <button
                                             onClick={() =>
                                                 updateCartQuantity(item.cartId, item.quantity + 1)

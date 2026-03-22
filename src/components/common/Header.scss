@@ -1,4 +1,4 @@
-﻿@use '../../styles/variables' as *;
+@use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 
 .header {
@@ -12,11 +12,52 @@
     transition: all 0.6s ease;
     z-index: 1000;
 
-    a {
+    a, .search-toggle-btn {
         text-decoration: none;
         color: $black;
         display: flex;
         align-items: center;
+    }
+
+    .header-search-item {
+        position: relative;
+        
+        .header-search-form {
+            position: absolute;
+            top: calc(100% + 15px);
+            right: -10px;
+            background: $white-solid;
+            border: 1px solid $black-solid;
+            border-radius: 0;
+            padding: 8px 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            z-index: 100;
+
+            input {
+                border: none;
+                outline: none;
+                font-size: 14px;
+                width: 180px;
+                background: transparent;
+                font-family: inherit;
+                color: $black;
+                &::placeholder {
+                    color: $gray-400;
+                }
+            }
+            button {
+                background: none;
+                border: none;
+                cursor: pointer;
+                color: $black;
+                display: flex;
+                align-items: center;
+                padding: 0;
+            }
+        }
     }
 }
 

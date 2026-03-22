@@ -1,4 +1,4 @@
-﻿@use '../../styles/variables' as *;
+@use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 
 .product-list-page {
@@ -237,6 +237,11 @@
                 background: $black;
                 color: $white;
                 font-weight: 700;
+            }
+
+            &:disabled {
+                opacity: 0.2;
+                cursor: not-allowed;
             }
         }
 

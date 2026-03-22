@@ -25,16 +25,18 @@ const FindAccount = () => {
         const email = findEmail(idName, idPhone);
         if (email) {
             Swal.fire({
+                position: 'top',
                 title: '이메일 확인',
                 text: `회원님의 이메일은 ${email} 입니다.`,
                 icon: 'success',
-                confirmButtonColor: '#1a1a1a',
+                confirmButtonColor: '#5D675B',
             });
         } else {
             Swal.fire({
+                position: 'top',
                 text: '일치하는 정보가 없습니다.',
                 icon: 'error',
-                confirmButtonColor: '#1a1a1a',
+                confirmButtonColor: '#5D675B',
             });
         }
     };
@@ -46,9 +48,10 @@ const FindAccount = () => {
             setIsPwMatched(true);
         } else {
             Swal.fire({
+                position: 'top',
                 text: '일치하는 정보가 없습니다.',
                 icon: 'error',
-                confirmButtonColor: '#1a1a1a',
+                confirmButtonColor: '#5D675B',
             });
         }
     };
@@ -57,25 +60,28 @@ const FindAccount = () => {
         e.preventDefault();
         if (newPassword !== newPasswordConfirm) {
             return Swal.fire({
+                position: 'top',
                 text: '비밀번호가 일치하지 않습니다.',
                 icon: 'warning',
-                confirmButtonColor: '#1a1a1a',
+                confirmButtonColor: '#5D675B',
             });
         }
         if (newPassword.length < 6) {
             return Swal.fire({
+                position: 'top',
                 text: '비밀번호는 6자리 이상이어야 합니다.',
                 icon: 'warning',
-                confirmButtonColor: '#1a1a1a',
+                confirmButtonColor: '#5D675B',
             });
         }
 
         resetPassword(pwEmail, newPassword);
         Swal.fire({
+            position: 'top',
             title: '변경 완료',
             text: '비밀번호가 성공적으로 변경되었습니다. 다시 로그인해주세요.',
             icon: 'success',
-            confirmButtonColor: '#1a1a1a',
+            confirmButtonColor: '#5D675B',
         }).then(() => {
             navigate('/login');
         });

@@ -1,4 +1,4 @@
-﻿@use '../../styles/variables' as *;
+@use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 @use 'sass:color';
 
@@ -268,14 +268,25 @@ $font-body: 'Pretendard', 'Roboto', sans-serif;
         }
     }
 
-    span {
-        min-width: 36px;
+    .qty-input {
+        width: 36px;
+        height: 30px;
         text-align: center;
         font-size: 13px;
         font-weight: 500;
-        line-height: 30px;
+        border: none;
         border-left: 1px solid $gray-mid;
         border-right: 1px solid $gray-mid;
+        background: $white;
+        outline: none;
+        appearance: textfield; // Chrome, Safari, Edge, Opera
+        -moz-appearance: textfield; // Firefox
+
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
     }
 }
 

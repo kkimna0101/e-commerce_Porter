@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { FiSearch } from 'react-icons/fi';
 import './Header.scss';
 
 const PlusIcon = ({ size }) => (
@@ -12,6 +13,32 @@ const Header = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const location = useLocation();
     const isMainPage = location.pathname === '/';
+
+    const [isSearchOpen, setIsSearchOpen] = useState(false);
+    const [headerSearch, setHeaderSearch] = useState('');
+    const navigate = useNavigate();
+    const searchRef = useRef(null);
+
+    useEffect(() => {
+        const handleClickOutside = (e) => {
+            if (searchRef.current && !searchRef.current.contains(e.target)) {
+                setIsSearchOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
+
+    const handleSearchSubmit = (e) => {
+        e.preventDefault();
+        setIsSearchOpen(false);
+        if (headerSearch.trim()) {
+            navigate(`/product?q=${encodeURIComponent(headerSearch.trim())}`);
+        } else {
+            navigate(`/product`);
+        }
+        setHeaderSearch('');
+    };
 
     useEffect(() => {
         if (!isMainPage) return;
@@ -62,7 +89,21 @@ const Header = () => {
                         <li><Link to="/offline">OFFLINE</Link></li>
                     </ul>
                     <ul className="menu-group-2">
-                        <li><Link to="/product">SEARCH</Link></li>
+                        <li className="header-search-item" ref={searchRef}>
+                            <span className="search-toggle-btn" onClick={() => setIsSearchOpen(!isSearchOpen)}>SEARCH</span>
+                            {isSearchOpen && (
+                                <form className="header-search-form" onSubmit={handleSearchSubmit}>
+                                    <input
+                                        type="text"
+                                        placeholder="SEARCH"
+                                        value={headerSearch}
+                                        onChange={(e) => setHeaderSearch(e.target.value)}
+                                        autoFocus
+                                    />
+                                    <button type="submit"><FiSearch size={18} /></button>
+                                </form>
+                            )}
+                        </li>
                         <li><Link to="/login">MYPAGE</Link></li>
                         <li className="has-icon">
                             <Link to="/cart">CART <PlusIcon size={isLargeHeader ? 17 : 13} /></Link>

@@ -5,7 +5,7 @@ import ProductItem from '../../components/ProductItem';
 import FilterPanel from '../../components/Filterpanel';
 import { BiSortAlt2 } from 'react-icons/bi';
 import { PiSlidersHorizontal } from 'react-icons/pi';
-import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
+import { MdChevronLeft, MdChevronRight, MdKeyboardDoubleArrowLeft, MdKeyboardDoubleArrowRight } from 'react-icons/md';
 import './ProductList.scss';
 
 const CATEGORIES = ['All', 'Work', 'Daily', 'Travel', 'Small Goods', 'Other'];
@@ -21,8 +21,13 @@ const SORT_OPTIONS = [
 const ITEMS_PER_PAGE = 20;
 
 const ProductList = () => {
-    const [searchParams] = useSearchParams();
+    const [searchParams, setSearchParams] = useSearchParams();
     const searchQuery = searchParams.get('q') || '';
+    const [localSearch, setLocalSearch] = useState(searchQuery);
+
+    useEffect(() => {
+        setLocalSearch(searchQuery);
+    }, [searchQuery]);
 
     const { products, filteredProducts, fetchProducts, setFilters } = useStore();
     const [activeCategory, setActiveCategory] = useState('All');
@@ -93,7 +98,7 @@ const ProductList = () => {
 
     const handlePageChange = (page) => {
         setCurrentPage(page);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo(0, 0);
     };
 
     // ── 페이지 번호 배열 생성 (최대 5개 노출) ─────────────────────────────
@@ -184,15 +189,23 @@ const ProductList = () => {
             {/* 페이지네이션 */}
             {totalPages > 1 && (
                 <div className="pagination">
-                    {currentPage > 1 && (
-                        <button
-                            className="pagination__btn pagination__prev"
-                            onClick={() => handlePageChange(currentPage - 1)}
-                            aria-label="이전 페이지"
-                        >
-                            <MdChevronLeft size={18} />
-                        </button>
-                    )}
+                    <button
+                        className="pagination__btn pagination__first"
+                        onClick={() => handlePageChange(1)}
+                        disabled={currentPage === 1}
+                        aria-label="첫 페이지"
+                    >
+                        <MdKeyboardDoubleArrowLeft size={18} />
+                    </button>
+                    <button
+                        className="pagination__btn pagination__prev"
+                        onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
+                        disabled={currentPage === 1}
+                        aria-label="이전 페이지"
+                    >
+                        <MdChevronLeft size={18} />
+                    </button>
+
                     {getPageNumbers().map((page) => (
                         <button
                             key={page}
@@ -202,15 +215,23 @@ const ProductList = () => {
                             {page}
                         </button>
                     ))}
-                    {currentPage < totalPages && (
-                        <button
-                            className="pagination__btn pagination__next"
-                            onClick={() => handlePageChange(currentPage + 1)}
-                            aria-label="다음 페이지"
-                        >
-                            <MdChevronRight size={18} />
-                        </button>
-                    )}
+
+                    <button
+                        className="pagination__btn pagination__next"
+                        onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
+                        disabled={currentPage === totalPages}
+                        aria-label="다음 페이지"
+                    >
+                        <MdChevronRight size={18} />
+                    </button>
+                    <button
+                        className="pagination__btn pagination__last"
+                        onClick={() => handlePageChange(totalPages)}
+                        disabled={currentPage === totalPages}
+                        aria-label="마지막 페이지"
+                    >
+                        <MdKeyboardDoubleArrowRight size={18} />
+                    </button>
                 </div>
             )}
 
