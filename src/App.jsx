@@ -39,144 +39,36 @@ const SubLayout = ({ children }) => (
 );
 
 function App() {
+    const location = useLocation();
+    const isNotFound = ![
+        '/', '/product', '/women', '/men', '/kids', '/sale', '/best', 
+        '/cart', '/checkout', '/complete', '/login', '/signup', 
+        '/find-account', '/mypage'
+    ].some(path => location.pathname === path || location.pathname.startsWith('/product/') || location.pathname.startsWith('/board/'));
+
     return (
         <>
             <ScrollToTop />
             <Routes>
-                {/* 메인: Header는 Main.jsx 안에서 HeroSection 아래에 배치 */}
                 <Route path="/" element={<Main />} />
-
-                {/* 서브 페이지: SubLayout이 Header 포함 */}
-                <Route
-                    path="/product"
-                    element={
-                        <SubLayout>
-                            <ProductList />
-                        </SubLayout>
-                    }
-                />
-                <Route
-                    path="/women"
-                    element={
-                        <SubLayout>
-                            <ProductList />
-                        </SubLayout>
-                    }
-                />
-                <Route
-                    path="/men"
-                    element={
-                        <SubLayout>
-                            <ProductList />
-                        </SubLayout>
-                    }
-                />
-                <Route
-                    path="/kids"
-                    element={
-                        <SubLayout>
-                            <ProductList />
-                        </SubLayout>
-                    }
-                />
-                <Route
-                    path="/sale"
-                    element={
-                        <SubLayout>
-                            <ProductList />
-                        </SubLayout>
-                    }
-                />
-                <Route
-                    path="/best"
-                    element={
-                        <SubLayout>
-                            <ProductList />
-                        </SubLayout>
-                    }
-                />
-                <Route
-                    path="/product/:id"
-                    element={
-                        <SubLayout>
-                            <ProductDetail />
-                        </SubLayout>
-                    }
-                />
-                <Route
-                    path="/cart"
-                    element={
-                        <SubLayout>
-                            <Cart />
-                        </SubLayout>
-                    }
-                />
-                <Route
-                    path="/checkout"
-                    element={
-                        <SubLayout>
-                            <Checkout />
-                        </SubLayout>
-                    }
-                />
-                <Route
-                    path="/complete"
-                    element={
-                        <SubLayout>
-                            <Complete />
-                        </SubLayout>
-                    }
-                />
-                <Route
-                    path="/login"
-                    element={
-                        <SubLayout>
-                            <Login />
-                        </SubLayout>
-                    }
-                />
-                <Route
-                    path="/signup"
-                    element={
-                        <SubLayout>
-                            <Signup />
-                        </SubLayout>
-                    }
-                />
-                <Route
-                    path="/find-account"
-                    element={
-                        <SubLayout>
-                            <FindAccount />
-                        </SubLayout>
-                    }
-                />
-                <Route
-                    path="/mypage"
-                    element={
-                        <SubLayout>
-                            <MyPage />
-                        </SubLayout>
-                    }
-                />
-                <Route
-                    path="/board/:type"
-                    element={
-                        <SubLayout>
-                            <Board />
-                        </SubLayout>
-                    }
-                />
-                <Route
-                    path="*"
-                    element={
-                        <SubLayout>
-                            <NotFound />
-                        </SubLayout>
-                    }
-                />
+                <Route path="/product" element={<SubLayout><ProductList /></SubLayout>} />
+                <Route path="/women" element={<SubLayout><ProductList /></SubLayout>} />
+                <Route path="/men" element={<SubLayout><ProductList /></SubLayout>} />
+                <Route path="/kids" element={<SubLayout><ProductList /></SubLayout>} />
+                <Route path="/sale" element={<SubLayout><ProductList /></SubLayout>} />
+                <Route path="/best" element={<SubLayout><ProductList /></SubLayout>} />
+                <Route path="/product/:id" element={<SubLayout><ProductDetail /></SubLayout>} />
+                <Route path="/cart" element={<SubLayout><Cart /></SubLayout>} />
+                <Route path="/checkout" element={<SubLayout><Checkout /></SubLayout>} />
+                <Route path="/complete" element={<SubLayout><Complete /></SubLayout>} />
+                <Route path="/login" element={<SubLayout><Login /></SubLayout>} />
+                <Route path="/signup" element={<SubLayout><Signup /></SubLayout>} />
+                <Route path="/find-account" element={<SubLayout><FindAccount /></SubLayout>} />
+                <Route path="/mypage" element={<SubLayout><MyPage /></SubLayout>} />
+                <Route path="/board/:type" element={<SubLayout><Board /></SubLayout>} />
+                <Route path="*" element={<SubLayout><NotFound /></SubLayout>} />
             </Routes>
-            <Footer />
+            {!isNotFound && <Footer />}
         </>
     );
 }

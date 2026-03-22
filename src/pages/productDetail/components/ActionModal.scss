@@ -1,9 +1,7 @@
-/* 섹션: 스타일 정의 */
 @use '../../../styles/variables' as *;
 
-$key-color: #5D675B;
-$wh-solid: #ffffff;
-$bk-solid: #000000;
+$wh-solid: $white-solid;
+$bk-solid: $black-solid;
 $txt-none-active: #929292;
 $box-color: #E2E2E2;
 
@@ -36,7 +34,7 @@ $box-color: #E2E2E2;
 
   .modal-header {
     height: 40px;
-    background: $key-color;
+    background: $point-khaki;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -147,12 +145,12 @@ $box-color: #E2E2E2;
         cursor: pointer;
         &.outline {
             background: $wh-solid;
-            border: 1px solid $key-color;
+            border: 1px solid $point-khaki;
             color: $txt-none-active;
         }
         &.fill {
-            background: $key-color;
-            border: 1px solid $key-color;
+            background: $point-khaki;
+            border: 1px solid $point-khaki;
             color: $wh-solid;
             &[data-is-inactive="true"] {
                 background: $wh-solid;

@@ -1,7 +1,7 @@
 @use '../../../styles/variables' as *;
 
 /* 스타일 */
-$key-color: #5D675B;
+$point-khaki: #5D675B;
 $wh-solid: #ffffff;
 $txt-none-active: #929292;
 $bk-solid: #000000;
@@ -28,7 +28,7 @@ $BackGround-Lemon: #EDE58C;
   &.view-results-mode { min-height: 600px; height: auto; }
 
   .popup-header {
-    height: 40px; background: $key-color; display: flex; justify-content: space-between; align-items: center; padding: 0 15px;
+    height: 40px; background: $point-khaki; display: flex; justify-content: space-between; align-items: center; padding: 0 15px;
     .header-title { @include kr_body_sb; color: $bk-solid; }
     .close-icon-btn { background: none; border: none; cursor: pointer; display: flex; align-items: center; }
   }
@@ -61,7 +61,7 @@ $BackGround-Lemon: #EDE58C;
 
     /* 섹션: 하단 버튼 공통 */
     .btn-outline, .btn-outline-bottom, .btn-outline-prev {
-      background: $wh-solid; border: 1px solid $key-color; color: $txt-none-active; @include kr_body_sb; cursor: pointer;
+      background: $wh-solid; border: 1px solid $point-khaki; color: $txt-none-active; @include kr_body_sb; cursor: pointer;
     }
 
     .inner-view-select {
@@ -69,8 +69,8 @@ $BackGround-Lemon: #EDE58C;
         position: relative; z-index: 2; display: flex; gap: 40px; justify-content: center; margin-top: 10px;
         button { width: 140px; height: 40px; }
         .btn-fill { 
-          background: $wh-solid; border: 1px solid $key-color; color: $txt-none-active; @include kr_body_sb; cursor: pointer;
-          &.active { background: $key-color; color: $wh-solid; }
+          background: $wh-solid; border: 1px solid $point-khaki; color: $txt-none-active; @include kr_body_sb; cursor: pointer;
+          &.active { background: $point-khaki; color: $wh-solid; }
         }
       }
     }
@@ -83,7 +83,7 @@ $BackGround-Lemon: #EDE58C;
         .tool-btn {
           display: flex; align-items: center; @include kr_body_sb; border: none; background: none; cursor: pointer;
           &.reset { color: $txt-none-active; }
-          &.find-store { background: $key-color; color: $wh-solid; padding: 5px 10px;}
+          &.find-store { background: $point-khaki; color: $wh-solid; padding: 5px 10px;}
         }
       }
 
