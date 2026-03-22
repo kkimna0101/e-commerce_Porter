@@ -39,7 +39,7 @@ const Footer = () => {
 
                 {/* 네 번째 : PORTER (로고 영역) */}
                 <div className="footer-col">
-                    <h2 className="Wh-Wh_50">PORTER</h2>
+                    <h2 className="orange">PORTER</h2>
                     <div className="sub-menu logo-menu">
                         <Link
                             to="/"

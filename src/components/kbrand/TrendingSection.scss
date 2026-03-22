@@ -55,6 +55,7 @@
         .trending__text-col {
             order: 1;
         }
+
         .trending__img-col {
             order: 2;
         }
@@ -64,6 +65,7 @@
         .trending__img-col {
             order: 1;
         }
+
         .trending__text-col {
             order: 2;
         }
@@ -149,6 +151,7 @@
             white-space: nowrap;
             cursor: pointer;
         }
+
         .trending__line-wrap {
             flex: 1;
             position: relative;
@@ -233,6 +236,7 @@
                 order: 2;
                 padding: 40px 0 60px;
             }
+
             .trending__img-col {
                 order: 1;
                 padding: 40px 0 0;

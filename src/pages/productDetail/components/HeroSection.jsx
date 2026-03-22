@@ -51,7 +51,7 @@ const HeroSection = () => {
         'Bordeaux': { name: "보르도", code: "#641315" },
         'Light Brown': { name: "라이트브라운", code: "#b5651d" }
     };
-    
+
     // 영어 텍스트를 받으면 매핑 정보(한글, CSS헥스) 객체 덩어리로 변환
     const productColors = (foundProduct.color || []).map(c => colorMap[c] || { name: c, code: "#000000" });
     if (productColors.length === 0) productColors.push({ name: "블랙", code: "#000000" });
@@ -64,7 +64,7 @@ const HeroSection = () => {
         id: foundProduct.id || productId,
         series: foundProduct.series || "TANKER",
         name: foundProduct.name || "TANKER SHORT HELMET BAG",
-        brand: foundProduct.brand || "PORTER", 
+        brand: foundProduct.brand || "PORTER",
         category: foundProduct.subType || "TANKER",
         price: foundProduct.price || 628000, // 원본 숫자 유지
         colors: productColors,
@@ -187,14 +187,14 @@ const HeroSection = () => {
                         <div className="acc-item" onClick={() => setIsDetailOpen(!isDetailOpen)}>
                             <span className="acc-title">제품상세</span>
                             <div className="plus-icon">
-                                <Plus 
-                                    size={25} 
-                                    strokeWidth={2} 
-                                    color="#333333" 
+                                <Plus
+                                    size={25}
+                                    strokeWidth={2}
+                                    color="#333333"
                                 />
                             </div>
                         </div>
-                        
+
                         {/* 아코디언 메뉴 */}
                         <div className={`accordion-reveal-wrapper ${isDetailOpen ? 'open' : ''}`}>
                             <div className="accordion-reveal-inner">
@@ -216,12 +216,12 @@ const HeroSection = () => {
                             <span className="sold-out-label">OUT OF STOCK</span>
                         )}
                     </span>
-                    
+
                     <div className="btn-group">
                         {/* 클릭 핸들러 연결 */}
                         <button className="bar-btn" onClick={handleWishlist}>위시리스트</button>
                         <div className="bar-divider"></div>
-                        
+
                         {/*품절 여부에 따른 버튼 스위칭 및 모달 연결 */}
                         {isSoldOut ? (
                             <button className="bar-btn alert" onClick={() => openModal('restock_guide')}>재입고 알림</button>
@@ -236,18 +236,18 @@ const HeroSection = () => {
                 </div>
             </div>
 
-        <StockPopup 
-                isOpen={isStockPopupOpen} 
-                onClose={() => setIsStockPopupOpen(false)} 
-                product={product} 
+            <StockPopup
+                isOpen={isStockPopupOpen}
+                onClose={() => setIsStockPopupOpen(false)}
+                product={product}
             />
             {/* 액션 모달 배치 */}
-            <ActionModal 
-                isOpen={modalConfig.isOpen} 
-                type={modalConfig.type} 
+            <ActionModal
+                isOpen={modalConfig.isOpen}
+                type={modalConfig.type}
                 isLoggedIn={isLoggedIn}
                 product={product}
-                setModalConfig={setModalConfig} 
+                setModalConfig={setModalConfig}
                 onClose={() => setModalConfig({ isOpen: false, type: '' })}
             />
         </section>
