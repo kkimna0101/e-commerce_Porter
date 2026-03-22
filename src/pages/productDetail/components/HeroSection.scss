@@ -1,11 +1,10 @@
 @use '../../../styles/variables' as *;
 
 /* 스타일변수 */
-$txt-display: #000000;
-$txt-body: #333333;
-$box-color: #E2E2E2;
-$box-color: #E2E2E2;
-$wh-solid: #ffffff;
+$txt-display: $black-solid;
+$txt-body: $gray-700;
+$box-color: $gray-200;
+$wh-solid: $white-solid;
 
 
 /* 믹스인 */

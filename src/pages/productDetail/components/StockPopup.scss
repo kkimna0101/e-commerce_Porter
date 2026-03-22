@@ -1,11 +1,10 @@
 @use '../../../styles/variables' as *;
 
 /* 스타일 */
-$point-khaki: #5D675B;
-$wh-solid: #ffffff;
+$wh-solid: $white-solid;
 $txt-none-active: #929292;
-$bk-solid: #000000;
-$box-color: #E2E2E2;
+$bk-solid: $black-solid;
+$box-color: $gray-200;
 $BackGround-Lemon: #EDE58C;
 
 /* 믹스인 */
