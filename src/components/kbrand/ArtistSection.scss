@@ -1,0 +1,113 @@
+@use '../../styles/variables' as *;
+
+.artist-section {
+    width: 100%;
+    padding: 96px 0;
+    background-color: #fff;
+}
+
+.artist-section__inner {
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 0 60px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 80px;
+}
+
+// ─── 좌측: 롤링 이름 ─────────────────────────────────────────────────
+.artist-section__left {
+    flex: 1;
+    // min-width: 0;
+}
+
+.artist-viewport {
+    position: relative;
+    overflow: visible;
+    padding-right: 60px;
+}
+
+.artist-slot {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+
+    font-family: $font-display;
+    font-weight: 900;
+    font-size: 44px;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: #cecece;
+    text-transform: uppercase;
+    white-space: nowrap;
+
+    &--center {
+        font-size: 140px;
+        color: #000;
+    }
+}
+
+// ─── 우측: 텍스트 ───────────────────────────────────────────────────
+.artist-section__right {
+    width: 670px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .artist-section__header {
+        .artist-section__title {
+            font-family: $font-body-ko;
+            font-weight: 700;
+            font-size: 30px;
+            line-height: 1.3;
+            letter-spacing: -0.02em;
+            color: $txt_header;
+            margin: 0;
+        }
+        .artist-section__subtitle {
+            font-family: $font-body-ko;
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 1.3;
+            letter-spacing: -0.02em;
+            color: $txt_header;
+            margin: 0;
+            word-break: keep-all;
+        }
+    }
+
+    .artist-section__desc {
+        font-family: $font-body-ko;
+        font-weight: 300;
+        font-size: 20px;
+        line-height: 1.3;
+        letter-spacing: -0.02em;
+        color: $txt_caption;
+        margin: 0;
+        word-break: keep-all;
+
+        // 볼드 첫 줄
+        &-bold {
+            font-weight: 600;
+            color: $txt_caption;
+        }
+    }
+}
+
+// ─── 반응형 ──────────────────────────────────────────────────────────
+@media (max-width: 1024px) {
+    .artist-section__inner {
+        flex-direction: column;
+        gap: 60px;
+    }
+
+    .artist-section__right {
+        width: 100%;
+    }
+}

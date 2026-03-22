@@ -8,11 +8,10 @@ $gray-light: $gray-100;
 $gray-mid: $gray-300;
 $gray-text: $gray-500;
 $font-display: 'Roboto Condensed', sans-serif;
-$font-body: 'Pretendard', 'Roboto', sans-serif;
 
 // ── Page ──────────────────────────────────────────────────
 .login-page {
-    font-family: $font-body;
+    font-family: $font-body-ko;
     color: $black;
     padding: 0 160px 120px;
     margin-top: 60px;
@@ -81,7 +80,7 @@ $font-body: 'Pretendard', 'Roboto', sans-serif;
         height: 44px;
         padding: 0 14px;
         border: 1px solid $gray-mid;
-        font-family: $font-body;
+        font-family: $font-body-ko;
         font-size: 14px;
         color: $black;
         background: $white;
@@ -265,7 +264,7 @@ $font-body: 'Pretendard', 'Roboto', sans-serif;
     background: $white;
     color: $black;
     border: 1px solid $gray-mid;
-    font-family: $font-body;
+    font-family: $font-body-ko;
     font-size: 13px;
     font-weight: 600;
     cursor: pointer;

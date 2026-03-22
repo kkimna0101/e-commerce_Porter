@@ -38,7 +38,7 @@ const HeroSection = () => {
         'Gray': { name: "그레이", code: "#888888" },
         'Red': { name: "레드", code: "#e41c1c" },
         'Pink': { name: "핑크", code: "#f4a7b9" },
-        'Green': { name: "그린", code: "#1a8c1a" },
+        'Green': { name: "그린", code: "#106410ff" },
         'Blue': { name: "블루", code: "#1c3ee4" },
         'Purple': { name: "퍼플", code: "#7b1ae4" },
         'Yellow': { name: "옐로우", code: "#f0d800" },
@@ -69,11 +69,11 @@ const HeroSection = () => {
         price: foundProduct.price || 628000, // 원본 숫자 유지
         colors: productColors,
         thumbnails: [
-            { bg: "/images/productdetail/hero_product/thumbnail1.png", item: `/images/productdetail/hero_product/${foundProduct.id || productId}_heroproduct_1.png` },
-            { bg: "/images/productdetail/hero_product/thumbnail2.png" },
-            { bg: "/images/productdetail/hero_product/thumbnail3.png" },
-            { bg: "/images/productdetail/hero_product/thumbnail4.png" }
-        ]
+            { bg: "/images/productdetail/hero_product/herothumbnail.png", item: `/images/productdetail/hero_product/${foundProduct.id || productId}_heroproduct_1.png` },
+            { bg: "/images/productdetail/hero_product/herothumbnail.png", item: `/images/productdetail/hero_product/${foundProduct.id || productId}_inner_2.png` },
+            { bg: "/images/productdetail/hero_product/herothumbnail.png", item: `/images/productdetail/hero_product/${foundProduct.id || productId}_inner_3.png` },
+            { bg: "/images/productdetail/hero_product/herothumbnail.png", item: `/images/productdetail/hero_product/${foundProduct.id || productId}_inner_4.png` },
+        ]   
     };
 
 

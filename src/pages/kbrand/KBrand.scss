@@ -1,0 +1,18 @@
+@use '../../styles/variables' as *;
+
+.kbrand-page {
+    width: 100%;
+    background-color: #fff;
+}
+
+// 풀 이미지 섹션
+.kbrand-hero-img {
+    padding: 96px 60px;
+    width: 100%;
+    img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+    }
+}

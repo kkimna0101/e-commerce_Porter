@@ -6,14 +6,39 @@ import './ProductSection.scss';
 gsap.registerPlugin(ScrollTrigger);
 
 const productList = [
-    { id: 1, name: 'TANKER SQUARE TOTE BAG(L)', price: '₩ 818,000', src: '/images/main/recommended1.png' },
-    { id: 2, name: 'TANKER ENVELOPE BAG', price: '₩ 448,000', src: '/images/main/recommended2.png' },
-    { id: 3, name: 'TANKER SHORT HELMET BAG', price: '₩ 628,000', src: '/images/main/recommended3.png' },
+    {
+        id: 1,
+        name: 'TANKER SQUARE TOTE BAG(L)',
+        price: '₩ 818,000',
+        src: '/images/main/recommended1.png',
+    },
+    {
+        id: 2,
+        name: 'TANKER ENVELOPE BAG',
+        price: '₩ 448,000',
+        src: '/images/main/recommended2.png',
+    },
+    {
+        id: 3,
+        name: 'TANKER SHORT HELMET BAG',
+        price: '₩ 628,000',
+        src: '/images/main/recommended3.png',
+    },
     { id: 4, name: 'TANKER TOTE BAG(L)', price: '₩ 748,000', src: '/images/main/recommended4.png' },
-    { id: 5, name: 'TANKER 3WAY DOCUMENT BAG W zip', price: '₩ 978,000', src: '/images/main/recommended5.png' },
+    {
+        id: 5,
+        name: 'TANKER 3WAY DOCUMENT BAG W zip',
+        price: '₩ 978,000',
+        src: '/images/main/recommended5.png',
+    },
     { id: 6, name: 'TANKER FANNY PACK', price: '₩ 448,000', src: '/images/main/recommended6.png' },
     { id: 7, name: 'TANKER BOSTON BAG', price: '₩ 598,000', src: '/images/main/recommended7.png' },
-    { id: 8, name: 'TANKER BOSTON BAG(L)', price: '₩ 748,000', src: '/images/main/recommended8.png' },
+    {
+        id: 8,
+        name: 'TANKER BOSTON BAG(L)',
+        price: '₩ 748,000',
+        src: '/images/main/recommended8.png',
+    },
 ];
 
 const ProductSection = () => {
@@ -28,13 +53,13 @@ const ProductSection = () => {
         const totalDistance = scrollWidth * 3;
 
         const tl = gsap.timeline();
-        
+
         tl.to(track, {
             x: -scrollWidth,
             ease: 'none',
             duration: 1,
         });
-        
+
         tl.to({}, { duration: 0.5 });
 
         stRef.current = ScrollTrigger.create({

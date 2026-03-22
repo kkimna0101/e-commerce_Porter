@@ -1,0 +1,18 @@
+﻿ D public/images/productdetail/hero_product/thumbnail1.png
+ D public/images/productdetail/hero_product/thumbnail2.png
+ D public/images/productdetail/hero_product/thumbnail3.png
+ D public/images/productdetail/hero_product/thumbnail4.png
+ M src/main.jsx
+ M src/pages/productDetail/ProductDetail.jsx
+ M src/pages/productDetail/components/HeroSection.jsx
+ M src/pages/productDetail/components/ProductInfo.jsx
+ M src/pages/productDetail/components/SubNav.scss
+?? git_diff.tmp
+?? git_status.tmp
+?? local_status.txt
+?? public/images/productdetail/hero_product/138_inner_2.png
+?? public/images/productdetail/hero_product/138_inner_3.png
+?? public/images/productdetail/hero_product/138_inner_4.png
+?? public/images/productdetail/hero_product/herothumbnail.png
+?? remote_diff.txt
+?? src/pages/productDetail/components/ProductInfo.scss

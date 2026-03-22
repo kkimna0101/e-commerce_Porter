@@ -1,0 +1,259 @@
+@use '../../styles/variables' as *;
+
+.trending {
+    width: 100%;
+    padding: 96px 0;
+    background-color: #fff;
+}
+
+.trending__inner {
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 0 60px;
+    box-sizing: border-box;
+}
+
+// ─── 헤더 ───────────────────────────────────────────────────────────
+.trending__header {
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+.trending__title {
+    font-family: $font-display;
+    font-weight: 900;
+    font-size: clamp(48px, 6vw, 160px);
+    letter-spacing: clamp(-0.5rem, -0.01em, 0.05em);
+    line-height: 1;
+    color: $black-solid;
+    margin: 0 0 12px;
+}
+
+.trending__sub {
+    font-family: $font-body-en;
+    font-weight: 300;
+    font-size: 26px;
+    letter-spacing: -0.02em;
+    color: #999;
+    margin: 0;
+}
+
+// ─── 아이템 리스트 ───────────────────────────────────────────────────
+.trending__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.trending__item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+
+    &--img-right {
+        .trending__text-col {
+            order: 1;
+        }
+
+        .trending__img-col {
+            order: 2;
+        }
+    }
+
+    &--img-left {
+        .trending__img-col {
+            order: 1;
+        }
+
+        .trending__text-col {
+            order: 2;
+        }
+
+        .trending__info {
+            align-items: flex-end;
+            text-align: right;
+        }
+    }
+}
+
+// ─── 텍스트 컬럼 ────────────────────────────────────────────────────
+.trending__text-col {
+    display: flex;
+    align-items: flex-end;
+    padding: 60px 80px 60px 0;
+
+    .trending__item--img-left & {
+        padding: 60px 0 60px 80px;
+        margin-left: auto;
+    }
+}
+
+.trending__info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 688px;
+
+    .trending__name {
+        font-family: $font-body-en;
+        font-weight: 700;
+        font-size: clamp(40px, 4.5vw, 92px);
+        line-height: 1;
+        letter-spacing: -0.03em;
+        color: #000;
+        margin: 0;
+    }
+
+    .trending__desc {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+
+        .trending__desc-en {
+            font-family: $font-body-en;
+            font-weight: 300;
+            font-size: 20px;
+            line-height: 1;
+            letter-spacing: -0.01em;
+            color: #555;
+            margin: 0;
+            white-space: nowrap;
+        }
+
+        .trending__desc-ko {
+            font-family: $font-body-ko;
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 1;
+            letter-spacing: -0.02em;
+            color: #555;
+            margin: 0;
+            word-break: keep-all;
+            white-space: nowrap;
+        }
+    }
+
+    .trending__meta {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-top: 8px;
+        width: 100%;
+
+        .trending__collection {
+            font-family: $font-display;
+            font-weight: 700;
+            font-size: 18px;
+            letter-spacing: -0.02em;
+            color: #000;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+
+        .trending__line-wrap {
+            flex: 1;
+            position: relative;
+            height: 4px;
+            display: block;
+        }
+
+        .trending__line-base {
+            position: absolute;
+            inset: 0;
+            top: 50%;
+            height: 1px;
+            transform: translateY(-50%);
+            background-color: #000;
+            opacity: 0.25;
+            display: block;
+        }
+
+        .trending__line {
+            position: absolute;
+            inset: 0;
+            height: 4px;
+            background-color: #000;
+            display: block;
+            will-change: transform;
+        }
+
+        .trending__col-name {
+            font-family: $font-display;
+            font-weight: 700;
+            font-size: 18px;
+            letter-spacing: -0.02em;
+            color: #000;
+            white-space: nowrap;
+        }
+    }
+}
+
+// ─── 이미지 컬럼 ────────────────────────────────────────────────────
+.trending__img-col {
+    padding: 40px 0;
+    display: flex;
+
+    .trending__item--img-left & {
+        padding-right: 40px;
+        justify-content: flex-start;
+    }
+
+    .trending__item--img-right & {
+        padding-left: 40px;
+        justify-content: flex-end;
+    }
+}
+
+.trending__img-wrap {
+    width: min(660px, 100%);
+    height: clamp(360px, 38.5vw, 740px);
+    overflow: hidden;
+    background-color: #f0eeea;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.6s ease;
+    }
+
+    &:hover img {
+        transform: scale(1.03);
+    }
+}
+
+// ─── 반응형 ──────────────────────────────────────────────────────────
+@media (max-width: 1024px) {
+    .trending__item {
+        grid-template-columns: 1fr;
+
+        &--img-right,
+        &--img-left {
+            .trending__text-col {
+                order: 2;
+                padding: 40px 0 60px;
+            }
+
+            .trending__img-col {
+                order: 1;
+                padding: 40px 0 0;
+            }
+        }
+
+        &--img-left .trending__info {
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        &--img-left .trending__meta {
+            flex-direction: row;
+        }
+    }
+
+    .trending__img-wrap {
+        width: 100%;
+    }
+}

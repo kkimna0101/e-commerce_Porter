@@ -1,0 +1,157 @@
+@use '../../styles/variables' as *;
+
+// ─── 폰트 ──────────────────────────────────────────────────────────
+$font-cond: 'Roboto Condensed', 'Arial Narrow', Arial, sans-serif;
+
+// ─── 이미지 비율 (디자인 스펙) ────────────────────────────────────
+// img1: 1108 × 560   aspect-ratio: 277/140
+// img2:  656 × 560   aspect-ratio: 41/35
+// img3:  675 × 895   aspect-ratio: 46/61
+
+// ─── 섹션 ──────────────────────────────────────────────────────────
+.new-arrivals {
+    width: 100%;
+    background-color: #fff;
+
+    // 최초 진입 시 텍스트 위로 450px 여유
+    // LLSection 과 동일하게 padding-top 으로 처리
+    padding-top: 450px;
+}
+
+.new-arrivals__inner {
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    position: relative;
+}
+
+// ─── 스티키 텍스트 ─────────────────────────────────────────────────
+// LLSection .sticky-text 패턴 동일
+.new-arrivals__sticky {
+    position: sticky;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    text-align: right;
+    padding: 0 60px;
+    pointer-events: none;
+    cursor: default;
+}
+
+// NEW ARRIVALS — thin
+.na-eyebrow {
+    font-family: $font-cond;
+    font-weight: 100;
+    font-size: 160px;
+    font-style: normal;
+    line-height: 0.9; // 90%
+    color: #000;
+    text-align: right;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+// ONLY IN KOREA — bold
+.na-headline {
+    font-family: $font-cond;
+    font-weight: 700;
+    font-size: 245px;
+    font-style: normal;
+    line-height: 0.9; // 90%
+    color: #000;
+    text-align: right;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+// ─── 사진 그리드 ────────────────────────────────────────────────────
+// translateY(-50%) 보정 -92px + LLSection 동일 padding-bottom
+.new-arrivals__photos {
+    margin-top: -150px;
+
+    // 섹션 종료 시점 조정:
+    // 텍스트가 img3 bottom 기준 20px 위에서 멈추도록
+    // img3 렌더 높이 ≈ 675px 기준 aspect-ratio 46/61 → 약 895px
+    // transform 보정(92px) + 텍스트블록 절반(약 300px) + 여유 20px = 412px
+    padding-bottom: 190px;
+
+    padding-left: 60px;
+    padding-right: 60px;
+    box-sizing: border-box;
+}
+
+// 상단 행: img1 + img2 나란히
+.na-row-top {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+// 하단 행: img3 좌측만
+.na-row-bot {
+    display: flex;
+}
+
+// ─── 개별 이미지 ─────────────────────────────────────────────────────
+.na-img {
+    overflow: hidden;
+    background-color: #e8e6e2;
+    flex-shrink: 0;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+}
+
+// img1: 1108 × 560  aspect-ratio: 277/140
+.na-img--1 {
+    width: 62.8%; // 1108 / (1108+656) ≈ 62.8%
+    aspect-ratio: 277 / 140;
+}
+
+// img2: 656 × 560  aspect-ratio: 41/35
+.na-img--2 {
+    flex: 1;
+    aspect-ratio: 41 / 35;
+}
+
+// img3: 675 × 895  aspect-ratio: 46/61
+.na-img--3 {
+    width: 37.2%; // 675 / (1108+656) ≈ 38.3%, 시각 균형 조정
+    aspect-ratio: 46 / 61;
+}
+
+// ─── 반응형 ──────────────────────────────────────────────────────────
+@media (max-width: 1024px) {
+    .na-eyebrow {
+        font-size: 80px;
+    }
+    .na-headline {
+        font-size: 120px;
+    }
+    .new-arrivals {
+        padding-top: 240px;
+    }
+}
+
+@media (max-width: 768px) {
+    .na-row-top {
+        flex-direction: column;
+    }
+    .na-img--1,
+    .na-img--2 {
+        width: 100%;
+    }
+    .na-img--3 {
+        width: 60%;
+    }
+    .na-eyebrow {
+        font-size: 48px;
+    }
+    .na-headline {
+        font-size: 72px;
+    }
+}

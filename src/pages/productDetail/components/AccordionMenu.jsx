@@ -62,8 +62,8 @@ const AccordionMenu = ({ productId, isOpen }) => {
         </button>
       </div>
       {detailList.map((item, index) => (
-        <div 
-          key={item.key} 
+        <div
+          key={item.key}
           className={`menu-frame ${openItems[item.key] ? 'is-open' : ''} ${index === detailList.length - 1 ? 'is-last' : ''}`}
         >
           <div className="menu-header" onClick={() => toggleItem(item.key)}>
@@ -72,7 +72,7 @@ const AccordionMenu = ({ productId, isOpen }) => {
             </div>
             <span className="menu-title">{item.title}</span>
           </div>
-          
+
           <div className="menu-content">
             <div className="content-inner">
               {item.content}
