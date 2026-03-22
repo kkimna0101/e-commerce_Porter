@@ -8,16 +8,12 @@ import './KBrand.scss';
 
 const KBrand = () => {
     useEffect(() => {
-        // 모든 섹션이 DOM에 완전히 그려진 뒤 위치 재계산
-        // requestAnimationFrame 두 번으로 레이아웃 페인트 이후 보장
-        const raf = requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-                ScrollTrigger.refresh();
-            });
-        });
+        // rAF보다 setTimeout이 자식 컴포넌트 useEffect 완료를 더 확실히 보장
+        const timer = setTimeout(() => {
+            ScrollTrigger.refresh();
+        }, 100);
 
-        return () => cancelAnimationFrame(raf);
-        // ※ ScrollTrigger.getAll().kill() 제거 → 각 컴포넌트가 자체 cleanup 담당
+        return () => clearTimeout(timer);
     }, []);
 
     return (
