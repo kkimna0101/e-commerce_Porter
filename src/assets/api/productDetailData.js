@@ -1,74 +1,159 @@
-/* 섹션: 제품 상세 데이터 */
 export const productDetailData = [
- 
- /* 실제 제품 TANKER SHORT HELMET BAG*/
   {
-    id: 1,
+    id: 138,
     productCode: "Product No:PT-622-26110PT10",
     material: "나일론 100%",
-    color: "Black / Khaki / Navy",
+    color: "Black / Sage Green / Iron Blue",
     size: "W220 / H120 / D50",
     origin: "일본",
     caution: "화기엄금",
     asInfo: "Porter_Seoul / 02)540-1935",
     warranty: "구입일로부터 1년",
     importer: "(주) 스타럭스",
-    productInfo: "포터의 시그니처 시리즈인 탱커가 세계 최초로 양산화에 성공한 \n100% 식물성 나일론 소재를 사용해 새롭게 태어났습니다.\n“ALL NEW TANKER- 아무것도 변하지 않고, 모든 것이 바뀐다” 라는 \n콘셉트로 혁신적인 변화를 시도했습니다. \n\n이 비닐 백은 전면에 눈에 띄는 3개의 후크가 특징이며 다양한 내부 포켓이 장착되어 있습니다. \n메인 수납공간은 긴 지갑을 넣을 수 있을 만큼 넉넉하여 \n일상적인 용도뿐만 아니라 여행용 가방으로도 이상적입니다.\n\n* 모든 타입에 정품 파우치가 함께 제공됩니다."
+    subTitle: "숏 헬멧 백은 헬멧 백의 가로형 소형 버전입니다.",
+    subDesc:
+      "A4 파일을 수납할 수 있으며, 작업 시와 작업 외 시간에 모두 사용할 수 있는 매력적인 크기입니다. 어깨끈은 탈부착이 가능하여 핸드백으로 사용하거나 어깨에 메는 두 가지 방식으로 사용할 수 있습니다.",
+    notice: "* 모든 타입에 정품 파우치가 함께 제공됩니다.",
+    productInfo:
+      '포터의 시그니처 시리즈인 탱커가 세계 최초로 양산화에 성공한 100% 식물성 나일론 소재를 사용해 새롭게 태어났습니다. "ALL NEW TANKER- 아무것도 변하지 않고, 모든 것이 바뀐다" 라는 콘셉트로 혁신적인 변화를 시도했습니다.',
+    detailImages: [
+      "/images/productdetail/detail/138_detail_1.png",
+      "/images/productdetail/detail/138_detail_2.png",
+      "/images/productdetail/detail/138_detail_3.png",
+      "/images/productdetail/detail/138_detail_4.png",
+      "/images/productdetail/detail/138_detail_5.png",
+      "/images/productdetail/detail/138_detail_6.png",
+    ],
+    scaleImages: [
+      "/images/productdetail/scale/138_scale_1.png",
+      "/images/productdetail/scale/138_scale_2.png",
+      "/images/productdetail/scale/138_scale_3.png",
+    ],
   },
-   /* 실제 제품 POTR SCOPE AUTHORIZED BRIEF*/
   {
-    id: 2,
-    productCode: "Product No:PT-995-19550PT10",
-    material: "나일론",
-    color: "Black",
-    size: "W410 / H305 / D105",
+    id: 135,
+    productCode: "Product No:PT-622-26111PT10",
+    material: "나일론 100%",
+    color: "Black / Sage Green / Iron Blue",
+    size: "W380 / H290 / D120",
     origin: "일본",
     caution: "화기엄금",
     asInfo: "Porter_Seoul / 02)540-1935",
     warranty: "구입일로부터 1년",
     importer: "(주) 스타럭스",
-    productInfo: "'POTR SCOPE'는 다양해지는 생활과 일하는 방식에 맞는 새로운 시대의 \n비즈니스 백 시리즈입니다. 워케이션과 원격근무로 대표되는 일과 삶의 조화 '워라밸'이 확산되면서 시간과 장소,  복장에 구애받지 않는 일하는 방식이 정착되었습니다. \nSCOPE 시리즈는 이러한 사회 변화에 적응할 수 있는 모든 형태의 컬렉션입니다. \n\n주요 소재로는 '코듀라® 홀로필 에어발리스틱'을 사용했습니다. \n이 원단은 일반 나일론 원단보다 약 20% 정도 가벼우면서도 강하고 찢어짐과 \n소재 마찰 강도가 뛰어난 것이 특징입니다. \n\n지퍼 손잡이는 끝부분이 돌출된 POTR만의 독특한 형태로, 장갑을 낀 상태에서도 쉽게 잡을 수 \n 있는 사양입니다. 앞주머니는 크게 열고 닫을 수 있도록 앞주머니에 사사마치 주머니가 있어 \n스트레스 없이 물건을 넣고 뺄 수 있습니다. 또한, 지퍼를 여닫을 때에도 형태가 흐트러지지 \n않도록 고안하여, 동작이 스마트해 보이도록 신경을 썼습니다. \n\n편의성과 사용성을 고려한 기능을 적용했으며, \n어떤 룩에도 잘 어울리는 블랙 컬러로 통일감을 주었습니다. \n\n오소라이즈드 브리프는 숄더와 핸드백 두 가지 방식으로 사용할 수 있는 아이템입니다. \nB4 사이즈의 서류를 넣을 수 있는 크기로, 내부에는 PC와 태블릿을 넣을 수 있는 쿠션 포켓이 있습니다. 메인 수납공간과 앞주머니 사이에 자석으로 여닫을 수 있는 \n앞주머니는 지퍼 포켓과 분리하여 사용할 수 있습니다. \n\n※ B4 서류 / 16 inch PC 가능"
+    subTitle: "스퀘어 토트백의 대형 버전입니다.",
+    subDesc:
+      "A4 서류와 노트북을 넉넉하게 수납할 수 있으며, 어깨끈이 탈부착 가능하여 다양한 방식으로 활용할 수 있습니다.",
+    notice: "* 모든 타입에 정품 파우치가 함께 제공됩니다.",
+    productInfo:
+      '포터의 시그니처 시리즈인 탱커가 세계 최초로 양산화에 성공한 100% 식물성 나일론 소재를 사용해 새롭게 태어났습니다. "ALL NEW TANKER- 아무것도 변하지 않고, 모든 것이 바뀐다" 라는 콘셉트로 혁신적인 변화를 시도했습니다.',
   },
-  /* 실제 제품 HOBONICHI TECHO x POTR Stroll (Cousin Size/A6)*/
   {
-    id: 3,
-    productCode: "Product No:PT-390-94943PT41",
-    material: "나일론",
-    color: "Light Brown",
-    size: "W:180 /H:130 /D:20 (A6)",
+    id: 137,
+    productCode: "Product No:PT-622-26112PT10",
+    material: "나일론 100%",
+    color: "Black / Sage Green / Iron Blue",
+    size: "W320 / H230 / D60",
     origin: "일본",
     caution: "화기엄금",
     asInfo: "Porter_Seoul / 02)540-1935",
     warranty: "구입일로부터 1년",
     importer: "(주) 스타럭스",
-    productInfo: "HOBONICHI TECHO × POTR 2ND COLLABORATION \n\n다양해진 라이프스타일 속에서 일상을 더욱 풍요롭게 하는 것을 콘셉트로 하는 ‘피오티알’과, \n사용자의 취향과 생활 방식에 맞춰 자유롭게 활용할 수 있는 라이프 북 브랜드 ‘호보니치테쵸’가 두 번째 협업 컬렉션을 선보입니다. \n\n이번 컬렉션의 다이어리 커버는 작은 가방을 들고 외출하는 듯한 편리함과 \n실용성이 매력 포인트입니다. 호보니치테쵸의 스테디셀러인 오리지널 사이즈(A6)와 \n커즌 사이즈(A5) 두 가지로 출시되며, 다이어리뿐만 아니라 일상에 필요한 소지품을 함께 담아 가볍고 간편하게 휴대할 수 있습니다. \n\n광택을 절제한 나일론 옥스포드 소재를 사용해 캐주얼하면서도 부드러운 촉감을 구현했으며, \n베이직 컬러인 블랙과 라이트 브라운 두 가지로 출시되어 \n어떤 스타일에도 자연스럽게 어울립니다. \n\n커버의 앞·뒷면에는 스마트폰 등을 보관할 수 있는 포켓이 있으며, 내부에는 카드 포켓과 \n메쉬 포켓 등 다양한 수납 공간을 갖추어 당일 필요한 소지품을 \n다이어리와 함께 편리하게 휴대할 수 있습니다. \n\n또한, 탈부착 가능한 숄더 스트랩이 포함되어 있어 상황에 맞게 활용할 수 있으며, \n외출 시 가볍고 자유롭게 사용할 수 있는 것이 특징입니다."
+    subTitle: "서류와 태블릿을 깔끔하게 수납할 수 있는 엔벨로프 백입니다.",
+    subDesc:
+      "심플하고 슬림한 디자인으로 비즈니스와 캐주얼 모두에 어울리며, 숄더 스트랩으로 편리하게 휴대할 수 있습니다.",
+    notice: "* 모든 타입에 정품 파우치가 함께 제공됩니다.",
+    productInfo:
+      '포터의 시그니처 시리즈인 탱커가 세계 최초로 양산화에 성공한 100% 식물성 나일론 소재를 사용해 새롭게 태어났습니다. "ALL NEW TANKER- 아무것도 변하지 않고, 모든 것이 바뀐다" 라는 콘셉트로 혁신적인 변화를 시도했습니다.',
   },
-  /* 실제 제품 HOBONICHI TECHO x POTR Stroll (Cousin Size/A5)*/
   {
-    id: 4,
-    productCode: "Product No:PT-390-94942PT11",
-    material: "나일론",
-    color: "Black",
-    size: "W:240 /H:180 /D:20 (A5)",
+    id: 139,
+    productCode: "Product No:PT-622-26113PT10",
+    material: "나일론 100%",
+    color: "Black / Sage Green / Iron Blue",
+    size: "W400 / H300 / D130",
     origin: "일본",
     caution: "화기엄금",
     asInfo: "Porter_Seoul / 02)540-1935",
     warranty: "구입일로부터 1년",
     importer: "(주) 스타럭스",
-    productInfo: "HOBONICHI TECHO × POTR 2ND COLLABORATION \n\n다양해진 라이프스타일 속에서 일상을 더욱 풍요롭게 하는 것을 콘셉트로 하는 ‘피오티알’과, \n사용자의 취향과 생활 방식에 맞춰 자유롭게 활용할 수 있는 라이프 북 브랜드 ‘호보니치테쵸’가 두 번째 협업 컬렉션을 선보입니다. \n\n이번 컬렉션의 다이어리 커버는 작은 가방을 들고 외출하는 듯한 편리함과 \n실용성이 매력 포인트입니다. 호보니치테쵸의 스테디셀러인 오리지널 사이즈(A6)와 \n커즌 사이즈(A5) 두 가지로 출시되며, 다이어리뿐만 아니라 일상에 필요한 소지품을 함께 담아 가볍고 간편하게 휴대할 수 있습니다. \n\n광택을 절제한 나일론 옥스포드 소재를 사용해 캐주얼하면서도 부드러운 촉감을 구현했으며, \n베이직 컬러인 블랙과 라이트 브라운 두 가지로 출시되어 \n어떤 스타일에도 자연스럽게 어울립니다. \n\n커버의 앞·뒷면에는 스마트폰 등을 보관할 수 있는 포켓이 있으며, 내부에는 카드 포켓과 \n메쉬 포켓 등 다양한 수납 공간을 갖추어 당일 필요한 소지품을 \n다이어리와 함께 편리하게 휴대할 수 있습니다. \n\n또한, 탈부착 가능한 숄더 스트랩이 포함되어 있어 상황에 맞게 활용할 수 있으며, \n외출 시 가볍고 자유롭게 사용할 수 있는 것이 특징입니다."
+    subTitle: "탱커 토트백의 대형 버전입니다.",
+    subDesc:
+      "넉넉한 수납공간으로 일상적인 용도뿐만 아니라 짧은 여행에도 활용할 수 있습니다.",
+    notice: "* 모든 타입에 정품 파우치가 함께 제공됩니다.",
+    productInfo:
+      '포터의 시그니처 시리즈인 탱커가 세계 최초로 양산화에 성공한 100% 식물성 나일론 소재를 사용해 새롭게 태어났습니다. "ALL NEW TANKER- 아무것도 변하지 않고, 모든 것이 바뀐다" 라는 콘셉트로 혁신적인 변화를 시도했습니다.',
   },
-  /* 실제 제품 BALLOONSAC*/
   {
-    id: 5,
-    productCode: "Product No:PT-381-26898PT10",
-    material: "나일론 트윌",
-    color: "Black",
-    size: "W:190 /H:260 /D:105, 360g",
+    id: 141,
+    productCode: "Product No:PT-622-26114PT10",
+    material: "나일론 100%",
+    color: "Black / Sage Green / Iron Blue",
+    size: "W420 / H310 / D110",
     origin: "일본",
     caution: "화기엄금",
     asInfo: "Porter_Seoul / 02)540-1935",
     warranty: "구입일로부터 1년",
     importer: "(주) 스타럭스",
-    productInfo: "오래전부터 소지품을 휴대하는 데 사용되어 온 ‘복주머니’를 모티브로 한 포터의 인기 시리즈 'BALLOONSAC (벌룬색)' \n메인 소재로는 코튼 본딩 가공을 더한 나일론 원단을 사용해 은은한 윤기와 함께 세련된 질감을 완성했습니다. \n\n입구는 드로우 코드로 여닫을 수 있어 소지품을 꺼내기 편리하며, \n코드 스토퍼의 위치를 조절해 실루엣에 변화를 줄 수 있는 것도 특징입니다. \n탈부착 가능한 핸들과 숄더 스트랩이 함께 구성되어 손에 들거나 어깨에 메는 2WAY 연출이 가능합니다."
-  }
+    subTitle: "지퍼가 추가된 3WAY 도큐먼트 백입니다.",
+    subDesc:
+      "서류가방, 숄더백, 백팩의 3가지 방식으로 사용 가능하며 추가 지퍼로 보안성을 높였습니다.",
+    notice: "* 모든 타입에 정품 파우치가 함께 제공됩니다.",
+    productInfo:
+      '포터의 시그니처 시리즈인 탱커가 세계 최초로 양산화에 성공한 100% 식물성 나일론 소재를 사용해 새롭게 태어났습니다. "ALL NEW TANKER- 아무것도 변하지 않고, 모든 것이 바뀐다" 라는 콘셉트로 혁신적인 변화를 시도했습니다.',
+  },
+  {
+    id: 145,
+    productCode: "Product No:PT-622-26115PT10",
+    material: "나일론 100%",
+    color: "Black / Sage Green / Iron Blue",
+    size: "W260 / H130 / D60",
+    origin: "일본",
+    caution: "화기엄금",
+    asInfo: "Porter_Seoul / 02)540-1935",
+    warranty: "구입일로부터 1년",
+    importer: "(주) 스타럭스",
+    subTitle: "탱커 시리즈의 패니팩입니다.",
+    subDesc:
+      "허리에 착용하거나 숄더백으로도 활용할 수 있는 2WAY 타입으로, 가볍고 편리하게 사용할 수 있습니다.",
+    notice: "* 모든 타입에 정품 파우치가 함께 제공됩니다.",
+    productInfo:
+      '포터의 시그니처 시리즈인 탱커가 세계 최초로 양산화에 성공한 100% 식물성 나일론 소재를 사용해 새롭게 태어났습니다. "ALL NEW TANKER- 아무것도 변하지 않고, 모든 것이 바뀐다" 라는 콘셉트로 혁신적인 변화를 시도했습니다.',
+  },
+  {
+    id: 147,
+    productCode: "Product No:PT-622-26116PT10",
+    material: "나일론 100%",
+    color: "Black / Sage Green / Iron Blue",
+    size: "W350 / H220 / D150",
+    origin: "일본",
+    caution: "화기엄금",
+    asInfo: "Porter_Seoul / 02)540-1935",
+    warranty: "구입일로부터 1년",
+    importer: "(주) 스타럭스",
+    subTitle: "탱커 시리즈의 보스턴백입니다.",
+    subDesc:
+      "넉넉한 메인 수납공간과 외부 포켓으로 일상과 여행 모두에 활용할 수 있습니다.",
+    notice: "* 모든 타입에 정품 파우치가 함께 제공됩니다.",
+    productInfo:
+      '포터의 시그니처 시리즈인 탱커가 세계 최초로 양산화에 성공한 100% 식물성 나일론 소재를 사용해 새롭게 태어났습니다. "ALL NEW TANKER- 아무것도 변하지 않고, 모든 것이 바뀐다" 라는 콘셉트로 혁신적인 변화를 시도했습니다.',
+  },
+  {
+    id: 148,
+    productCode: "Product No:PT-622-26117PT10",
+    material: "나일론 100%",
+    color: "Black / Sage Green / Iron Blue",
+    size: "W430 / H270 / D180",
+    origin: "일본",
+    caution: "화기엄금",
+    asInfo: "Porter_Seoul / 02)540-1935",
+    warranty: "구입일로부터 1년",
+    importer: "(주) 스타럭스",
+    subTitle: "탱커 시리즈의 대형 보스턴백입니다.",
+    subDesc:
+      "여행용으로도 충분한 대용량 수납공간을 제공하며, 내구성이 뛰어난 나일론 소재로 제작되었습니다.",
+    notice: "* 모든 타입에 정품 파우치가 함께 제공됩니다.",
+    productInfo:
+      '포터의 시그니처 시리즈인 탱커가 세계 최초로 양산화에 성공한 100% 식물성 나일론 소재를 사용해 새롭게 태어났습니다. "ALL NEW TANKER- 아무것도 변하지 않고, 모든 것이 바뀐다" 라는 콘셉트로 혁신적인 변화를 시도했습니다.',
+  },
 ];

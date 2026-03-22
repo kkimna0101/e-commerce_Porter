@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './ProductSection.scss';
@@ -6,42 +7,18 @@ import './ProductSection.scss';
 gsap.registerPlugin(ScrollTrigger);
 
 const productList = [
-    {
-        id: 1,
-        name: 'TANKER SQUARE TOTE BAG(L)',
-        price: '₩ 818,000',
-        src: '/images/main/recommended1.png',
-    },
-    {
-        id: 2,
-        name: 'TANKER ENVELOPE BAG',
-        price: '₩ 448,000',
-        src: '/images/main/recommended2.png',
-    },
-    {
-        id: 3,
-        name: 'TANKER SHORT HELMET BAG',
-        price: '₩ 628,000',
-        src: '/images/main/recommended3.png',
-    },
-    { id: 4, name: 'TANKER TOTE BAG(L)', price: '₩ 748,000', src: '/images/main/recommended4.png' },
-    {
-        id: 5,
-        name: 'TANKER 3WAY DOCUMENT BAG W zip',
-        price: '₩ 978,000',
-        src: '/images/main/recommended5.png',
-    },
-    { id: 6, name: 'TANKER FANNY PACK', price: '₩ 448,000', src: '/images/main/recommended6.png' },
-    { id: 7, name: 'TANKER BOSTON BAG', price: '₩ 598,000', src: '/images/main/recommended7.png' },
-    {
-        id: 8,
-        name: 'TANKER BOSTON BAG(L)',
-        price: '₩ 748,000',
-        src: '/images/main/recommended8.png',
-    },
+    { productId: 135, name: 'TANKER SQUARE TOTE BAG(L)', price: '₩ 818,000', src: '/images/main/recommended1.png' },
+    { productId: 137, name: 'TANKER ENVELOPE BAG', price: '₩ 448,000', src: '/images/main/recommended2.png' },
+    { productId: 138, name: 'TANKER SHORT HELMET BAG', price: '₩ 628,000', src: '/images/main/recommended3.png' },
+    { productId: 139, name: 'TANKER TOTE BAG(L)', price: '₩ 748,000', src: '/images/main/recommended4.png' },
+    { productId: 141, name: 'TANKER 3WAY DOCUMENT BAG W zip', price: '₩ 978,000', src: '/images/main/recommended5.png' },
+    { productId: 145, name: 'TANKER FANNY PACK', price: '₩ 448,000', src: '/images/main/recommended6.png' },
+    { productId: 147, name: 'TANKER BOSTON BAG', price: '₩ 598,000', src: '/images/main/recommended7.png' },
+    { productId: 148, name: 'TANKER BOSTON BAG(L)', price: '₩ 748,000', src: '/images/main/recommended8.png' },
 ];
 
 const ProductSection = () => {
+    const navigate = useNavigate();
     const sectionRef = useRef(null);
     const trackRef = useRef(null);
     const stRef = useRef(null);
@@ -94,7 +71,7 @@ const ProductSection = () => {
             <div className="product-content">
                 <div className="section-header">
                     <h2>Recommended Product</h2>
-                    <span className="view-more">View More</span>
+                    <span className="view-more" onClick={() => navigate('/product')}>View More</span>
                 </div>
 
                 <div className="slider-container">
@@ -106,7 +83,11 @@ const ProductSection = () => {
 
                     <div className="product-slider" ref={trackRef}>
                         {productList.map((product) => (
-                            <div key={product.id} className="product-card">
+                            <div
+                                key={product.productId}
+                                className="product-card"
+                                onClick={() => navigate(`/product/${product.productId}`)}
+                            >
                                 <div className="img-box">
                                     <img src={product.src} alt={product.name} />
                                 </div>

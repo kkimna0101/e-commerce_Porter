@@ -1,0 +1,51 @@
+﻿On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	deleted:    git_diff.tmp
+	deleted:    git_status.tmp
+	deleted:    local_status.txt
+	deleted:    remote_diff.txt
+	modified:   src/App.jsx
+	modified:   src/assets/api/productDetailData.js
+	modified:   src/components/main/ProductSection.jsx
+	modified:   src/components/main/ProductSection.scss
+	modified:   src/pages/productDetail/ProductDetail.jsx
+	modified:   src/pages/productDetail/components/DetailSection.jsx
+	modified:   src/pages/productDetail/components/FloatingBar.jsx
+	deleted:    src/pages/productDetail/components/GuidedCommunity.jsx
+	modified:   src/pages/productDetail/components/ProductInfo.jsx
+	modified:   src/pages/productDetail/components/ProductInfo.scss
+	modified:   src/pages/productDetail/components/RelatedItems.jsx
+	modified:   src/pages/productDetail/components/ScaleSection.jsx
+	deleted:    teammate_HeroSection.jsx.tmp
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	branches.txt
+	build_output.txt
+	public/images/productdetail/detail/138_detail_1.png
+	public/images/productdetail/detail/138_detail_2.png
+	public/images/productdetail/detail/138_detail_3.png
+	public/images/productdetail/detail/138_detail_4.png
+	public/images/productdetail/detail/138_detail_5.png
+	public/images/productdetail/detail/138_detail_6.png
+	public/images/productdetail/icon_reorder.png
+	public/images/productdetail/scale/138_scale_1.png
+	public/images/productdetail/scale/138_scale_2.png
+	public/images/productdetail/scale/138_scale_3.png
+	src/pages/about/About.jsx
+	src/pages/about/About.scss
+	src/pages/productDetail/components/Community.jsx
+	src/pages/productDetail/components/Community.scss
+	src/pages/productDetail/components/DetailSection.scss
+	src/pages/productDetail/components/FloatingBar.scss
+	src/pages/productDetail/components/GuidedSection.jsx
+	src/pages/productDetail/components/GuidedSection.scss
+	src/pages/productDetail/components/RelatedItems.scss
+	src/pages/productDetail/components/ScaleSection.scss
+	status_full.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
