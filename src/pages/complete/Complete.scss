@@ -1,4 +1,4 @@
-﻿@use '../../styles/variables' as *;
+@use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 
 // ── Variables ─────────────────────────────────────────────
@@ -8,11 +8,10 @@ $gray-light: $gray-100;
 $gray-mid: $gray-300;
 $gray-text: $gray-500;
 $font-display: 'Roboto Condensed', sans-serif;
-$font-body: 'Pretendard', 'Roboto', sans-serif;
 
 // ── Complete Page ─────────────────────────────────────────
 .complete-page {
-    font-family: $font-body;
+    font-family: $font-body-ko;
     color: $black;
     padding: 0 160px 120px;
     margin-top: 60px;
@@ -84,7 +83,7 @@ $font-body: 'Pretendard', 'Roboto', sans-serif;
         border-bottom: 2px solid $black-solid;
 
         .section-title {
-            font-family: $font-body;
+            font-family: $font-body-ko;
             font-size: 24px;
             font-weight: 700;
             color: $black;
@@ -240,7 +239,7 @@ $font-body: 'Pretendard', 'Roboto', sans-serif;
     justify-content: center;
     height: 48px;
     padding: 0 32px;
-    font-family: $font-body;
+    font-family: $font-body-ko;
     font-size: 14px;
     font-weight: 700;
     letter-spacing: 0.04em;

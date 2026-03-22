@@ -1,4 +1,4 @@
-﻿@use '../../styles/variables' as *;
+@use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 @use 'sass:color';
 
@@ -10,11 +10,10 @@ $gray-mid: $gray-300;
 $gray-text: $gray-500;
 $accent: $point-khaki;
 $font-display: 'Roboto Condensed', sans-serif;
-$font-body: 'Pretendard', 'Roboto', sans-serif;
 
 // ── Checkout Page ─────────────────────────────────────────
 .checkout-page {
-    font-family: $font-body;
+    font-family: $font-body-ko;
     color: $black;
     padding: 0 160px 120px;
     margin-top: 60px;
@@ -58,7 +57,7 @@ $font-body: 'Pretendard', 'Roboto', sans-serif;
         }
 
         h3 {
-            font-family: $font-body;
+            font-family: $font-body-ko;
             font-size: 24px;
             font-weight: 700;
             letter-spacing: -0.5px;
@@ -97,7 +96,7 @@ $font-body: 'Pretendard', 'Roboto', sans-serif;
                 height: 44px;
                 padding: 0 14px;
                 border: 1px solid $gray-mid;
-                font-family: $font-body;
+                font-family: $font-body-ko;
                 font-size: 14px;
                 color: $black;
                 background: $white;
@@ -135,7 +134,7 @@ $font-body: 'Pretendard', 'Roboto', sans-serif;
                         padding: 0 18px;
                         background: $black;
                         color: $white;
-                        font-family: $font-body;
+                        font-family: $font-body-ko;
                         font-size: 13px;
                         font-weight: 600;
                         border: none;
@@ -170,7 +169,7 @@ $font-body: 'Pretendard', 'Roboto', sans-serif;
                 height: 44px;
                 padding: 0 8px;
                 border: 1px solid $gray-mid;
-                font-family: $font-body;
+                font-family: $font-body-ko;
                 font-size: 14px;
                 color: $black;
                 background: $white;
@@ -219,7 +218,7 @@ $font-body: 'Pretendard', 'Roboto', sans-serif;
                 height: 44px;
                 padding: 0 10px;
                 border: 1px solid $gray-mid;
-                font-family: $font-body;
+                font-family: $font-body-ko;
                 font-size: 13px;
                 color: $black;
                 background: $white;
@@ -287,7 +286,7 @@ $font-body: 'Pretendard', 'Roboto', sans-serif;
             height: 44px;
             padding: 0 14px;
             border: 1px solid $gray-mid;
-            font-family: $font-body;
+            font-family: $font-body-ko;
             font-size: 14px;
             color: $black;
             background: $white;
@@ -355,7 +354,7 @@ $font-body: 'Pretendard', 'Roboto', sans-serif;
                 height: 44px;
                 padding: 0 14px;
                 border: 1px solid $gray-mid;
-                font-family: $font-body;
+                font-family: $font-body-ko;
                 font-size: 14px;
                 color: $black;
                 background: $white;

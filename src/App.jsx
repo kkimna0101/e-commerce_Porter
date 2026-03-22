@@ -14,6 +14,8 @@ import FindAccount from './pages/findAccount/FindAccount';
 import MyPage from './pages/mypage/MyPage';
 import Board from './pages/board/Board';
 import NotFound from './pages/notFound/NotFound';
+import Collab from './pages/collab/Collab';
+import KBrand from './pages/kbrand/KBrand';
 
 function ScrollToTop() {
     const { pathname } = useLocation();
@@ -43,7 +45,7 @@ function App() {
     const isNotFound = ![
         '/', '/product', '/women', '/men', '/kids', '/sale', '/best', 
         '/cart', '/checkout', '/complete', '/login', '/signup', 
-        '/find-account', '/mypage'
+        '/find-account', '/mypage', '/collab', '/k-brand'
     ].some(path => location.pathname === path || location.pathname.startsWith('/product/') || location.pathname.startsWith('/board/'));
 
     return (
@@ -66,6 +68,8 @@ function App() {
                 <Route path="/find-account" element={<SubLayout><FindAccount /></SubLayout>} />
                 <Route path="/mypage" element={<SubLayout><MyPage /></SubLayout>} />
                 <Route path="/board/:type" element={<SubLayout><Board /></SubLayout>} />
+                <Route path="/collab" element={<SubLayout><Collab /></SubLayout>} />
+                <Route path="/k-brand" element={<SubLayout><KBrand /></SubLayout>} />
                 <Route path="*" element={<SubLayout><NotFound /></SubLayout>} />
             </Routes>
             {!isNotFound && <Footer />}
