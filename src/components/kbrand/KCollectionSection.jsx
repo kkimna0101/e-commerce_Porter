@@ -21,31 +21,38 @@ const productList = COLLECTION_IDS.map((id) => {
 const KCollectionSection = () => {
     const sectionRef = useRef(null);
     const trackRef = useRef(null);
+    const tlRef = useRef(null); // tl ref 별도 보관
     const stRef = useRef(null);
     const [showArrow, setShowArrow] = useState(false);
 
     useEffect(() => {
         const track = trackRef.current;
+        const section = sectionRef.current;
+        if (!track || !section) return;
+
         const scrollWidth = track.scrollWidth - window.innerWidth + 120;
         const totalDistance = scrollWidth * 1.5;
 
         const tl = gsap.timeline();
+        tlRef.current = tl;
 
         tl.to(track, { x: -scrollWidth, ease: 'none', duration: 1 });
         tl.to({}, { duration: 0.5 });
 
         stRef.current = ScrollTrigger.create({
             animation: tl,
-            trigger: sectionRef.current,
+            trigger: section,
             start: 'center center',
             end: () => `+=${totalDistance}`,
             scrub: 1,
             pin: true,
+            invalidateOnRefresh: true,
             onUpdate: (self) => setShowArrow(self.progress > 0.65),
         });
 
         return () => {
-            if (tl) tl.kill();
+            // 자신의 트리거와 타임라인만 정리
+            if (tlRef.current) tlRef.current.kill();
             if (stRef.current) stRef.current.kill();
         };
     }, []);
