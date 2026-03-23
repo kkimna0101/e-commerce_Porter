@@ -63,12 +63,15 @@ function App() {
     "/about",
   ];
   const isNotFound = !validPaths.some((path) => {
-    const normalizedPath = location.pathname.endsWith("/")
-      ? location.pathname.slice(0, -1)
-      : location.pathname;
-    const normalizedTarget = path.endsWith("/") ? path.slice(0, -1) : path;
+    const normalizedPath = location.pathname === "/"
+      ? "/"
+      : (location.pathname.endsWith("/") ? location.pathname.slice(0, -1) : location.pathname);
+    const normalizedTarget = path === "/"
+      ? "/"
+      : (path.endsWith("/") ? path.slice(0, -1) : path);
+
     return (
-      normalizedPath === (normalizedTarget || "/") ||
+      normalizedPath === normalizedTarget ||
       location.pathname.startsWith("/product/") ||
       location.pathname.startsWith("/board/")
     );
@@ -95,30 +98,7 @@ function App() {
             </SubLayout>
           }
         />
-        <Route
-          path="/women"
-          element={
-            <SubLayout>
-              <ProductList />
-            </SubLayout>
-          }
-        />
-        <Route
-          path="/men"
-          element={
-            <SubLayout>
-              <ProductList />
-            </SubLayout>
-          }
-        />
-        <Route
-          path="/kids"
-          element={
-            <SubLayout>
-              <ProductList />
-            </SubLayout>
-          }
-        />
+
         <Route
           path="/sale"
           element={

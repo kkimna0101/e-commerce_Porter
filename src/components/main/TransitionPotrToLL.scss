@@ -1,0 +1,92 @@
+@use '../../styles/variables' as *;
+
+// PotrSection 끝 → LLSection 시작
+// 섹션 배경: white (Potr 색상)
+// 슬라이딩 bg: yellow (LL 색상)
+
+.tp2ll-section {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background: #fff;              // Potr 섹션 색상
+    transform: translateZ(0);
+}
+
+.tp2ll-bg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: $main_bg_yellow;  // LLSection 색상
+    z-index: 0;
+    will-change: transform;
+}
+
+.tp2ll-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 0 62px 40px 126px;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    box-sizing: border-box;
+    gap: 60px;
+}
+
+// ─── 좌측: 작은 이미지 (452×300) + LL 로고 ──────────────────────────
+.tp2ll-left {
+    width: 452px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.tp2ll-img-stack {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 452 / 300;
+
+    &--right {
+        aspect-ratio: 1060 / 680;
+    }
+}
+
+.tp2ll-img-card {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+
+    img, video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    &:nth-child(1) { z-index: 1; }
+
+    &--top {
+        z-index: 2;
+        clip-path: inset(0 0 100% 0);
+        will-change: clip-path;
+    }
+}
+
+.tp2ll-logo {
+    width: 240px;
+    height: auto;
+    display: block;
+}
+
+// ─── 우측: 큰 이미지 (1060×680) ─────────────────────────────────────
+.tp2ll-right {
+    flex: 1;
+    min-width: 0;
+}

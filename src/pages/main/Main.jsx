@@ -12,6 +12,8 @@ import './Main.scss';
 import MainAboutSection from '../../components/main/MainAboutSection';
 import ProductSection from '../../components/main/ProductSection';
 import TransitionSection from '../../components/main/Transitionsection';
+import TransitionPorterToPotr from '../../components/main/TransitionPorterToPotr';
+import TransitionPotrToLL from '../../components/main/TransitionPotrToLL';
 
 const Main = () => {
     // 새로고침 시 무조건 화면 맨 위에서 시작
@@ -33,7 +35,9 @@ const Main = () => {
                 <BrandStory />
                 <TransitionSection />
                 <PorterSection />
+                <TransitionPorterToPotr />
                 <PotrSection />
+                <TransitionPotrToLL />
                 <LLSection />
                 <MainAboutSection />
                 <ProductSection />

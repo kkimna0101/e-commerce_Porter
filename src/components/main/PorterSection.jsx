@@ -98,7 +98,7 @@ const PorterSection = () => {
                         <h2>
                             Timeless Mastery
                             <br />
-                            <span className="thin">Woven in</span>Every Stitch{' '}
+                            <span className="thin">Woven in</span> Every Stitch{' '}
                         </h2>
                         <p>한 땀의 바느질에 새겨진 시대를 초월한 숙련미</p>
                     </div>
@@ -116,32 +116,7 @@ const PorterSection = () => {
                     </div>
                 </div>
 
-                {/* 하단 영역 */}
-                <div className="bottom-content">
-                    <div className="bottom-left">
-                        <img
-                            src="/images/main/main_porter09.png"
-                            alt="main_porter_image"
-                            width="930"
-                            height="779"
-                        />
-                    </div>
-                    <div className="bottom-right">
-                        <img
-                            src="/images/main/main_porter10.png"
-                            alt="main_porter_image"
-                            width="520"
-                            height="338"
-                        />
-                        <img
-                            src="/images/main/main_porter11.png"
-                            alt="POTR"
-                            width="122"
-                            height="50"
-                            className="ll-logo"
-                        />
-                    </div>
-                </div>
+                
             </div>
         </section>
     );

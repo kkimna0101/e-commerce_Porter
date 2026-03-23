@@ -1,0 +1,105 @@
+@use '../../styles/variables' as *;
+
+.tp2p-section {
+    width: 100%;
+    // height: 100vh;
+    position: relative;
+    background: $main_bg_yellow;
+    transform: translateZ(0);
+    overflow: hidden;
+    margin-bottom: 40px;
+}
+
+.tp2p-bg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    z-index: 0;
+    will-change: transform;
+}
+
+.tp2p-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 60px 62px 0 126px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    box-sizing: border-box;
+}
+
+// ─── 좌측 930×779 ────────────────────────────────────────────────────
+.tp2p-left {
+    position: relative;
+    width: 930px;
+    height: 779px;
+    flex-shrink: 0;
+}
+
+.tp2p-img-layer {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 1;
+
+    img,
+    video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    &--clip {
+        z-index: 2;
+        will-change: clip-path;
+    }
+}
+
+// ─── 우측 520px (이미지와 동일 너비) ─────────────────────────────────
+.tp2p-right {
+    width: 520px;
+    flex-shrink: 0;
+    height: 779px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    .tp2p-img-layer {
+        position: absolute;
+        inset: 0;
+    }
+}
+
+.tp2p-right-img {
+    position: relative;
+    width: 520px;
+    height: 338px;
+}
+
+// ─── 로고: SVG 우측 하단 정렬 ────────────────────────────────────────
+.tp2p-logo-area {
+    width: 520px;
+    display: flex;
+    justify-content: flex-end; // SVG 우측 끝 정렬
+    overflow: visible;
+}
+
+.tp2p-logo-svg {
+    display: block;
+    width: 409px; // 397px -> 409px로 수정
+    height: 190px;
+    overflow: visible;
+
+    g {
+        will-change: transform;
+    }
+}

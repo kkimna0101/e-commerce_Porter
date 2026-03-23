@@ -5,8 +5,8 @@
     height: 100vh;
     position: relative;
     background: #fff;
-    // 섹션 전체를 GPU 컴포지터 레이어로 올려 pin 전환 시 버벅임 방지
     transform: translateZ(0);
+    overflow: hidden;
 }
 
 .ts-bg {
@@ -18,7 +18,6 @@
     background: $main_bg_yellow;
     z-index: 0;
     will-change: transform;
-    overflow: hidden; // 배경만 클리핑
 }
 
 .ts-content {
@@ -27,35 +26,34 @@
     width: 100%;
     max-width: 1920px;
     margin: 0 auto;
-    padding: 0 72px 40px 124px;
-    height: 100vh;
+    padding: 60px 72px 0 124px; // 상단 여백 통일
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: flex-start; // 상단 정렬
     box-sizing: border-box;
 }
 
-// 왼쪽: 고정 높이로 이미지·SVG 위치 기준 확보
 .ts-left {
     position: relative;
     width: 460px;
+    height: 762px; // 내부 요소 높이에 고정
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; // 바닥에 붙도록 설정
+    align-items: flex-start; // 좌측 정렬
     flex-shrink: 0;
-    // 이미지(310px) + gap(404px) + SVG 초기높이(48px) = 762px
-    height: 762px;
 }
 
-// 이미지 스택: 상단 절대 고정
 .ts-img-stack {
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative;
     width: 460px;
-    aspect-ratio: 460 / 310;
+    height: 310px; // 이미지 비율 고정
 
     &--right {
-        position: relative;
         width: 100%;
-        aspect-ratio: 979 / 720;
+        max-width: 979px;
+        height: 720px;
     }
 }
 
@@ -72,31 +70,26 @@
         display: block;
     }
 
-    &:nth-child(1) {
-        z-index: 1;
-    }
-
     &--top {
         z-index: 2;
-        clip-path: inset(0 0 0% 0);
-        // clip-path가 매 프레임 바뀌므로 GPU 레이어 분리
+        clip-path: inset(0 0 100% 0);
         will-change: clip-path;
     }
 }
 
-// SVG: 하단 왼쪽 절대 고정
-// scale()로만 확대 → 레이아웃 재계산 없음 → 이미지 위치 절대 불변
-// transform-origin: bottom left → 좌측 하단 기준으로 위+오른쪽으로 자람
 .ts-porter-svg {
     position: absolute;
     bottom: 0;
     left: 0;
     transform-origin: bottom left;
     will-change: transform;
-    overflow: visible; // SVG 자체 클리핑 방지
+    overflow: visible !important;
 }
 
 .ts-right {
     width: 100%;
     max-width: 979px;
+    height: 762px; // 좌측과 통일
+    display: flex;
+    align-items: flex-end; // 비디오를 바닥으로
 }
