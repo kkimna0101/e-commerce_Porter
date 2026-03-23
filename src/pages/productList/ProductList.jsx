@@ -38,9 +38,18 @@ const ProductList = () => {
 
     const [filterOpen, setFilterOpen] = useState(false);
 
+    // ── 품절 제외 필터 ────────────────────────────────────────────────────
+    const [excludeSoldOut, setExcludeSoldOut] = useState(false);
+
     // ── 정렬 적용 ─────────────────────────────────────────────────────────
     const sortedProducts = useMemo(() => {
-        const arr = [...filteredProducts];
+        let arr = [...filteredProducts];
+
+        // 품절 제외
+        if (excludeSoldOut) {
+            arr = arr.filter(p => p.stock > 0);
+        }
+
         switch (activeSort.value) {
             case 'newest':
                 return arr.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
@@ -54,7 +63,7 @@ const ProductList = () => {
             default:
                 return arr;
         }
-    }, [filteredProducts, activeSort]);
+    }, [filteredProducts, activeSort, excludeSoldOut]);
 
     // ── 페이지네이션 ──────────────────────────────────────────────────────
     const [currentPage, setCurrentPage] = useState(1);
@@ -167,9 +176,27 @@ const ProductList = () => {
                     )}
                 </div>
 
-                <button className="toolbar-btn filter-btn" onClick={() => setFilterOpen(true)}>
-                    <PiSlidersHorizontal className="btn-icon" /> FILTER
-                </button>
+                {/* 우측 버튼 그룹 */}
+                <div className="toolbar-right">
+                    {/* 품절 제외 */}
+                    <button
+                        className={`toolbar-btn soldout-filter-btn ${excludeSoldOut ? 'active' : ''}`}
+                        onClick={() => setExcludeSoldOut(prev => !prev)}
+                    >
+                        <span className="soldout-checkbox">
+                            {excludeSoldOut && (
+                                <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                                    <path d="M1 4L3.5 6.5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                </svg>
+                            )}
+                        </span>
+                        품절 제외
+                    </button>
+
+                    <button className="toolbar-btn filter-btn" onClick={() => setFilterOpen(true)}>
+                        <PiSlidersHorizontal className="btn-icon" /> FILTER
+                    </button>
+                </div>
             </div>
 
             <div className="product-list-page__content">

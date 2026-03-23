@@ -78,6 +78,12 @@ const ProductItem = ({ product }) => {
             {product.isNew && <span className="badge new">NEW</span>}
             {product.isSale && <span className="badge sale">SALE</span>}
           </div> */}
+                    {product.stock === 0 && (
+                        <div className="product-item__soldout">
+                            <p className="product-item__soldout-title">OUT OF STOCK</p>
+                            <p className="product-item__soldout-sub">Sorry, Please wait.</p>
+                        </div>
+                    )}
 
                     <div className="product-item__overlay">
                         <button

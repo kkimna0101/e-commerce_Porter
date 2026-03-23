@@ -116,8 +116,15 @@
         .sort-wrap {
             position: relative;
             .sort-btn {
-                font-family: 'pretendard', sans-serif;
+                font-family: 'Pretendard', sans-serif;
             }
+        }
+
+        // ─── 우측 버튼 그룹 ───────────────────────────────────────────────
+        .toolbar-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
         }
 
         .toolbar-btn {
@@ -143,6 +150,41 @@
                 font-size: 16px;
                 line-height: 1;
             }
+        }
+
+        // ─── 품절 제외 버튼 ───────────────────────────────────────────────
+        .soldout-filter-btn {
+            font-family: 'Pretendard', sans-serif;
+            font-weight: 700;
+            text-transform: none;
+            color: $txt-body;
+            gap: 8px;
+
+            &.active {
+                color: $black;
+
+                .soldout-checkbox {
+                    background: $black;
+                    border-color: $black;
+                    color: $white-solid;
+                }
+            }
+
+            &:hover {
+                color: $black;
+            }
+        }
+
+        .soldout-checkbox {
+            width: 16px;
+            height: 16px;
+            border: 1.5px solid $gray-400;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: background 0.15s ease, border-color 0.15s ease;
         }
 
         .sort-dropdown {

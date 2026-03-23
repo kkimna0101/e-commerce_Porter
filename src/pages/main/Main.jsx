@@ -10,7 +10,6 @@ import PotrSection from '../../components/main/PotrSection';
 import LLSection from '../../components/main/LLSection';
 import './Main.scss';
 import MainAboutSection from '../../components/main/MainAboutSection';
-import MainOfflineSection from '../../components/main/MainOfflineSection';
 import ProductSection from '../../components/main/ProductSection';
 import TransitionSection from '../../components/main/Transitionsection';
 import TransitionPorterToPotr from '../../components/main/TransitionPorterToPotr';
@@ -41,7 +40,6 @@ const Main = () => {
                 <TransitionPotrToLL />
                 <LLSection />
                 <MainAboutSection />
-                <MainOfflineSection />
                 <ProductSection />
             </main>
         </>
