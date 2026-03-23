@@ -112,7 +112,7 @@ $wh-solid: $white-solid;
     
     .info-header {
       margin-bottom: 45px;
-      .prod-name { @include en_subtitle; color: $txt-display; margin: 0 0 20px 0; }
+      .prod-name { @include en_subtitle; color: $txt_header; margin: 0 0 20px 0; }
       .cat-group { 
         display: flex; gap: 10px; 
         .cat-item { 
