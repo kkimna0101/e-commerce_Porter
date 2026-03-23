@@ -1,0 +1,20 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+.store-card {
+    // width: 434px;
+    // height: 570px;
+    width: 24%;
+    height: 100%;
+} 
+.store-card__title {
+    font-size: 22px;
+    font-weight: 600;
+    color: $black;
+    font-family: 'roboto', sans-serif;
+}
+.store-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin-bottom: 12px;
+}

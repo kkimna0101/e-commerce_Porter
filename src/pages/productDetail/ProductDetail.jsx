@@ -1,21 +1,21 @@
 import React from "react";
 import "./ProductDetail.scss";
 
-import HeroSection from "./components/HeroSection";
-import BrandStory from "./components/BrandStory";
-import SubNav from "./components/SubNav";
-import ProductInfo from "./components/ProductInfo";
-import DetailSection from "./components/DetailSection";
-import ScaleSection from "./components/ScaleSection";
-import GuidedSection from "./components/GuidedSection";
-import Community from "./components/Community";
-import RelatedItems from "./components/RelatedItems";
-import FloatingBar from "./components/FloatingBar";
+import ProductHero from "../../components/productDetail/ProductHero";
+import BrandStory from "../../components/productDetail/BrandStory";
+import SubNav from "../../components/productDetail/SubNav";
+import ProductInfo from "../../components/productDetail/ProductInfo";
+import DetailSection from "../../components/productDetail/DetailSection";
+import ScaleSection from "../../components/productDetail/ScaleSection";
+import GuidedSection from "../../components/productDetail/GuidedSection";
+import Community from "../../components/productDetail/Community";
+import RelatedItems from "../../components/productDetail/RelatedItems";
+import FloatingBar from "../../components/productDetail/FloatingBar";
 
 const ProductDetail = () => {
   return (
     <div className="product-detail">
-      <HeroSection />
+      <ProductHero />
       <BrandStory />
       <SubNav />
 

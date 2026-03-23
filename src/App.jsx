@@ -17,6 +17,8 @@ import NotFound from "./pages/notFound/NotFound";
 import Collab from "./pages/collab/Collab";
 import KBrand from "./pages/kbrand/KBrand";
 import About from "./pages/about/About";
+import Offline from "./pages/offline/offline";
+import OfflineStore from "./pages/offline/offlineStore";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -61,6 +63,7 @@ function App() {
     "/collab",
     "/k-brand",
     "/about",
+    "/offline",
   ];
   const isNotFound = !validPaths.some((path) => {
     const normalizedPath = location.pathname === "/"
@@ -73,6 +76,7 @@ function App() {
     return (
       normalizedPath === normalizedTarget ||
       location.pathname.startsWith("/product/") ||
+      location.pathname.startsWith("/offline/") ||
       location.pathname.startsWith("/board/")
     );
   });
@@ -200,6 +204,22 @@ function App() {
           element={
             <SubLayout>
               <KBrand />
+            </SubLayout>
+          }
+        />
+        <Route
+          path="/offline"
+          element={
+            <SubLayout>
+              <Offline />
+            </SubLayout>
+          }
+        />
+        <Route
+          path="/offline/:id"
+          element={
+            <SubLayout>
+              <OfflineStore />
             </SubLayout>
           }
         />
