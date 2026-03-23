@@ -7,34 +7,34 @@
   min-height: 100vh;
   position: relative;
   font-family: $font-body-ko;
-}
 
-/* Main Content */
-.main-content {
-  padding-top: 60px;
-}
-
-/* Hero Section */
-.hero-section {
-  padding: 100px 60px;
-  max-width: 1920px;
-  margin: 0 auto;
-
-  .hero-title {
-    font-family: $font-display;
-    font-weight: bold;
-    font-size: 80px;
-    line-height: 1.2;
-    text-transform: uppercase;
-    margin-bottom: 40px;
-    color: $black;
+  /* Main Content */
+  .main-content {
+    padding-top: 60px;
   }
 
-  .hero-description {
-    font-family: $font-body-ko;
-    font-size: 20px;
-    line-height: 1.8;
-    color: $txt-body;
+  /* Hero Section */
+  .hero-section {
+    padding: 100px 60px;
+    max-width: 1920px;
+    margin: 0 auto;
+
+    .hero-title {
+      font-family: $font-display;
+      font-weight: bold;
+      font-size: 80px;
+      line-height: 1.2;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+      color: $black;
+    }
+
+    .hero-description {
+      font-family: $font-body-ko;
+      font-size: 20px;
+      line-height: 1.8;
+      color: $txt-body;
+    }
   }
 }
 

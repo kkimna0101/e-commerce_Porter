@@ -10,6 +10,7 @@ import PotrSection from '../../components/main/PotrSection';
 import LLSection from '../../components/main/LLSection';
 import './Main.scss';
 import MainAboutSection from '../../components/main/MainAboutSection';
+import MainOfflineSection from '../../components/main/MainOfflineSection';
 import ProductSection from '../../components/main/ProductSection';
 import TransitionSection from '../../components/main/Transitionsection';
 
@@ -36,6 +37,7 @@ const Main = () => {
                 <PotrSection />
                 <LLSection />
                 <MainAboutSection />
+                <MainOfflineSection />
                 <ProductSection />
             </main>
         </>

@@ -1,0 +1,238 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.offline-store-page {
+    padding-top: 192px;
+    padding-bottom: 192px;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+.offline-store-page__inner {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.offline-store-page__title {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 160px;
+    font-weight: 900;
+    letter-spacing: -5%;
+    line-height: 1;
+    color: $black;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 96px;
+}
+
+// Slider: left indicator column + image
+// 여기서  gap 150px이 슬라이더의 오른쪽 마진 결정
+.offline-store-page__slider {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 150px;
+    width: 100%;
+}
+
+.offline-store-page__indicator {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    align-self: center;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.offline-store-page__content {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.offline-store-page__image-container {
+    margin-right: 64px;
+}
+
+.offline-store-page__title-kr {
+    font-size: 21px;
+    font-weight: 500;
+    font-family: 'Pretendard', sans-serif;
+    margin-right: 8px;
+    letter-spacing: -5%;
+    color: $black;
+    line-height: 1.4;
+}
+
+.offline-store-page__title-en {
+    font-size: 22px;
+    font-weight: 500;
+    font-family: 'roboto', sans-serif;
+    letter-spacing: -5%;
+    color: $black;
+    line-height: 1.4;
+}
+
+.offline-store-page__info-container {
+    width: 436px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 200px;
+}
+
+.offline-store-page__description,
+.offline-store-page__address,
+.offline-store-page__info-item {
+    font-size: 20px;
+    font-weight: 200;
+    font-family: 'Pretendard', sans-serif;
+    color: $black;
+    line-height: 1.5;
+}
+
+.offline-store-page__info-item-title {
+    font-weight: 400;
+    font-family: 'roboto', sans-serif;
+    color: $black;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 8px;
+}
+
+.offline-store-page__map-button {
+    width: 100%;
+    height: 62px;
+    background: $black;
+    line-height: 1.5;
+    color: $white;
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 40px;
+    font-family: 'roboto', sans-serif;
+}
+
+.offline-store-page__address {
+    margin-bottom: 18px;
+    white-space: pre-line;
+}
+
+.offline-store-page__divider {
+    width: 100%;
+    border: 2.5px dashed $black;
+    margin: 40px 0;
+}
+
+.offline-store-page__title-container {
+    margin-bottom: 12px;
+}
+
+// Thin vertical line segments (presentation / lookbook style)
+.offline-store-page__indicator-segment {
+    display: block;
+    width: 4px;
+    height: 120px;
+    padding: 0;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    background: $gray-300;
+    transition:
+        background 0.25s ease,
+        opacity 0.25s ease;
+
+    &:hover:not(.is-active) {
+        background: $gray-400;
+    }
+
+    &.is-active {
+        background: $black-solid;
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &:focus-visible {
+        outline: 1px solid rgba($black-solid, 0.35);
+        outline-offset: 3px;
+    }
+}
+
+.offline-store-page__stage {
+    flex: 1;
+    min-width: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.offline-store-page__image-wrap {
+    animation: offline-store-fade 0.48s ease 0.06s both;
+}
+
+.offline-store-page__info-cols {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+
+@keyframes offline-store-fade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.offline-store-page__image {
+    width: 996px;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
+//MAP CONTAINER_____여기서 150px이 왼쪽 마진 (맵 이미지 기준)
+.offline-store-page__map-container {
+    margin-top: 162px;
+    margin-left: 150px;
+    display: flex;
+    flex-direction: row;
+}
+
+.offline-store-page__map-right-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
+    margin-left: 64px;
+}
+
+.offline-store-page__logo-line {
+    width: 60px;
+    border: 2px solid $black;
+}
+
+.offline-store-page__logo-text-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.offline-store-page__logo-text-en {
+    font-size: 18px;
+    font-weight: 700;
+    font-family: 'roboto', sans-serif;
+    color: $black;
+    line-height: 1.4;
+    text-transform: uppercase;
+}
