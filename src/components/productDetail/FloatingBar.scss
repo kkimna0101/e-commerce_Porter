@@ -1,9 +1,6 @@
 @use '../../styles/variables' as *;
 
 $key-color: #5d675b;
-$wh-solid: #ffffff;
-$txt-body: #333333;
-$box-color: #e2e2e2;
 
 .floating-bar {
   position: fixed;
@@ -67,7 +64,7 @@ $box-color: #e2e2e2;
     position: absolute;
     top: -6px;
     right: -8px;
-    background: $wh-solid;
+    background: $white;
     color: $key-color;
     font-size: 10px;
     font-weight: 700;
@@ -85,7 +82,7 @@ $box-color: #e2e2e2;
     font-size: 12px;
     line-height: 1.5;
     letter-spacing: 0;
-    color: $wh-solid;
+    color: $white;
   }
 
   &__reorder-icon {
@@ -105,7 +102,7 @@ $box-color: #e2e2e2;
 
   &__popup {
     width: 300px;
-    background: $wh-solid;
+    background: $white;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     display: flex;
     flex-direction: column;
@@ -123,14 +120,14 @@ $box-color: #e2e2e2;
       font-family: "Pretendard", sans-serif;
       font-weight: 600;
       font-size: 16px;
-      color: $txt-body;
+      color: $txt_body;
     }
 
     button {
       background: none;
       border: none;
       cursor: pointer;
-      color: $txt-body;
+      color: $txt_body;
       display: flex;
       align-items: center;
     }
@@ -155,7 +152,7 @@ $box-color: #e2e2e2;
     font-family: "Pretendard", sans-serif;
     font-weight: 600;
     font-size: 14px;
-    color: $txt-body;
+    color: $txt_body;
     margin: 0;
   }
 
@@ -171,7 +168,7 @@ $box-color: #e2e2e2;
     padding: 0 32px 0 12px;
     font-family: "Pretendard", sans-serif;
     font-size: 14px;
-    color: $txt-body;
+    color: $txt_body;
     appearance: none;
     cursor: pointer;
     display: block;
@@ -184,7 +181,7 @@ $box-color: #e2e2e2;
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
-    color: $txt-body;
+    color: $txt_body;
   }
 
   &__qty {
@@ -202,7 +199,7 @@ $box-color: #e2e2e2;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: $txt-body;
+      color: $txt_body;
       &:hover {
         background: rgba(0, 0, 0, 0.05);
       }
@@ -214,7 +211,7 @@ $box-color: #e2e2e2;
       font-family: "Pretendard", sans-serif;
       font-size: 14px;
       font-weight: 600;
-      color: $txt-body;
+      color: $txt_body;
     }
   }
 
@@ -229,7 +226,7 @@ $box-color: #e2e2e2;
       font-family: "Roboto", sans-serif;
       font-weight: 600;
       font-size: 16px;
-      color: $txt-body;
+      color: $txt_body;
     }
   }
 
@@ -254,7 +251,7 @@ $box-color: #e2e2e2;
     }
 
     &--outline {
-      background: $wh-solid;
+      background: $white;
       border: 1px solid $key-color;
       color: $key-color;
     }
@@ -262,7 +259,7 @@ $box-color: #e2e2e2;
     &--fill {
       background: $key-color;
       border: 1px solid $key-color;
-      color: $wh-solid;
+      color: $white;
     }
   }
 
@@ -306,7 +303,7 @@ $box-color: #e2e2e2;
   &__seen-name {
     font-family: "Pretendard", sans-serif;
     font-size: 13px;
-    color: $txt-body;
+    color: $txt_body;
     line-height: 1.4;
   }
 
@@ -338,7 +335,7 @@ $box-color: #e2e2e2;
     padding: 0 40px 0 12px;
     font-family: "Pretendard", sans-serif;
     font-size: 14px;
-    color: $txt-body;
+    color: $txt_body;
     box-sizing: border-box;
     outline: none;
 
@@ -362,7 +359,7 @@ $box-color: #e2e2e2;
     color: #929292;
 
     &:hover {
-      color: $txt-body;
+      color: $txt_body;
     }
   }
 
@@ -378,7 +375,7 @@ $box-color: #e2e2e2;
     padding: 10px 12px;
     font-family: "Pretendard", sans-serif;
     font-size: 13px;
-    color: $txt-body;
+    color: $txt_body;
     cursor: pointer;
     border-bottom: 1px solid $box-color;
     transition: background 0.15s ease;
@@ -397,7 +394,7 @@ $box-color: #e2e2e2;
   &__reorder-selected {
     font-family: "Pretendard", sans-serif;
     font-size: 13px;
-    color: $txt-body;
+    color: $txt_body;
     padding: 10px 12px;
     background: rgba(93, 103, 91, 0.08);
     margin: 0;
@@ -410,7 +407,7 @@ $box-color: #e2e2e2;
     padding: 10px 12px;
     font-family: "Pretendard", sans-serif;
     font-size: 13px;
-    color: $txt-body;
+    color: $txt_body;
     resize: none;
     outline: none;
     box-sizing: border-box;
@@ -443,11 +440,10 @@ $box-color: #e2e2e2;
     color: #929292;
 
     &:hover {
-      background: darken($box-color, 5%);
+      background: #d9d9d9;
     }
   }
 
-  // 검색 모달 오버레이
   &__search-overlay {
     position: fixed;
     inset: 0;
@@ -461,7 +457,7 @@ $box-color: #e2e2e2;
   &__search-modal {
     width: 440px;
     max-height: 600px;
-    background: $wh-solid;
+    background: $white;
     display: flex;
     flex-direction: column;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
@@ -478,14 +474,14 @@ $box-color: #e2e2e2;
       font-family: "Pretendard", sans-serif;
       font-weight: 600;
       font-size: 18px;
-      color: $txt-body;
+      color: $txt_body;
     }
 
     button {
       background: none;
       border: none;
       cursor: pointer;
-      color: $txt-body;
+      color: $txt_body;
       display: flex;
       align-items: center;
     }
@@ -505,7 +501,7 @@ $box-color: #e2e2e2;
     padding: 0 40px 0 14px;
     font-family: "Pretendard", sans-serif;
     font-size: 14px;
-    color: $txt-body;
+    color: $txt_body;
     box-sizing: border-box;
     outline: none;
 
@@ -551,7 +547,7 @@ $box-color: #e2e2e2;
     span {
       font-family: "Pretendard", sans-serif;
       font-size: 14px;
-      color: $txt-body;
+      color: $txt_body;
       font-weight: 500;
     }
   }
@@ -569,25 +565,6 @@ $box-color: #e2e2e2;
       object-fit: cover;
     }
   }
-  &__search-trigger {
-    width: 100%;
-    height: 42px;
-    background: $box-color;
-    border: none;
-    padding: 0 12px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    cursor: pointer;
-    font-family: "Pretendard", sans-serif;
-    font-size: 14px;
-    color: #929292;
-    gap: 8px;
-
-    &:hover {
-      background: darken($box-color, 5%);
-    }
-  }
 
   &__search-trigger-selected {
     display: flex;
@@ -599,7 +576,7 @@ $box-color: #e2e2e2;
     span {
       font-family: "Pretendard", sans-serif;
       font-size: 13px;
-      color: $txt-body;
+      color: $txt_body;
       text-align: left;
       white-space: nowrap;
       overflow: hidden;
@@ -610,7 +587,7 @@ $box-color: #e2e2e2;
   &__search-trigger-img {
     width: 32px;
     height: 32px;
-    background: $wh-solid;
+    background: $white;
     flex-shrink: 0;
     overflow: hidden;
 
@@ -654,7 +631,7 @@ $box-color: #e2e2e2;
   &__current-product-img {
     width: 32px;
     height: 32px;
-    background: $wh-solid;
+    background: $white;
     flex-shrink: 0;
     overflow: hidden;
 
