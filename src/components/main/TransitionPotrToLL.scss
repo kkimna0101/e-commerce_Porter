@@ -1,14 +1,11 @@
 @use '../../styles/variables' as *;
 
-// PotrSection 끝 → LLSection 시작
-// 섹션 배경: white (Potr 색상)
-// 슬라이딩 bg: yellow (LL 색상)
-
+// Potr(white) → LLSection(yellow) 전환
 .tp2ll-section {
     width: 100%;
     height: 100vh;
     position: relative;
-    background: #fff;              // Potr 섹션 색상
+    background: #fff;
     transform: translateZ(0);
 }
 
@@ -18,50 +15,48 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: $main_bg_yellow;  // LLSection 색상
+    background: $main_bg_yellow;
     z-index: 0;
     will-change: transform;
 }
 
+// PotrSection bottom-content 와 동일: padding 0 62px 0 126px
 .tp2ll-content {
     position: relative;
     z-index: 1;
     width: 100%;
     max-width: 1920px;
     margin: 0 auto;
-    padding: 0 62px 40px 126px;
+    padding: 0 62px 0 126px;
     height: 100vh;
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: flex-end;   // 하단 정렬 (PotrSection bottom-content 기준)
     box-sizing: border-box;
-    gap: 60px;
+    padding-bottom: 60px;
 }
 
-// ─── 좌측: 작은 이미지 (452×300) + LL 로고 ──────────────────────────
+// ─── 좌측: flex-col, gap 336px (PotrSection bottom-left 동일) ─────────
 .tp2ll-left {
-    width: 452px;
-    flex-shrink: 0;
     display: flex;
     flex-direction: column;
-    gap: 30px;
-    align-items: flex-start;
+    justify-content: flex-end;
+    gap: 336px;
+    flex-shrink: 0;
 }
 
-.tp2ll-img-stack {
+// 작은 이미지 452×300
+.tp2ll-small-img {
     position: relative;
-    width: 100%;
-    aspect-ratio: 452 / 300;
-
-    &--right {
-        aspect-ratio: 1060 / 680;
-    }
+    width: 452px;
+    height: 300px;
 }
 
-.tp2ll-img-card {
+.tp2ll-img-layer {
     position: absolute;
     inset: 0;
     overflow: hidden;
+    z-index: 1;
 
     img, video {
         width: 100%;
@@ -70,23 +65,40 @@
         display: block;
     }
 
-    &:nth-child(1) { z-index: 1; }
-
-    &--top {
+    &--clip {
         z-index: 2;
-        clip-path: inset(0 0 100% 0);
         will-change: clip-path;
     }
 }
 
-.tp2ll-logo {
-    width: 240px;
-    height: auto;
-    display: block;
+// 로고 영역: 작은 로고(240×45) 크기에서 SVG(560×103)로 커짐
+.tp2ll-logo-area {
+    overflow: visible;
 }
 
-// ─── 우측: 큰 이미지 (1060×680) ─────────────────────────────────────
+.tp2ll-logo-svg {
+    display: block;
+    width: 560px;
+    height: 103px;
+    overflow: visible;
+
+    g {
+        will-change: transform;
+    }
+}
+
+// ─── 우측: 이미지 1060×680 ────────────────────────────────────────────
 .tp2ll-right {
-    flex: 1;
-    min-width: 0;
+    flex-shrink: 0;
+}
+
+.tp2ll-large-img {
+    position: relative;
+    width: 1060px;
+    height: 680px;
+
+    .tp2ll-img-layer {
+        position: absolute;
+        inset: 0;
+    }
 }

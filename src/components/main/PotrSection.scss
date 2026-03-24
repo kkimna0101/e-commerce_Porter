@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 
+
 .potr-section {
     width: 100%;
 
@@ -11,8 +12,8 @@
         width: 1920px;
         max-width: 100%;
         margin: 0 auto;
-        font-family: 'Pretendard', sans-serif;
-        color: #000;
+        font-family: $font-body-ko;
+        color: $txt_header;
 
         /* 1. 브랜드 스토리 영역 (텍스트만 남은 상단) */
         .top-info-only {
@@ -161,18 +162,6 @@
             }
         }
 
-        /* 4. 하단 Force 사진 영역 */
-        .bottom-content {
-            padding: 0 62px 0 126px;
-            margin-bottom: 60px;
-            display: flex;
-            justify-content: space-between;
-
-            .bottom-left {
-                display: flex;
-                flex-direction: column;
-                gap: 336px;
-            }
-        }
+        
     }
 }

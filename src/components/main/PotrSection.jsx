@@ -66,32 +66,6 @@ const PotrSection = () => {
                     </div>
                 </div>
 
-                {/* 3. 하단 Force 사진 영역 */}
-                <div className="bottom-content">
-                    <div className="bottom-left">
-                        <img
-                            src="/images/main/mainpotrimage6.png"
-                            alt="Force"
-                            width="452"
-                            height="300"
-                        />
-                        <img
-                            src="/images/main/mainlltxt1.png"
-                            alt="LUGGAGE LABEL"
-                            width="240"
-                            height="45"
-                            className="ll-logo"
-                        />
-                    </div>
-                    <div className="bottom-right">
-                        <img
-                            src="/images/main/mainpotrimage7.png"
-                            alt="Right Bottom"
-                            width="1060"
-                            height="680"
-                        />
-                    </div>
-                </div>
             </div>
         </section>
     );

@@ -75,8 +75,7 @@ const TransitionPorterToPotr = () => {
 
         let tl;
 
-        const raf = requestAnimationFrame(() => {
-            ScrollTrigger.refresh();
+        const ctx = gsap.context(() => {
             const sectionH = section.offsetHeight;
             const getRelativeRect = (el) => {
                 const sRect = section.getBoundingClientRect();
@@ -104,7 +103,7 @@ const TransitionPorterToPotr = () => {
                     scrub: 1,
                     pin: true,
                     pinSpacing: true,
-                    anticipatePin: 1,
+                    anticipatePin: 1.5,
                     invalidateOnRefresh: true,
                     onRefresh() {
                         Object.assign(leftCache, getRelativeRect(leftTop));
@@ -143,14 +142,18 @@ const TransitionPorterToPotr = () => {
                 },
                 0.1
             );
-        });
+        }, sectionRef.current);
+
+        // Resolve scroll trigger miss-calculation due to late image load
+        const handleRefresh = () => ScrollTrigger.refresh();
+        window.addEventListener('load', handleRefresh);
+        const timeoutId = setTimeout(handleRefresh, 500);
 
         return () => {
-            cancelAnimationFrame(raf);
-            if (tl) {
-                tl.scrollTrigger?.kill();
-                tl.kill();
-            }
+            ctx.revert();
+            window.removeEventListener('load', handleRefresh);
+            clearTimeout(timeoutId);
+            
             if (observer && videoEl) {
                 observer.unobserve(videoEl); // 💡cleanup 함수에 unobserve 추가
             }

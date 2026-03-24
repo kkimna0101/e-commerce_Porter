@@ -21,15 +21,22 @@
 }
 
 .ts-content {
-    position: relative;
+    position: absolute; // 화면에서 띄워서 위치만 제어합니다.
+    top: 100px; // 💡 여기서 원하는 만큼 위에서 아래로 내리세요! (ex. 10vh 도 가능)
+    left: 0;
+    right: 0;
+
     z-index: 1;
     width: 100%;
     max-width: 1920px;
     margin: 0 auto;
-    padding: 60px 72px 0 124px; // 상단 여백 통일
+
+    // 상단 패딩은 다시 0이나 원래 수치로 되돌려줍니다. 덩치를 키우지 않기 위해서요!
+    padding: 0 72px 0 124px;
+
     display: flex;
     justify-content: space-between;
-    align-items: flex-start; // 상단 정렬
+    align-items: flex-start;
     box-sizing: border-box;
 }
 
@@ -40,7 +47,6 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end; // 바닥에 붙도록 설정
     align-items: flex-start; // 좌측 정렬
     flex-shrink: 0;
 }

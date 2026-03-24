@@ -8,6 +8,7 @@ $font-stack: 'Roboto Condensed', 'Arial Narrow', Arial, sans-serif;
     flex-direction: column; // [추가]
     align-items: center; // [추가] 모든 섹션을 가로 중앙 정렬
     background-color: #fff;
+
     .brand-story {
         width: 100%;
         max-width: 1920px;
@@ -17,44 +18,87 @@ $font-stack: 'Roboto Condensed', 'Arial Narrow', Arial, sans-serif;
         padding: 200px 60px;
         justify-content: space-between;
         box-sizing: border-box;
+
         // gap: 60px;
         .brand-story__left {
+            position: relative;
             flex: 1;
             min-width: 0;
-            .bs-viewport {
-                position: relative;
-                overflow: hidden;
-                .bs-porter {
-                    position: absolute;
-                    left: 0;
-                    z-index: 2;
-                    pointer-events: none;
-                    font-family: $font-stack;
-                    font-weight: 900;
-                    font-size: 104px;
-                    line-height: 1;
-                    letter-spacing: -0.03em;
-                    color: #000;
-                    text-transform: uppercase;
-                }
-                /* 각 고정 슬롯: top/height/fontSize/paddingLeft 는 JSX 인라인 */
-                .bs-slot {
-                    position: absolute;
-                    left: 0;
-                    overflow: hidden; // 슬라이드 애니메이션 클리핑
-                    display: flex;
-                    align-items: flex-end; // baseline 맞춤
-                    font-family: $font-stack;
-                    font-weight: 900;
-                    letter-spacing: -0.03em;
+            height: 600px; // 보이는 영역 높이
+            overflow: hidden;
+
+            .bs-porter {
+                position: absolute;
+                left: 0;
+                top: 250px; // 5행 × 50px = PORTER 시작 위치
+                z-index: 2;
+                pointer-events: none;
+                font-family: $font-stack;
+                font-weight: 900;
+                font-size: 104px;
+                line-height: 104px;
+                letter-spacing: -0.03em;
+                color: #000;
+                text-transform: uppercase;
+            }
+
+            .bs-word-list {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                font-family: $font-stack;
+                font-weight: 900;
+                letter-spacing: -0.03em;
+                text-transform: uppercase;
+                line-height: 1;
+                will-change: transform;
+
+                .bs-word-list__item {
+                    height: 50px;
+                    font-size: 50px;
                     color: #cecece;
-                    text-transform: uppercase;
                     white-space: nowrap;
-                    line-height: 1;
-                    box-sizing: content-box;
+                    display: flex;
+                    align-items: flex-end;
+
+                    .bs-word-list__text {
+                        display: inline-block;
+                        will-change: transform, opacity;
+                    }
+
+                    // PORTER 행 — prev/next 텍스트 전환 컨테이너
+                    &--porter-row {
+                        position: relative;
+                        height: 104px;
+                        overflow: visible;
+
+                        .bs-text-prev,
+                        .bs-text-next {
+                            position: absolute;
+                            top: 0;
+                            font-family: $font-stack;
+                            font-weight: 900;
+                            font-size: 104px;
+                            line-height: 1;
+                            letter-spacing: -0.03em;
+                            text-transform: uppercase;
+                            white-space: nowrap;
+                            will-change: transform, opacity;
+                            transform-origin: left top;
+                        }
+
+                        .bs-text-prev {
+                            color: #cecece;
+                        }
+
+                        .bs-text-next {
+                            color: #cecece;
+                        }
+                    }
                 }
             }
         }
+
         /* ── 우측 ── */
         .brand-story__right {
             width: 652px;
@@ -62,6 +106,7 @@ $font-stack: 'Roboto Condensed', 'Arial Narrow', Arial, sans-serif;
             display: flex;
             flex-direction: column;
             gap: 16px;
+
             .brand-story__tit {
                 .brand-story__title {
                     font-family: 'Pretendard', sans-serif;
@@ -72,6 +117,7 @@ $font-stack: 'Roboto Condensed', 'Arial Narrow', Arial, sans-serif;
                     color: #000;
                     margin: 0;
                 }
+
                 .brand-story__subtitle {
                     font-family: 'Pretendard', sans-serif;
                     font-weight: 500;
@@ -97,6 +143,7 @@ $font-stack: 'Roboto Condensed', 'Arial Narrow', Arial, sans-serif;
                     font-weight: 600;
                 }
             }
+
             .brand-story__body-en {
                 font-family: 'Roboto', Arial, sans-serif;
                 font-weight: 300;
@@ -117,6 +164,7 @@ $font-stack: 'Roboto Condensed', 'Arial Narrow', Arial, sans-serif;
         width: 100%;
         display: flex;
         justify-content: center;
+
         .bs__bottom-content {
             width: 100%;
             max-width: 1920px;

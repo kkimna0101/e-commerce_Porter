@@ -65,8 +65,7 @@ const TransitionSection = () => {
         // scale: 0으로 숨기지 않고, 원래 크기(1)로 둡니다.
         gsap.set(letters, { scale: 1, opacity: 1 });
 
-        const raf = requestAnimationFrame(() => {
-            ScrollTrigger.refresh();
+        const ctx = gsap.context(() => {
             const sectionH = section.offsetHeight;
 
             const getRelativeRect = (el) => {
@@ -100,6 +99,7 @@ const TransitionSection = () => {
                     end: '+=1200',
                     scrub: 1.5,
                     pin: true,
+                    anticipatePin: 1,
                     invalidateOnRefresh: true,
                 },
             });
@@ -141,9 +141,18 @@ const TransitionSection = () => {
                     i * 0.03
                 ); // 0.1초 간격으로 끝에서부터 순차적 실행
             });
-        });
+        }, sectionRef.current);
 
-        return () => cancelAnimationFrame(raf);
+        // Resolve scroll trigger miss-calculation due to late image load
+        const handleRefresh = () => ScrollTrigger.refresh();
+        window.addEventListener('load', handleRefresh);
+        const timeoutId = setTimeout(handleRefresh, 500);
+
+        return () => {
+            ctx.revert();
+            window.removeEventListener('load', handleRefresh);
+            clearTimeout(timeoutId);
+        };
     }, []);
 
     return (

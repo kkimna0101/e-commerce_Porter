@@ -12,14 +12,11 @@ const LLSection = () => {
     <section className="ll-section" ref={sectionRef}>
       <div className="ll-content">
 
-        {/* 1. 상단 묶음 영역 */}
+        {/* 1. 상단 묶음 영역 (이미지/로고 삭제) */}
         <div className="top-content">
           <div className="left-col">
-            <img src="/images/main/mainluggageimage1.png" alt="Luggage Top Left" width="452" height="300" />
-            
             <div className="text-wrap">
-              <img src="/images/main/mainlltxt2.png" alt="LUGGAGE LABEL" width="560" height="103" className="logo-img" />
-              
+              {/* 로고 이미지가 삭제되었습니다. */}
               <h3 className="subtitle">독창적 소재와 실험적 시도로 구축한 기술적 유산</h3>
               <p className="body-text body-text-1">
                 <span className="medium-text">1984년 시작된 러기지 라벨</span>은 과감한 소재와 실험적 시도로 구축<br />
@@ -41,7 +38,7 @@ const LLSection = () => {
           </div>
 
           <div className="right-col">
-            <img src="/images/main/mainluggageimage2.png" alt="Luggage Top Right" width="1080" height="680" />
+            {/* 우측 이미지가 삭제되었습니다. */}
           </div>
         </div>
 
@@ -54,7 +51,6 @@ const LLSection = () => {
           
           {/* 3. 상품 리스트 박스 영역 */}
           <div className="product-grid" ref={gridRef}>
-
             <div className="luggage-box box-top-left">
               <img src="/images/main/mainluggageimage3.png" alt="Luggage Product 1" />
             </div>

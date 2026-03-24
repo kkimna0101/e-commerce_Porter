@@ -1,0 +1,17 @@
+﻿ M src/components/main/Brandstory.jsx
+ M src/components/main/Brandstory.scss
+ M src/components/main/LLSection.jsx
+ M src/components/main/LLSection.scss
+ M src/components/main/PorterSection.scss
+ M src/components/main/PotrSection.jsx
+ M src/components/main/PotrSection.scss
+ M src/components/main/TransitionPorterToPotr.jsx
+ M src/components/main/TransitionPorterToPotr.scss
+ M src/components/main/TransitionPotrToLL.jsx
+ M src/components/main/TransitionPotrToLL.scss
+ M src/components/main/Transitionsection.jsx
+ M src/components/main/Transitionsection.scss
+ M src/styles/variables.scss
+?? public/images/main/main_lltxt.svg
+?? status_clean.txt
+?? status_clean_utf8.txt
