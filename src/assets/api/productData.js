@@ -1537,8 +1537,6 @@ export const productsData = [
         capacity: '20L',
         stock: 32,
     },
-    ///여기까지
-    //해야될거 - productitem 이미지 배경색지정, 썸네일 배경 사각형 크기비율고정
     {
         id: 113,
         name: 'SUBU x POTR SUBU\uff0bH with 2WAY TOTE BAG (Brown)',
@@ -2938,7 +2936,7 @@ export const productsData = [
         capacity: 'Standard',
         stock: 36,
     },
-  {
+    {
         id: 130,
         name: 'TANKER POCKET WALLET',
         thumbnail: '130.png',
@@ -2962,7 +2960,7 @@ export const productsData = [
         reviews: [],
         stock: 0,
     },
-  {
+    {
         id: 131,
         name: 'TANKER POCKET WALLET(M)',
         thumbnail: '131.png',
@@ -2986,7 +2984,7 @@ export const productsData = [
         reviews: [],
         stock: 23,
     },
-  {
+    {
         id: 132,
         name: 'TANKER POCKET WALLET(L)',
         thumbnail: '132.png',
@@ -3010,7 +3008,7 @@ export const productsData = [
         reviews: [],
         stock: 0,
     },
-  {
+    {
         id: 133,
         name: 'TANKER VERTICAL BAG',
         thumbnail: '133.png',
@@ -3034,7 +3032,7 @@ export const productsData = [
         reviews: [],
         stock: 0,
     },
-  {
+    {
         id: 134,
         name: 'TANKER SQUARE TOTE BAG',
         thumbnail: '134.png',
@@ -3058,7 +3056,7 @@ export const productsData = [
         reviews: [],
         stock: 0,
     },
-  {
+    {
         id: 135,
         name: 'TANKER SQUARE TOTE BAG(L)',
         thumbnail: '135.png',
@@ -3082,7 +3080,7 @@ export const productsData = [
         reviews: [],
         stock: 0,
     },
-  {
+    {
         id: 136,
         name: 'TANKER MOBILE POUCH',
         thumbnail: '136.png',
@@ -3106,7 +3104,7 @@ export const productsData = [
         reviews: [],
         stock: 31,
     },
-  {
+    {
         id: 137,
         name: 'TANKER ENVELOPE BAG',
         thumbnail: '137.png',
@@ -3130,7 +3128,7 @@ export const productsData = [
         reviews: [],
         stock: 0,
     },
-  {
+    {
         id: 138,
         name: 'TANKER SHORT HELMET BAG',
         thumbnail: '138.png',
@@ -3154,7 +3152,7 @@ export const productsData = [
         reviews: [],
         stock: 44,
     },
-  {
+    {
         id: 139,
         name: 'TANKER TOTE BAG(L)',
         thumbnail: '139.png',
@@ -3178,7 +3176,7 @@ export const productsData = [
         reviews: [],
         stock: 0,
     },
-  {
+    {
         id: 140,
         name: 'TANKER 3WAY DOCUMENT BAG',
         thumbnail: '140.png',
@@ -3202,7 +3200,7 @@ export const productsData = [
         reviews: [],
         stock: 15,
     },
-  {
+    {
         id: 141,
         name: 'TANKER 3WAY DOCUMENT BAG W zip',
         thumbnail: '141.png',
@@ -3226,7 +3224,7 @@ export const productsData = [
         reviews: [],
         stock: 3,
     },
-  {
+    {
         id: 142,
         name: 'TANKER NAVIGATOR BAG',
         thumbnail: '142.png',
@@ -3250,7 +3248,7 @@ export const productsData = [
         reviews: [],
         stock: 0,
     },
-  {
+    {
         id: 143,
         name: 'TANKER DAYPACK(L)',
         thumbnail: '143.png',
@@ -3274,7 +3272,7 @@ export const productsData = [
         reviews: [],
         stock: 35,
     },
-  {
+    {
         id: 144,
         name: 'TANKER DAYPACK(XL)',
         thumbnail: '144.png',
@@ -3298,7 +3296,7 @@ export const productsData = [
         reviews: [],
         stock: 13,
     },
-  {
+    {
         id: 145,
         name: 'TANKER FANNY PACK',
         thumbnail: '145.png',
@@ -3322,7 +3320,7 @@ export const productsData = [
         reviews: [],
         stock: 0,
     },
-  {
+    {
         id: 146,
         name: 'TANKER CARRYING TOTE BAG',
         thumbnail: '146.png',
@@ -3346,7 +3344,7 @@ export const productsData = [
         reviews: [],
         stock: 34,
     },
-  {
+    {
         id: 147,
         name: 'TANKER BOSTON BAG',
         thumbnail: '147.png',
@@ -3370,7 +3368,7 @@ export const productsData = [
         reviews: [],
         stock: 0,
     },
-  {
+    {
         id: 148,
         name: 'TANKER BOSTON BAG(L)',
         thumbnail: '148.png',
@@ -3394,7 +3392,7 @@ export const productsData = [
         reviews: [],
         stock: 0,
     },
-  {
+    {
         id: 149,
         name: 'TANKER DOCUMENT CASE',
         thumbnail: '149.png',
@@ -3418,7 +3416,7 @@ export const productsData = [
         reviews: [],
         stock: 0,
     },
-  {
+    {
         id: 150,
         name: 'TANKER RUCKSACK(L)',
         thumbnail: '150.png',
@@ -3442,7 +3440,7 @@ export const productsData = [
         reviews: [],
         stock: 37,
     },
-  {
+    {
         id: 151,
         name: 'TANKER HELMET BAG',
         thumbnail: '151.png',
@@ -3466,7 +3464,7 @@ export const productsData = [
         reviews: [],
         stock: 45,
     },
-  {
+    {
         id: 152,
         name: 'TANKER HELMET BAG(L)',
         thumbnail: '152.png',
@@ -3490,7 +3488,7 @@ export const productsData = [
         reviews: [],
         stock: 0,
     },
-  {
+    {
         id: 153,
         name: 'TANKER DUFFLE BAG',
         thumbnail: '153.png',
@@ -3514,7 +3512,7 @@ export const productsData = [
         reviews: [],
         stock: 11,
     },
-  {
+    {
         id: 154,
         name: 'TANKER DUFFLE BAG(L)',
         thumbnail: '154.png',
@@ -3538,7 +3536,7 @@ export const productsData = [
         reviews: [],
         stock: 34,
     },
-  {
+    {
         id: 155,
         name: 'TANKER KEY PACK',
         thumbnail: '155.png',
@@ -3562,7 +3560,7 @@ export const productsData = [
         reviews: [],
         stock: 0,
     },
-  {
+    {
         id: 156,
         name: 'TANKER SLING BAG W zip',
         thumbnail: '156.png',
@@ -3586,7 +3584,7 @@ export const productsData = [
         reviews: [],
         stock: 0,
     },
-  {
+    {
         id: 157,
         name: 'TANKER SLING BAG W zip(XL)',
         thumbnail: '157.png',
@@ -3610,7 +3608,7 @@ export const productsData = [
         reviews: [],
         stock: 14,
     },
-  {
+    {
         id: 158,
         name: 'TANKER 2WAY DOCUMENT BAG',
         thumbnail: '158.png',
@@ -3634,7 +3632,7 @@ export const productsData = [
         reviews: [],
         stock: 0,
     },
-  {
+    {
         id: 159,
         name: 'TANKER 2WAY DOCUMENT BAG W zip',
         thumbnail: '159.png',
@@ -3658,7 +3656,7 @@ export const productsData = [
         reviews: [],
         stock: 0,
     },
-  {
+    {
         id: 160,
         name: 'TANKER ROLL BAG',
         thumbnail: '160.png',
@@ -3682,7 +3680,7 @@ export const productsData = [
         reviews: [],
         stock: 6,
     },
-  {
+    {
         id: 161,
         name: 'TANKER HIP BAG',
         thumbnail: '161.png',
@@ -3706,7 +3704,7 @@ export const productsData = [
         reviews: [],
         stock: 15,
     },
-  {
+    {
         id: 162,
         name: 'TANKER SLING BAG',
         thumbnail: '162.png',
@@ -3730,7 +3728,7 @@ export const productsData = [
         reviews: [],
         stock: 43,
     },
-  {
+    {
         id: 163,
         name: 'TANKER SLING BAG W zip(L)',
         thumbnail: '163.png',
@@ -3754,7 +3752,7 @@ export const productsData = [
         reviews: [],
         stock: 0,
     },
-  {
+    {
         id: 164,
         name: 'TANKER TOTE BAG',
         thumbnail: '164.png',
@@ -3778,7 +3776,7 @@ export const productsData = [
         reviews: [],
         stock: 7,
     },
-  {
+    {
         id: 165,
         name: 'TANKER DRUM BAG',
         thumbnail: '165.png',
@@ -3802,7 +3800,7 @@ export const productsData = [
         reviews: [],
         stock: 46,
     },
-  {
+    {
         id: 166,
         name: 'TANKER DRUM BAG(L)',
         thumbnail: '166.png',
@@ -3826,7 +3824,7 @@ export const productsData = [
         reviews: [],
         stock: 3,
     },
-  {
+    {
         id: 167,
         name: 'TANKER RUCKSACK',
         thumbnail: '167.png',
@@ -3850,7 +3848,7 @@ export const productsData = [
         reviews: [],
         stock: 0,
     },
-  {
+    {
         id: 168,
         name: 'TANKER DAYPACK',
         thumbnail: '168.png',
@@ -3874,7 +3872,7 @@ export const productsData = [
         reviews: [],
         stock: 27,
     },
-  {
+    {
         id: 169,
         name: 'TANKER SACKPACK',
         thumbnail: '169.png',
@@ -3897,6 +3895,5 @@ export const productsData = [
         capacity: 'Standard',
         reviews: [],
         stock: 32,
-    }
-
+    },
 ];

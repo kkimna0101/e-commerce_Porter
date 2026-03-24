@@ -7,6 +7,7 @@
     position: relative;
     background: #fff;
     transform: translateZ(0);
+    overflow: hidden;
 }
 
 .tp2ll-bg {
@@ -31,7 +32,7 @@
     height: 100vh;
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;   // 하단 정렬 (PotrSection bottom-content 기준)
+    align-items: flex-end; // 하단 정렬 (PotrSection bottom-content 기준)
     box-sizing: border-box;
     padding-bottom: 60px;
 }
@@ -58,7 +59,8 @@
     overflow: hidden;
     z-index: 1;
 
-    img, video {
+    img,
+    video {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -73,7 +75,10 @@
 
 // 로고 영역: 작은 로고(240×45) 크기에서 SVG(560×103)로 커짐
 .tp2ll-logo-area {
-    overflow: visible;
+    width: 100%; // 부모 너비에 맞춤
+    max-width: 452px; // 좌측 이미지 너비와 맞춤
+    overflow: visible; // 글자가 커질 때 잘리지 않게 하되,
+    // 최종적인 가로 스크롤은 .tp2ll-section에서 막아야 함
 }
 
 .tp2ll-logo-svg {
@@ -100,5 +105,19 @@
     .tp2ll-img-layer {
         position: absolute;
         inset: 0;
+    }
+}
+
+@media (max-width: 1024px) {
+    .tp2ll-content {
+        flex-direction: column; // 세로로 쌓기
+        align-items: center;
+        padding: 100px 20px;
+        height: auto;
+        min-height: 100vh;
+    }
+    .tp2ll-left, .tp2ll-right {
+        width: 80%; // 모바일에서는 좀 더 넓게
+        gap: 50px;
     }
 }

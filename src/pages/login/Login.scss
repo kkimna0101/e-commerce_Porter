@@ -40,7 +40,7 @@ $font-display: 'Roboto Condensed', sans-serif;
 // ── Form Layout ───────────────────────────────────────────
 .login-form {
     display: grid;
-    grid-template-columns: minmax(300px, 960px) 280px;
+    grid-template-columns: 1fr 280px 1fr;
     gap: 0 32px;
     align-items: start;
     padding: 48px 0 96px;
@@ -198,7 +198,7 @@ $font-display: 'Roboto Condensed', sans-serif;
 // ── Join Section ──────────────────────────────────────────
 .login-join-section {
     display: grid;
-    grid-template-columns: minmax(300px, 960px) 280px;
+    grid-template-columns: 1fr 280px 1fr;
     align-items: center;
     gap: 0 32px;
     padding: 48px 0 0;

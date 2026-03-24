@@ -116,6 +116,7 @@ body {
     background-color: $white;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
 }
 ol,
 ul {
@@ -140,6 +141,7 @@ a {
     text-decoration: none;
     color: inherit;
 }
+
 
 /* SweetAlert2 팝업 최상단으로 */
 .swal2-container {

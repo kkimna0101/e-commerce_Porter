@@ -7,8 +7,14 @@ const NewArrivalsSection = () => {
             <div className="new-arrivals__inner">
                 {/* 스티키 텍스트 */}
                 <div className="new-arrivals__sticky">
-                    <p className="na-eyebrow">NEW ARRIVALS</p>
-                    <h1 className="na-headline">ONLY IN KOREA</h1>
+                    <h1 className="na-headline">
+                        New Arrivals <span className="na-eyebrow">Defined</span>
+                    </h1>
+
+                    <p className="na-headline">
+                        <span className="na-eyebrow">by </span>KOREA ONLY
+                    </p>
+                    <p className="na-kosub">한국에서만 마주하는 독보적인 브랜드 아이덴티티</p>
                 </div>
 
                 {/*

@@ -1,7 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { ChevronLeft, ChevronRight } from 'lucide-react'; // 화살표 아이콘 (혹은 기존 PlusIcon 응용 가능)
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import './Header.scss';
+
+gsap.registerPlugin();
 
 const PlusIcon = ({ size }) => (
     <svg
@@ -15,19 +19,44 @@ const PlusIcon = ({ size }) => (
     </svg>
 );
 
-// ─── 메가메뉴 데이터 ─────────────────────────────────────────────────────
 const MENU_ITEMS = [
-    { label: 'ALL ITEMS', category: 'All', sub: [] },
+    {
+        label: 'ALL ITEMS',
+        category: 'All',
+        sub: [
+            {
+                name: 'Lewis Leathers x PORTER',
+                img: '/images/product/49.png',
+                filter: { series: 'Lewis Leathers x PORTER' },
+            },
+            {
+                name: 'Sandy Liang x PORTER',
+                img: '/images/product/61.png',
+                filter: { series: 'Sandy Liang x PORTER' },
+            },
+            {
+                name: 'POTR SCOPE',
+                img: '/images/product/111.png',
+                filter: { series: 'POTR SCOPE' },
+            },
+            {
+                name: 'HYKE x PORTER',
+                img: '/images/product/35.png',
+                filter: { series: 'HYKE x PORTER' },
+            },
+            { name: 'POTR RIDE', img: '/images/product/101.png', filter: { series: 'POTR RIDE' } },
+        ],
+    },
     {
         label: 'BRAND',
         category: null,
         isBrand: true,
         sub: [
-            { name: 'PORTER', img: '/images/main/mainpotrtxt1.png', filter: { brand: 'PORTER' } },
-            { name: 'P.O.T.R.', img: '/images/main/mainpotrtxt1.png', filter: { brand: 'POTR' } },
+            { name: 'PORTER', img: '/images/porterlogo.png', filter: { brand: 'PORTER' } },
+            { name: 'P.O.T.R.', img: '/images/potr_logo_bl.svg', filter: { brand: 'POTR' } },
             {
                 name: 'LUGGAGE LABEL',
-                img: '/images/main/mainlltxt2.png',
+                img: '/images/luggagelabellogo_b.png',
                 filter: { brand: 'LUGGAGE LABEL' },
             },
         ],
@@ -38,17 +67,17 @@ const MENU_ITEMS = [
         sub: [
             {
                 name: 'BRIEFCASE',
-                img: '/images/menu/work_briefcase.png',
+                img: '/images/product/111.png',
                 filter: { category: 'Work', type: 'Briefcase' },
             },
             {
                 name: 'DOCUMENT CASE',
-                img: '/images/menu/work_doc.png',
+                img: '/images/product/140.png',
                 filter: { category: 'Work', type: 'Document Case' },
             },
             {
                 name: 'ORGANIZER',
-                img: '/images/menu/work_organizer.png',
+                img: '/images/product/75.png',
                 filter: { category: 'Work', type: 'Pouch' },
             },
         ],
@@ -59,27 +88,27 @@ const MENU_ITEMS = [
         sub: [
             {
                 name: 'SHOULDER BAG',
-                img: '/images/menu/daily_shoulder.png',
+                img: '/images/product/1.png',
                 filter: { category: 'Daily', type: 'Shoulder bag' },
             },
             {
                 name: 'TOTE BAG',
-                img: '/images/menu/daily_tote.png',
+                img: '/images/product/18.png',
                 filter: { category: 'Daily', type: 'Tote bag' },
             },
             {
                 name: 'BACKPACK',
-                img: '/images/menu/daily_backpack.png',
+                img: '/images/product/50.png',
                 filter: { category: 'Daily', type: 'Backpack' },
             },
             {
                 name: 'HELMET BAG',
-                img: '/images/menu/daily_helmet.png',
+                img: '/images/product/56.png',
                 filter: { category: 'Daily', type: 'Helmet bag' },
             },
             {
                 name: 'WAIST BAG',
-                img: '/images/menu/daily_waist.png',
+                img: '/images/product/102.png',
                 filter: { category: 'Daily', type: 'Waist bag' },
             },
         ],
@@ -90,12 +119,12 @@ const MENU_ITEMS = [
         sub: [
             {
                 name: 'DUFFLE BAG',
-                img: '/images/menu/travel_duffle.png',
+                img: '/images/product/81.png',
                 filter: { category: 'Travel', type: 'Duffle bag' },
             },
             {
                 name: 'BACKPACK',
-                img: '/images/menu/travel_backpack.png',
+                img: '/images/product/123.png',
                 filter: { category: 'Travel', type: 'Backpack' },
             },
         ],
@@ -106,17 +135,17 @@ const MENU_ITEMS = [
         sub: [
             {
                 name: 'WALLET',
-                img: '/images/menu/small_wallet.png',
+                img: '/images/product/3.png',
                 filter: { category: 'Small Goods', type: 'Wallet' },
             },
             {
                 name: 'POUCH',
-                img: '/images/menu/small_pouch.png',
+                img: '/images/product/51.png',
                 filter: { category: 'Small Goods', type: 'Pouch' },
             },
             {
                 name: 'ACCESSORY',
-                img: '/images/menu/small_acc.png',
+                img: '/images/product/41.png',
                 filter: { category: 'Small Goods', type: 'Accessory' },
             },
         ],
@@ -127,22 +156,24 @@ const MENU_ITEMS = [
         sub: [
             {
                 name: 'DOLL',
-                img: '/images/menu/other_doll.png',
+                img: '/images/product/27.png',
                 filter: { category: 'Other', type: 'Doll' },
             },
             {
                 name: 'APPAREL',
-                img: '/images/menu/other_apparel.png',
+                img: '/images/product/42.png',
                 filter: { category: 'Other', type: 'Apparel' },
             },
         ],
     },
 ];
 
+const MENU_HEIGHT = 320; // 메가메뉴 고정 높이
+
 const Header = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
-    const [hoveredItem, setHoveredItem] = useState(MENU_ITEMS[3]); // DAILY 기본
+    const [hoveredItem, setHoveredItem] = useState(MENU_ITEMS[3]);
     const [isSearchOpen, setIsSearchOpen] = useState(false);
     const [headerSearch, setHeaderSearch] = useState('');
     const [canScroll, setCanScroll] = useState(false);
@@ -151,11 +182,13 @@ const Header = () => {
     const navigate = useNavigate();
     const searchRef = useRef(null);
     const headerRef = useRef(null);
+    const menuRef = useRef(null);
+    const scrollRef = useRef(null);
     const menuTimer = useRef(null);
+    const tlRef = useRef(null);
 
     const isMainPage = location.pathname === '/';
     const isLargeHeader = isMainPage && !isScrolled;
-    const scrollRef = useRef(null); // 슬라이드 영역 참조
 
     // ── 스크롤 감지 ───────────────────────────────────────────────────────
     useEffect(() => {
@@ -184,13 +217,80 @@ const Header = () => {
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
-    // ── 메가메뉴 열기/닫기 (헤더 영역 벗어나면 닫힘) ─────────────────────
+    // ── GSAP 메가메뉴 애니메이션 ─────────────────────────────────────────
+    useGSAP(
+        () => {
+            if (!menuRef.current) return;
+
+            const menu = menuRef.current;
+            const items = menu.querySelectorAll('.mega-menu__item');
+            const cards = menu.querySelectorAll('.mega-menu__card');
+
+            if (menuOpen) {
+                // 열림 애니메이션
+                gsap.killTweensOf([menu, items, cards]);
+
+                gsap.set(menu, { display: 'flex', height: 0, opacity: 1 });
+
+                tlRef.current = gsap.timeline();
+
+                // 1. 패널 높이 펼치기
+                tlRef.current.to(menu, {
+                    height: MENU_HEIGHT,
+                    duration: 0.35,
+                    ease: 'power2.out',
+                });
+
+                // 2. 1뎁스 아이템 stagger
+                tlRef.current.fromTo(
+                    items,
+                    { opacity: 0, y: 12 },
+                    { opacity: 1, y: 0, duration: 0.25, stagger: 0.04, ease: 'power2.out' },
+                    '-=0.15'
+                );
+
+                // 3. 카드 stagger
+                tlRef.current.fromTo(
+                    cards,
+                    { opacity: 0, y: 12 },
+                    { opacity: 1, y: 0, duration: 0.25, stagger: 0.06, ease: 'power2.out' },
+                    '-=0.2'
+                );
+            } else {
+                // 닫힘 애니메이션
+                if (tlRef.current) tlRef.current.kill();
+
+                gsap.to(menu, {
+                    height: 0,
+                    opacity: 0,
+                    duration: 0.25,
+                    ease: 'power2.in',
+                    onComplete: () => gsap.set(menu, { display: 'none' }),
+                });
+            }
+        },
+        { dependencies: [menuOpen], scope: headerRef }
+    );
+
+    // 호버 아이템 바뀔 때 카드만 재애니메이션
+    useGSAP(
+        () => {
+            if (!menuRef.current || !menuOpen) return;
+            const cards = menuRef.current.querySelectorAll('.mega-menu__card');
+            gsap.fromTo(
+                cards,
+                { opacity: 0, y: 8 },
+                { opacity: 1, y: 0, duration: 0.2, stagger: 0.05, ease: 'power2.out' }
+            );
+        },
+        { dependencies: [hoveredItem], scope: headerRef }
+    );
+
+    // ── 메가메뉴 열기/닫기 ───────────────────────────────────────────────
     const handleHeaderMouseLeave = () => {
-        menuTimer.current = setTimeout(() => setMenuOpen(false), 120);
+        menuTimer.current = setTimeout(() => setMenuOpen(false), 100);
     };
-    const handleHeaderMouseEnter = () => {
-        clearTimeout(menuTimer.current);
-    };
+    const handleHeaderMouseEnter = () => clearTimeout(menuTimer.current);
 
     // ── 검색 ─────────────────────────────────────────────────────────────
     const handleSearchSubmit = (e) => {
@@ -204,7 +304,7 @@ const Header = () => {
         setHeaderSearch('');
     };
 
-    // ── 카드 클릭 → 필터 적용하여 이동 ──────────────────────────────────
+    // ── 카드 클릭 ────────────────────────────────────────────────────────
     const handleCardClick = (filter) => {
         setMenuOpen(false);
         const params = new URLSearchParams();
@@ -214,7 +314,6 @@ const Header = () => {
         navigate(`/product?${params.toString()}`);
     };
 
-    // ── 1뎁스 카테고리 클릭 ──────────────────────────────────────────────
     const handleCategoryClick = (item) => {
         setMenuOpen(false);
         if (item.category) {
@@ -226,36 +325,28 @@ const Header = () => {
         }
     };
 
-    // ── 화살표 노출 여부 체크 로직 ──
+    // ── 카드 스크롤 화살표 ───────────────────────────────────────────────
     const checkScroll = () => {
         if (scrollRef.current) {
             const { scrollWidth, clientWidth } = scrollRef.current;
-            // 전체 콘텐츠 너비가 보여지는 너비보다 클 때만 화살표 표시
             setCanScroll(scrollWidth > clientWidth);
         }
     };
 
-    // 메뉴가 열리거나 마우스가 올라간 아이템이 바뀔 때마다 체크
     useEffect(() => {
         if (menuOpen) {
-            // DOM 렌더링 후 타이밍을 맞추기 위해 세션타임아웃 살짝 부여
-            const timer = setTimeout(checkScroll, 100);
+            const t = setTimeout(checkScroll, 150);
             window.addEventListener('resize', checkScroll);
             return () => {
-                clearTimeout(timer);
+                clearTimeout(t);
                 window.removeEventListener('resize', checkScroll);
             };
         }
     }, [menuOpen, hoveredItem]);
 
-    // 좌우 슬라이드 함수
-    const scroll = (direction) => {
+    const scroll = (dir) => {
         if (scrollRef.current) {
-            const scrollAmount = 500; // 한 번 클릭 시 이동할 거리
-            scrollRef.current.scrollBy({
-                left: direction === 'left' ? -scrollAmount : scrollAmount,
-                behavior: 'smooth',
-            });
+            scrollRef.current.scrollBy({ left: dir === 'left' ? -500 : 500, behavior: 'smooth' });
         }
     };
 
@@ -297,10 +388,7 @@ const Header = () => {
                                 }}
                             >
                                 <Link to="/product">
-                                    PRODUCT{' '}
-                                    <PlusIcon
-                                        size={isScrolled || location.pathname !== '/' ? 13 : 17}
-                                    />
+                                    PRODUCT <PlusIcon size={isLargeHeader ? 17 : 13} />
                                 </Link>
                             </li>
                             <li>
@@ -362,56 +450,50 @@ const Header = () => {
                 </div>
             </div>
 
-            {/* ── 메가메뉴 ── */}
-            {menuOpen && (
-                <div className="mega-menu">
-                    <div className="mega-menu__left">
-                        {MENU_ITEMS.map((item) => (
+            {/* ── 메가메뉴: 항상 DOM에 존재, GSAP으로 display/height 제어 ── */}
+            <div className="mega-menu" ref={menuRef} style={{ display: 'none', height: 0 }}>
+                {/* 좌측 1뎁스 */}
+                <div className="mega-menu__left">
+                    {MENU_ITEMS.map((item) => (
+                        <div
+                            key={item.label}
+                            className={`mega-menu__item ${hoveredItem?.label === item.label ? 'is-active' : ''}`}
+                            onMouseEnter={() => setHoveredItem(item)}
+                            onClick={() => handleCategoryClick(item)}
+                        >
+                            {item.label}
+                        </div>
+                    ))}
+                </div>
+
+                {/* 우측 카드 */}
+                <div className="mega-menu__right-container">
+                    {canScroll && (
+                        <>
+                            <button className="nav-btn prev" onClick={() => scroll('left')}>
+                                <ChevronLeft size={24} />
+                            </button>
+                            <button className="nav-btn next" onClick={() => scroll('right')}>
+                                <ChevronRight size={24} />
+                            </button>
+                        </>
+                    )}
+                    <div className="mega-menu__right" ref={scrollRef}>
+                        {hoveredItem?.sub?.map((card) => (
                             <div
-                                key={item.label}
-                                className={`mega-menu__item ${hoveredItem?.label === item.label ? 'is-active' : ''}`}
-                                onMouseEnter={() => setHoveredItem(item)}
-                                onClick={() => {
-                                    setMenuOpen(false); /* 이동로직 */
-                                }}
+                                key={card.name}
+                                className="mega-menu__card"
+                                onClick={() => handleCardClick(card.filter)}
                             >
-                                {item.label}
+                                <div className="mega-menu__card-img">
+                                    <img src={card.img} alt={card.name} />
+                                </div>
+                                <span className="mega-menu__card-name">{card.name}</span>
                             </div>
                         ))}
                     </div>
-
-                    <div className="mega-menu__right-container">
-                        {/* canScroll이 true일 때만 화살표 버튼 렌더링 */}
-                        {canScroll && (
-                            <>
-                                <button className="nav-btn prev" onClick={() => scroll('left')}>
-                                    <ChevronLeft size={24} />
-                                </button>
-                                <button className="nav-btn next" onClick={() => scroll('right')}>
-                                    <ChevronRight size={24} />
-                                </button>
-                            </>
-                        )}
-
-                        <div className="mega-menu__right" ref={scrollRef}>
-                            {hoveredItem?.sub?.map((card) => (
-                                <div
-                                    key={card.name}
-                                    className="mega-menu__card"
-                                    onClick={() => handleCardClick(card.filter)}
-                                >
-                                    <div className="mega-menu__card-img">
-                                        <img src={card.img} alt={card.name} />
-                                    </div>
-                                    <span className="mega-menu__card-name">{card.name}</span>
-                                </div>
-                            ))}
-                        </div>
-
-                        
-                    </div>
                 </div>
-            )}
+            </div>
         </header>
     );
 };

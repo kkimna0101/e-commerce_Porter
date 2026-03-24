@@ -36,11 +36,11 @@ const MainAboutSection = () => {
             });
 
             tl.to({}, { duration: 5 })
-                .to(mainText, { autoAlpha: 1, y: 0, duration: 15 })
+                .to(mainText, { autoAlpha: 1, y: -40, duration: 15 })
                 .to({}, { duration: 5 })
-                .to(mainText2, { autoAlpha: 1, y: 0, duration: 15 })
+                .to(mainText2, { autoAlpha: 1, y: -40, duration: 15 })
                 .to({}, { duration: 5 })
-                .to(subText, { autoAlpha: 1, y: 0, duration: 15 })
+                .to(subText, { autoAlpha: 1, y: -40, duration: 15 })
                 .to({}, { duration: 20 })
                 .to(mainText, { autoAlpha: 0, y: -150, duration: 15 })
                 .to(mainText2, { autoAlpha: 0, y: -150, duration: 15 }, '-=10')
@@ -66,10 +66,10 @@ const MainAboutSection = () => {
                         <div className="text-layer">
                             <div className="main-text-wrap">
                                 <h2 ref={mainTextRef} className="main-text-heading">
-                                    The essence crafted
+                                    The essence <span className="thin">crafted by</span>
                                 </h2>
                                 <h2 ref={mainText2Ref} className="main-text-heading">
-                                    <span className="thin">by</span> master craftsmanship
+                                    master craftsmanship
                                 </h2>
                             </div>
                             <p ref={subTextRef} className="sub-title">

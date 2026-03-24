@@ -86,8 +86,8 @@ const TransitionSection = () => {
                     bgTopEdge >= cache.bottom
                         ? 0
                         : bgTopEdge <= cache.top
-                            ? 100
-                            : ((cache.bottom - bgTopEdge) / cache.height) * 100;
+                          ? 100
+                          : ((cache.bottom - bgTopEdge) / cache.height) * 100;
                 gsap.set(el, { clipPath: `inset(0 0 ${pct}% 0)` });
             };
 
@@ -138,8 +138,8 @@ const TransitionSection = () => {
                         duration: 0.8,
                         ease: 'power2.out',
                     },
-                    i * 0.03
-                ); // 0.1초 간격으로 끝에서부터 순차적 실행
+                    i * 0.02
+                ); // 0.01초 간격으로 끝에서부터 순차적 실행
             });
         }, sectionRef.current);
 

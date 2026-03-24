@@ -153,7 +153,7 @@ const TransitionPotrToLL = () => {
                     svgOrigin: '0 103',
                     duration: 0.6, // duration을 살짝 줄여서 더 빠르게 완성되도록 합니다.
                     stagger: {
-                        each: 0.04,
+                        each: 0.03,
                         from: 'end',
                     },
                     ease: 'power2.out', // 좀 더 탄력 있는 느낌

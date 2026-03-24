@@ -15,7 +15,8 @@ $font-cond: 'Roboto Condensed', 'Arial Narrow', Arial, sans-serif;
 
     // 최초 진입 시 텍스트 위로 450px 여유
     // LLSection 과 동일하게 padding-top 으로 처리
-    padding-top: 450px;
+    padding-top: 400px;
+    padding-bottom: 60px; // 섹션 종료 시점 조정 (텍스트가 img3 bottom 기준 20px 위에서 멈추도록)
 }
 
 .new-arrivals__inner {
@@ -32,7 +33,7 @@ $font-cond: 'Roboto Condensed', 'Arial Narrow', Arial, sans-serif;
     top: 50%;
     transform: translateY(-50%);
     z-index: 10;
-    text-align: right;
+    text-align: center;
     padding: 0 60px;
     pointer-events: none;
     cursor: default;
@@ -44,36 +45,44 @@ $font-cond: 'Roboto Condensed', 'Arial Narrow', Arial, sans-serif;
     font-weight: 100;
     font-size: 160px;
     font-style: normal;
-    line-height: 0.9; // 90%
+    line-height: 1; // 90%
+    letter-spacing: -0.04em;
+
     color: #000;
-    text-align: right;
+    text-align: center;
     margin: 0;
-    text-transform: uppercase;
 }
 
 // ONLY IN KOREA — bold
 .na-headline {
     font-family: $font-cond;
     font-weight: 700;
-    font-size: 245px;
-    font-style: normal;
+    font-size: 160px;
     line-height: 0.9; // 90%
+    letter-spacing: -0.04em;
     color: #000;
-    text-align: right;
+    text-align: center;
     margin: 0;
-    text-transform: uppercase;
+}
+.na-kosub {
+    font-weight: 300;
+    font-size: 24px;
+    letter-spacing: -0.04em;
+    margin: 0;
+    margin-top: 20px;
+    cursor: default;
 }
 
 // ─── 사진 그리드 ────────────────────────────────────────────────────
 // translateY(-50%) 보정 -92px + LLSection 동일 padding-bottom
 .new-arrivals__photos {
-    margin-top: -150px;
+    margin-top: -100px;
 
     // 섹션 종료 시점 조정:
     // 텍스트가 img3 bottom 기준 20px 위에서 멈추도록
     // img3 렌더 높이 ≈ 675px 기준 aspect-ratio 46/61 → 약 895px
     // transform 보정(92px) + 텍스트블록 절반(약 300px) + 여유 20px = 412px
-    padding-bottom: 190px;
+    padding-bottom: 140px;
 
     padding-left: 60px;
     padding-right: 60px;
