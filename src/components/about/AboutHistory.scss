@@ -1,0 +1,203 @@
+@use "../../styles/variables" as *;
+
+@mixin kr-subtitle-32 {
+  font-family: $font-body-ko;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 41.6px;
+  letter-spacing: -0.64px;
+}
+
+@mixin kr-subtitle-26 {
+  font-family: $font-body-ko;
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 33.8px;
+  letter-spacing: -0.52px;
+}
+
+.about-history {
+  position: relative;
+  width: 100%;
+  margin-top: 200px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $white-solid;
+  overflow: hidden;
+
+  .history-inner {
+    position: relative;
+    width: 100%;
+    max-width: 1920px;
+    padding: 0 60px;
+    height: 630px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .slides-area {
+    position: relative;
+    width: calc(100% - 40px);
+    height: 100%;
+
+    .slide-panel {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      background-color: $white-solid;
+      will-change: transform;
+
+      .left-area {
+        width: 442px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .kanji-box {
+          width: fit-content;
+          padding-bottom: 8px;
+          border-bottom: 2px solid $black-solid;
+          font-family: $font-body-en;
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 20.8px;
+          letter-spacing: -0.8px;
+          text-transform: uppercase;
+          color: $black-solid;
+        }
+
+        .year-box {
+          margin-top: 90px;
+          margin-bottom: 20px;
+          font-family: $font-display;
+          font-weight: 600;
+          font-size: 170px;
+          line-height: 1;
+          letter-spacing: -0.05em;
+        }
+
+        .content-box {
+          display: flex;
+          gap: 28px;
+
+          .vertical-line {
+            width: 5px;
+            height: 230px;
+            background-color: $black-solid;
+            flex-shrink: 0;
+          }
+
+          .text-wrap {
+            display: flex;
+            flex-direction: column;
+
+            .title {
+              @include kr-subtitle-32;
+              color: $black-solid;
+              margin: 0 0 20px 0;
+            }
+
+            .desc {
+              @include kr-subtitle-26;
+              color: $black-solid;
+              margin: 0;
+            }
+          }
+        }
+      }
+
+      .right-area {
+        width: 1150px;
+        height: 100%;
+        flex-shrink: 0;
+
+        .img-box {
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            will-change: filter;
+          }
+        }
+      }
+    }
+  }
+
+  .scrollbar-area {
+    position: absolute;
+    right: 60px;
+    top: 0;
+    width: 30px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .nav-btn {
+      width: 30px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+
+      &:disabled {
+        opacity: 0.3;
+        cursor: default;
+      }
+    }
+
+    .num {
+      font-family: $font-body-en;
+      font-size: 14px;
+      font-weight: 600;
+      color: $black-solid;
+    }
+
+    .top-num {
+      margin-top: 30px;
+      margin-bottom: 8px;
+    }
+
+    .bottom-num {
+      margin-top: 8px;
+      margin-bottom: 30px;
+    }
+
+    .track {
+      position: relative;
+      width: 3px;
+      height: 150px;
+      background-color: #929292;
+      border-radius: 10px;
+
+      .thumb {
+        position: absolute;
+        top: 0;
+        left: -1px;
+        width: 5px;
+        height: 37.5px;
+        background-color: $black-solid;
+        border-radius: 10px;
+        transition: top 0.4s ease-out;
+        will-change: top;
+      }
+    }
+  }
+}
