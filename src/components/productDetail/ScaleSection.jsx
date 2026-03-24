@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { SectionTitle } from "./ProductInfo";
 import { productDetailData } from "../../assets/api/productDetailData";
 import { ChevronUp, ChevronDown } from "lucide-react";
 import "./ScaleSection.scss";
@@ -82,7 +81,8 @@ const ScaleSection = () => {
 
   return (
     <div className="scale-section">
-      <SectionTitle text="SCALE" />
+      <h2 className="section-title-plain">SCALE</h2>
+
 
       <div className="scale-section__body">
         <div className="scale-section__left">

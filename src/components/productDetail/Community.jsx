@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { SectionTitle } from './ProductInfo';
 import { productsData } from '../../assets/api/productData';
 import './Community.scss';
 
@@ -14,7 +13,8 @@ const Community = () => {
 
     return (
         <div className="community-section">
-            <SectionTitle text="COMMUNITY" />
+            <h2 className="section-title-plain">COMMUNITY</h2>
+
 
             <div className="community-section__body">
                 <div className="community-section__tabs">
