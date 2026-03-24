@@ -5,7 +5,12 @@ import ProductItem from '../../components/ProductItem';
 import FilterPanel from '../../components/Filterpanel';
 import { BiSortAlt2 } from 'react-icons/bi';
 import { PiSlidersHorizontal } from 'react-icons/pi';
-import { MdChevronLeft, MdChevronRight, MdKeyboardDoubleArrowLeft, MdKeyboardDoubleArrowRight } from 'react-icons/md';
+import {
+    MdChevronLeft,
+    MdChevronRight,
+    MdKeyboardDoubleArrowLeft,
+    MdKeyboardDoubleArrowRight,
+} from 'react-icons/md';
 import './ProductList.scss';
 
 const CATEGORIES = ['All', 'Work', 'Daily', 'Travel', 'Small Goods', 'Other'];
@@ -23,6 +28,9 @@ const ITEMS_PER_PAGE = 20;
 const ProductList = () => {
     const [searchParams, setSearchParams] = useSearchParams();
     const searchQuery = searchParams.get('q') || '';
+    const typeParam = searchParams.get('type') || '';
+    const brandParam = searchParams.get('brand') || '';
+    const categoryParam = searchParams.get('category') || '';
     const [localSearch, setLocalSearch] = useState(searchQuery);
 
     useEffect(() => {
@@ -47,7 +55,7 @@ const ProductList = () => {
 
         // 품절 제외
         if (excludeSoldOut) {
-            arr = arr.filter(p => p.stock > 0);
+            arr = arr.filter((p) => p.stock > 0);
         }
 
         switch (activeSort.value) {
@@ -83,8 +91,18 @@ const ProductList = () => {
     }, [fetchProducts]);
 
     useEffect(() => {
-        setFilters({ category: activeCategory, name: searchQuery });
-    }, [activeCategory, setFilters, products, searchQuery]);
+        // URL에 category 파라미터가 있으면 탭도 동기화
+        if (categoryParam && categoryParam !== activeCategory) {
+            setActiveCategory(categoryParam);
+        }
+
+        setFilters({
+            category: categoryParam || activeCategory,
+            name: searchQuery,
+            types: typeParam ? [typeParam] : [],
+            brands: brandParam ? [brandParam] : [],
+        });
+    }, [activeCategory, setFilters, products, searchQuery, typeParam, brandParam, categoryParam]);
 
     useEffect(() => {
         const handleClickOutside = (e) => {
@@ -181,12 +199,18 @@ const ProductList = () => {
                     {/* 품절 제외 */}
                     <button
                         className={`toolbar-btn soldout-filter-btn ${excludeSoldOut ? 'active' : ''}`}
-                        onClick={() => setExcludeSoldOut(prev => !prev)}
+                        onClick={() => setExcludeSoldOut((prev) => !prev)}
                     >
                         <span className="soldout-checkbox">
                             {excludeSoldOut && (
                                 <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
-                                    <path d="M1 4L3.5 6.5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                    <path
+                                        d="M1 4L3.5 6.5L9 1"
+                                        stroke="currentColor"
+                                        strokeWidth="1.5"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                    />
                                 </svg>
                             )}
                         </span>
