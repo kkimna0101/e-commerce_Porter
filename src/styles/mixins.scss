@@ -1,20 +1,98 @@
-﻿@use './variables' as *;
+﻿@use 'variables' as *;
 
+/* --- 1. 반응형 레이아웃 믹스인 --- */
 @mixin mobile {
-  @media (max-width: #{$mobile}) {
-    @content;
-  }
+  @media (max-width: #{$mobile}) { @content; }
 }
 
 @mixin tablet {
-  @media (max-width: #{$tablet}) {
-    @content;
-  }
+  @media (max-width: #{$tablet}) { @content; }
 }
 
 @mixin desktop {
-  @media (max-width: #{$desktop}) {
-    @content;
-  }
+  @media (max-width: #{$desktop}) { @content; }
 }
 
+/* --- 2. 한국어 타이포그래피 (Pretendard 기반) --- */
+@mixin kor-display {
+  font-family: $font-body-ko;
+  font-weight: 400; font-size: 100px; line-height: 120px;
+  text-transform: uppercase;
+}
+
+@mixin kr-subtitle-32 {
+  font-family: $font-body-ko;
+  font-weight: 700; font-size: 32px; line-height: 41.6px; letter-spacing: -0.64px;
+}
+
+@mixin kr-subtitle-30 {
+  font-family: $font-body-ko;
+  font-weight: 500; font-size: 30px; line-height: 39px; letter-spacing: -0.6px;
+  text-transform: uppercase;
+}
+
+@mixin kr-subtitle-26 {
+  font-family: $font-body-ko;
+  font-weight: 500; font-size: 26px; line-height: 33.8px; letter-spacing: -0.52px;
+}
+
+@mixin kr-body-m {
+  font-family: $font-body-ko;
+  font-weight: 500; font-size: 20px; line-height: 26px; letter-spacing: -0.4px;
+  text-transform: uppercase;
+}
+
+@mixin kr-body-r {
+  font-family: $font-body-ko;
+  font-weight: 400; font-size: 18px; line-height: 23.4px; letter-spacing: -0.36px;
+}
+
+@mixin kr-body-l {
+  font-family: $font-body-ko;
+  font-weight: 300; font-size: 20px; line-height: 28px; letter-spacing: -0.4px;
+}
+
+@mixin kr-body-sb {
+  font-family: $font-body-ko;
+  font-weight: 600; font-size: 16px; line-height: 20.8px; letter-spacing: -0.32px;
+}
+
+@mixin kr-body-el {
+  font-family: $font-body-ko;
+  font-weight: 200; font-size: 14px; line-height: 22.4px; letter-spacing: -0.28px;
+}
+
+/* --- 3. 영어 타이포그래피 (Roboto 기반) --- */
+@mixin en-subtitle-32 {
+  font-family: $font-body-en;
+  font-weight: 700; font-size: 32px; line-height: 41.6px; letter-spacing: -1.6px;
+}
+
+@mixin en-subtitle-30 {
+  font-family: $font-body-en;
+  font-weight: 600; font-size: 30px; line-height: 39px; letter-spacing: -1.5px;
+  text-transform: uppercase;
+}
+
+@mixin en-subtitle-26 {
+  font-family: $font-body-en;
+  font-weight: 500; font-size: 26px; line-height: 33.8px; letter-spacing: -1.3px;
+}
+
+@mixin en-body-20 {
+  font-family: $font-body-en;
+  font-weight: 600; font-size: 20px; line-height: 26px; letter-spacing: -1px;
+  text-transform: uppercase;
+}
+
+@mixin en-body-16 {
+  font-family: $font-body-en;
+  font-weight: 600; font-size: 16px; line-height: 20.8px; letter-spacing: -0.8px;
+  text-transform: uppercase;
+}
+
+@mixin en {
+  font-family: $font-body-en;
+  font-weight: 500; font-size: 22px; line-height: 26.4px; letter-spacing: -0.44px;
+  text-transform: uppercase;
+}

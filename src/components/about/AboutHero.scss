@@ -1,0 +1,68 @@
+@use '../../styles/variables' as *;
+
+.about-hero {
+    position: relative;
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    height: 100vh;
+    overflow: hidden;
+    background-color: $white-solid;
+
+    &__bg-txt {
+        position: absolute;
+        top: 520px;
+        left: 60px;
+        z-index: 1;
+        pointer-events: none;
+        will-change: transform;
+        img {
+            width: auto;
+            display: block;
+        }
+    }
+
+    &__content {
+        position: relative;
+        z-index: 2;
+        padding: 520px 60px 0;
+    }
+
+    &__title {
+        font-family: $font-display;
+        font-weight: 600;
+        font-size: 180px;
+        line-height: 0.9;
+        letter-spacing: -0.05em;
+        color: $black-solid;
+        margin: 0 0 10px 0;
+        text-transform: uppercase;
+        will-change: transform, color;
+    }
+
+    &__body {
+        will-change: transform;
+    }
+
+    &__sub {
+        font-family: $font-body-ko;
+        font-weight: 600;
+        font-size: 30px;
+        color: $black-solid;
+        margin: 0 0 10px 0;
+        line-height: 1.4;
+        .en {
+            font-family: $font-body-en;
+            font-weight: 600;
+        }
+    }
+
+    &__desc {
+        font-family: $font-body-ko;
+        font-weight: 400;
+        font-size: 18px;
+        color: $black-solid;
+        margin: 0;
+        line-height: 1.6;
+    }
+}
