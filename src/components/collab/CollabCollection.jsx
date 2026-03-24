@@ -15,12 +15,12 @@ const collectionData = [
 
 const CollabCollection = () => {
   return (
-    <section className="collab-collection inner">
+    <section className="collab-collection">
       <h2 className="collection-title">
         PORTER <span className="highlight">X</span> COLLECTION
       </h2>
 
-      <div className="collection-list">
+      <div className="collection-list inner">
         {collectionData.map((item) => (
           <div className="collection-item" key={item.id}>
             <div className="item-label">
@@ -28,7 +28,7 @@ const CollabCollection = () => {
               <span className="line"></span>
             </div>
             <div className="img-box">
-              <img src={item.img} alt={item.name} />
+              <img src={item.img} alt={item.name} draggable={false} />
             </div>
           </div>
         ))}
