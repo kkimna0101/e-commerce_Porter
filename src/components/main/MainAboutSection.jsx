@@ -8,55 +8,52 @@ gsap.registerPlugin(ScrollTrigger);
 const MainAboutSection = () => {
     const sectionRef = useRef(null);
     const mainTextRef = useRef(null);
+    const mainText2Ref = useRef(null);
     const subTextRef = useRef(null);
 
     useEffect(() => {
         const mainText = mainTextRef.current;
+        const mainText2 = mainText2Ref.current;
         const subText = subTextRef.current;
 
-        if (!mainText || !subText) return;
+        if (!mainText || !mainText2 || !subText) return;
 
-        // ✅ 스크롤 전 초기 상태를 명시적으로 설정
-        // (opacity:0 / visibility:hidden 상태로 굳는 것을 방지)
         gsap.set(mainText, { autoAlpha: 0, y: 50 });
+        gsap.set(mainText2, { autoAlpha: 0, y: 50 });
         gsap.set(subText, { autoAlpha: 0, y: 50 });
 
         let ctx = gsap.context(() => {
             const tl = gsap.timeline({
                 scrollTrigger: {
-                    // 💡 가장 중요한 핵심: '화면에 고정되는(sticky)' 요소 자체를 기준으로 삼으면 스크롤 계산이 멈춰버립니다!
-                    // 반드시 실제로 3000px 동안 부모 역할을 하며 스크롤되는 'scroll-wrapper'를 기준으로 삼아야 합니다.
                     trigger: sectionRef.current.querySelector('.scroll-wrapper'),
                     start: 'top top',
                     end: 'bottom bottom',
                     scrub: 1,
-                    pin: false, // GSAP가 DOM을 복제해서 망가뜨리는 현상(ProductSection 중복 등)을 방지하기 위해 순수 CSS sticky만 사용
+                    pin: false,
                     invalidateOnRefresh: true,
-                    // 💡 앞선 3개의 TransitionSection(총 3600px)이 높이를 마음껏 늘려놓은 "이후"에
-                    // 이 섹션의 좌표를 가장 마지막에 정확히 짚어내도록 우선순위를 제일 낮게(-1) 깔아둡니다.
                     refreshPriority: -1,
                 },
             });
 
             tl.to({}, { duration: 5 })
-                // ✅ ref 직접 사용 (전역 선택자 충돌 제거)
                 .to(mainText, { autoAlpha: 1, y: 0, duration: 15 })
                 .to({}, { duration: 5 })
+                .to(mainText2, { autoAlpha: 1, y: 0, duration: 15 })
+                .to({}, { duration: 5 })
                 .to(subText, { autoAlpha: 1, y: 0, duration: 15 })
-                .to({}, { duration: 25 })
+                .to({}, { duration: 20 })
                 .to(mainText, { autoAlpha: 0, y: -150, duration: 15 })
+                .to(mainText2, { autoAlpha: 0, y: -150, duration: 15 }, '-=10')
                 .to(subText, { autoAlpha: 0, y: -150, duration: 15 }, '-=10')
                 .to({}, { duration: 15 });
         }, sectionRef);
 
-        // ✅ 레이아웃이 안정된 뒤 refresh (폰트·이미지 로딩 여유 포함)
         const refreshTimer = setTimeout(() => ScrollTrigger.refresh(), 300);
 
         return () => {
             clearTimeout(refreshTimer);
             ctx.revert();
-            // ✅ cleanup 시 인라인 스타일 완전 제거 (Strict Mode 재마운트 대비)
-            gsap.set([mainText, subText], { clearProps: 'all' });
+            gsap.set([mainText, mainText2, subText], { clearProps: 'all' });
         };
     }, []);
 
@@ -67,12 +64,14 @@ const MainAboutSection = () => {
                     <div className="sticky-container">
                         <div className="background-image" />
                         <div className="text-layer">
-                            <img
-                                ref={mainTextRef}
-                                src="/images/main/mainabouttxt1.png"
-                                alt="PORTER ESSENCE"
-                                className="main-text-img"
-                            />
+                            <div className="main-text-wrap">
+                                <h2 ref={mainTextRef} className="main-text-heading">
+                                    The essence crafted
+                                </h2>
+                                <h2 ref={mainText2Ref} className="main-text-heading">
+                                    <span className="thin">by</span> master craftsmanship
+                                </h2>
+                            </div>
                             <p ref={subTextRef} className="sub-title">
                                 <span>장인의 손길로 완성한 본질 :</span> 가방 그 이상의 가치
                             </p>

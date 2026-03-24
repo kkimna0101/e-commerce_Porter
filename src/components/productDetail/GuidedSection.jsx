@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { ChevronDown } from "lucide-react";
-import { SectionTitle } from "./ProductInfo";
 import "./GuidedSection.scss";
 
 const EXCHANGE_CONTENT = [
@@ -102,7 +101,8 @@ const GuidedSection = () => {
 
   return (
     <div className="guide-section">
-      <SectionTitle text="GUIDE" />
+      <h2 className="section-title-plain">GUIDE</h2>
+
 
       <div className="guide-section__list">
         {GUIDE_DATA.map((item) => (

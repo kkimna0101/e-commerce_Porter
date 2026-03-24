@@ -84,7 +84,7 @@ const ProductInfo = () => {
 
   return (
     <div className="product-info">
-      <SectionTitle text="PRODUCT" />
+      <h2 className="section-title-plain">PRODUCT</h2>
 
       <div className="product-info__body">
         <div className="product-info__image-box">

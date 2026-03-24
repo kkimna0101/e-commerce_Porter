@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { X, ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
-import { SectionTitle } from "./ProductInfo";
 import { productDetailData } from "../../assets/api/productDetailData";
 import "./DetailSection.scss";
 import "./ProductInfo.scss";
@@ -96,7 +95,7 @@ const DetailSection = () => {
 
   return (
     <div className="detail-section">
-      <SectionTitle text="DETAILS" />
+      <h2 className="section-title-plain">DETAILS</h2>
 
       <div
         className="detail-section__grid"

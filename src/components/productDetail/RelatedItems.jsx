@@ -1,6 +1,5 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { SectionTitle } from "./ProductInfo";
 import { productsData } from "../../assets/api/productData";
 import "./RelatedItems.scss";
 
@@ -17,7 +16,8 @@ const RelatedItems = () => {
 
   return (
     <div className="related-items">
-      <SectionTitle text="RELATED ITEMS" />
+      <h2 className="section-title-plain">RELATED ITEMS</h2>
+
 
       <div className="related-items__grid">
         {relatedProducts.map((product) => (
