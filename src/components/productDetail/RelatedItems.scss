@@ -4,15 +4,15 @@ $txt-body: #333333;
 
 .related-items {
   width: 1920px;
-  margin-top: 300px;
+  margin-top: 160px;
   box-sizing: border-box;
 
   &__grid {
     display: flex;
     justify-content: flex-start;
     gap: auto;
-    padding-left: 60px;
-    padding-right: 183px;
+    padding-left: 160px;
+    padding-right: 160px;
     justify-content: space-between;
   }
 
