@@ -11,15 +11,14 @@ const Collab = () => {
       <CollabHero />
       <CollabShowcase />
       <CollabCollection />
-
-      <div className="collab-banner inner">
+      <section className="collab-banner">
         <Link to="/k-brand" className="kbrand-banner-link">
           <div className="banner-content">
-            <h3>K-Brand Collaboration</h3>
-            <p>새로운 K-Brand 콜라보레이션을 만나보세요.</p>
+            <h3>K-BRAND COLLECTION</h3>
+            <p>포터코리아에서만 만나볼 수 있는 특별한 큐레이션</p>
           </div>
         </Link>
-      </div>
+      </section>
     </div>
   );
 };
