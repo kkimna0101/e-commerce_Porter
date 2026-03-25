@@ -1,6 +1,6 @@
 @use '../../styles/variables' as *;
 
-// Potr(white) → LLSection(yellow) 전환
+/* ── Desktop (원본 그대로) ── */
 .tp2ll-section {
     width: 100%;
     height: 100vh;
@@ -12,32 +12,26 @@
 
 .tp2ll-bg {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    bottom: 0; left: 0;
+    width: 100%; height: 100%;
     background: $main_bg_yellow;
     z-index: 0;
     will-change: transform;
 }
 
-// PotrSection bottom-content 와 동일: padding 0 62px 0 126px
 .tp2ll-content {
     position: relative;
     z-index: 1;
-    width: 100%;
-    max-width: 1920px;
+    width: 100%; max-width: 1920px;
     margin: 0 auto;
-    padding: 0 62px 0 126px;
+    padding: 0 62px 60px 126px;
     height: 100vh;
     display: flex;
     justify-content: space-between;
-    align-items: flex-end; // 하단 정렬 (PotrSection bottom-content 기준)
+    align-items: flex-end;
     box-sizing: border-box;
-    padding-bottom: 60px;
 }
 
-// ─── 좌측: flex-col, gap 336px (PotrSection bottom-left 동일) ─────────
 .tp2ll-left {
     display: flex;
     flex-direction: column;
@@ -46,11 +40,9 @@
     flex-shrink: 0;
 }
 
-// 작은 이미지 452×300
 .tp2ll-small-img {
     position: relative;
-    width: 452px;
-    height: 300px;
+    width: 452px; height: 300px;
 }
 
 .tp2ll-img-layer {
@@ -59,10 +51,8 @@
     overflow: hidden;
     z-index: 1;
 
-    img,
-    video {
-        width: 100%;
-        height: 100%;
+    img, video {
+        width: 100%; height: 100%;
         object-fit: cover;
         display: block;
     }
@@ -73,51 +63,102 @@
     }
 }
 
-// 로고 영역: 작은 로고(240×45) 크기에서 SVG(560×103)로 커짐
 .tp2ll-logo-area {
-    width: 100%; // 부모 너비에 맞춤
-    max-width: 452px; // 좌측 이미지 너비와 맞춤
-    overflow: visible; // 글자가 커질 때 잘리지 않게 하되,
-    // 최종적인 가로 스크롤은 .tp2ll-section에서 막아야 함
+    width: 100%; max-width: 452px;
+    overflow: visible;
 }
 
 .tp2ll-logo-svg {
     display: block;
-    width: 560px;
-    height: 103px;
+    width: 560px; height: 103px;
     overflow: visible;
 
-    g {
-        will-change: transform;
-    }
+    g { will-change: transform; }
 }
 
-// ─── 우측: 이미지 1060×680 ────────────────────────────────────────────
-.tp2ll-right {
-    flex-shrink: 0;
-}
+.tp2ll-right { flex-shrink: 0; }
 
 .tp2ll-large-img {
     position: relative;
-    width: 1060px;
-    height: 680px;
+    width: 1060px; height: 680px;
 
-    .tp2ll-img-layer {
-        position: absolute;
-        inset: 0;
+    .tp2ll-img-layer { position: absolute; inset: 0; }
+}
+
+/* ─────────────────────────────────────────────────
+   Tablet / Mobile — tp2p와 동일한 패턴
+   JS patch 적용 전제 (window.innerWidth <= 1023 → return)
+   ───────────────────────────────────────────────── */
+@media (max-width: 1023px) {
+    .tp2ll-section {
+        height: auto;
+        background: $main_bg_yellow; /* JS가 bg yellow로 세팅 + 섹션 자체도 yellow */
+    }
+
+    .tp2ll-bg { display: none; }
+
+    /* tp2p처럼: padding-top으로 상단 여백, align-items: flex-start */
+    .tp2ll-content {
+        padding: 60px 40px 60px;
+        height: auto;
+        align-items: flex-start;  /* ← flex-end에서 변경 */
+        gap: 24px;
+    }
+
+    .tp2ll-left {
+        width: 40%;
+        gap: 20px;
+        justify-content: flex-start;
+    }
+
+    .tp2ll-small-img {
+        width: 100%;
+        height: 50vw; /* tp2p처럼 vw 기반 */
+    }
+
+    .tp2ll-logo-area {
+        max-width: 100%;
+        overflow: visible;
+    }
+
+    .tp2ll-logo-svg {
+        width: 100%;
+        height: auto;
+        overflow: visible;
+    }
+
+    .tp2ll-right {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .tp2ll-large-img {
+        width: 100%;
+        height: 50vw; /* tp2p처럼 vw 기반 */
     }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 600px) {
     .tp2ll-content {
-        flex-direction: column; // 세로로 쌓기
-        align-items: center;
-        padding: 100px 20px;
-        height: auto;
-        min-height: 100vh;
+        padding: 40px 20px 40px;
+        flex-direction: column;
+        gap: 16px;
     }
-    .tp2ll-left, .tp2ll-right {
-        width: 80%; // 모바일에서는 좀 더 넓게
-        gap: 50px;
+
+    .tp2ll-left {
+        width: 100%;
+        gap: 16px;
+    }
+
+    .tp2ll-small-img {
+        width: 100%;
+        height: 60vw;
+    }
+
+    .tp2ll-right { width: 100%; }
+
+    .tp2ll-large-img {
+        width: 100%;
+        height: 60vw;
     }
 }

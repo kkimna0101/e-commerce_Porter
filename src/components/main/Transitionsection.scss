@@ -1,5 +1,6 @@
 @use '../../styles/variables' as *;
 
+/* ── Desktop (원본 그대로) ── */
 .ts-section {
     width: 100%;
     height: 100vh;
@@ -11,29 +12,20 @@
 
 .ts-bg {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    bottom: 0; left: 0;
+    width: 100%; height: 100%;
     background: $main_bg_yellow;
     z-index: 0;
     will-change: transform;
 }
 
 .ts-content {
-    position: absolute; // 화면에서 띄워서 위치만 제어합니다.
-    top: 100px; // 💡 여기서 원하는 만큼 위에서 아래로 내리세요! (ex. 10vh 도 가능)
-    left: 0;
-    right: 0;
-
+    position: absolute;
+    top: 100px; left: 0; right: 0;
     z-index: 1;
-    width: 100%;
-    max-width: 1920px;
+    width: 100%; max-width: 1920px;
     margin: 0 auto;
-
-    // 상단 패딩은 다시 0이나 원래 수치로 되돌려줍니다. 덩치를 키우지 않기 위해서요!
     padding: 0 72px 0 124px;
-
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -42,24 +34,19 @@
 
 .ts-left {
     position: relative;
-    width: 460px;
-    height: 762px; // 내부 요소 높이에 고정
-    position: relative;
+    width: 460px; height: 762px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; // 좌측 정렬
+    align-items: flex-start;
     flex-shrink: 0;
 }
 
 .ts-img-stack {
     position: relative;
-    width: 460px;
-    height: 310px; // 이미지 비율 고정
+    width: 460px; height: 310px;
 
     &--right {
-        width: 100%;
-        max-width: 979px;
-        height: 720px;
+        width: 100%; max-width: 979px; height: 720px;
     }
 }
 
@@ -68,10 +55,8 @@
     inset: 0;
     overflow: hidden;
 
-    img,
-    video {
-        width: 100%;
-        height: 100%;
+    img, video {
+        width: 100%; height: 100%;
         object-fit: cover;
         display: block;
     }
@@ -85,17 +70,95 @@
 
 .ts-porter-svg {
     position: absolute;
-    bottom: 0;
-    left: 0;
+    bottom: 0; left: 0;
     transform-origin: bottom left;
     will-change: transform;
     overflow: visible !important;
 }
 
 .ts-right {
-    width: 100%;
-    max-width: 979px;
-    height: 762px; // 좌측과 통일
+    width: 100%; max-width: 979px; height: 762px;
     display: flex;
-    align-items: flex-end; // 비디오를 바닥으로
+    align-items: flex-end;
+}
+
+/* ─────────────────────────────────────────────────
+   Tablet / Mobile
+   JS patch (window.innerWidth <= 1023 → return) 적용 전제:
+   - bg div는 GSAP이 yPercent:0 세팅 → yellow 즉시 표시
+   - 이미지 clip은 GSAP이 inset(0 0 0% 0) 세팅 → 완전 노출
+   - SVG letters는 GSAP이 scale:1 세팅 → CSS 크기로 표시
+   CSS는 tp2p처럼 정적 레이아웃만 담당
+   ───────────────────────────────────────────────── */
+@media (max-width: 1023px) {
+    .ts-section {
+        height: auto;
+        /* JS가 bg를 yPercent:0으로 세팅하므로 yellow가 보임.
+           하지만 JS 미적용 환경 대비 섹션 자체도 yellow로 */
+        background: $main_bg_yellow;
+    }
+
+    .ts-bg {
+        /* JS가 처리하지만 혹시 모를 경우를 위해 */
+        display: none;
+    }
+
+    .ts-content {
+        position: relative;
+        top: 0;
+        padding: 60px 40px 60px;
+        flex-direction: row;
+        gap: 20px;
+        align-items: flex-start;
+    }
+
+    .ts-left {
+        width: 40%;
+        height: auto;
+    }
+
+    /* tp2p처럼 이미지가 꽉 차도록 vw 기반 높이 */
+    .ts-img-stack {
+        width: 100%;
+        height: 50vw;
+
+        &--right {
+            width: 100%;
+            max-width: 100%;
+            height: 50vw;
+        }
+    }
+
+    /* SVG: JS가 scale:1 세팅 → width가 최종 표시 크기 */
+    .ts-porter-svg {
+        position: relative;
+        bottom: auto; left: auto;
+        width: 100%;
+        height: auto;
+        margin-top: 16px;
+    }
+
+    .ts-right {
+        flex: 1;
+        min-width: 0;
+        height: auto;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 600px) {
+    .ts-content {
+        padding: 40px 20px 40px;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .ts-left { width: 100%; }
+
+    .ts-img-stack {
+        height: 60vw;
+        &--right { height: 60vw; }
+    }
+
+    .ts-right { width: 100%; }
 }

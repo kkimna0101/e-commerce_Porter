@@ -25,7 +25,6 @@
                 height: 1110px;
                 overflow: hidden;
                 background-color: #111;
-
                 z-index: 1;
 
                 .background-image {
@@ -63,6 +62,10 @@
                         display: flex;
                         flex-direction: column;
                         gap: 10px;
+                    }
+
+                    .mobile-br {
+                        display: none;
                     }
 
                     .main-text-heading {
@@ -151,6 +154,119 @@
                     font-weight: 100;
                     font-size: 16px;
                     color: #ffffff;
+                }
+            }
+        }
+    }
+
+    /* ── Tablet ── */
+    @media (max-width: 1023px) {
+        .about-content {
+            .scroll-wrapper {
+                height: 2000px;
+
+                .sticky-container {
+                    height: 100vh;
+
+                    .text-layer {
+                        padding: 0 40px;
+
+                        .main-text-heading {
+                            font-size: 90px;
+                        }
+
+                        .sub-title {
+                            font-size: 22px;
+                            margin-top: 40px;
+                        }
+                    }
+                }
+            }
+
+            .orange-box {
+                height: auto;
+                padding: 40px;
+                flex-direction: column;
+                gap: 32px;
+
+                .left-text {
+                    h2 {
+                        font-size: 56px;
+                    }
+                }
+
+                .right-text {
+                    .title-ko {
+                        font-size: 22px;
+                    }
+                    .desc-ko {
+                        font-size: 16px;
+                        br {
+                            display: none;
+                        }
+                    }
+                    .desc-en {
+                        br {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 600px) {
+        .about-content {
+            .scroll-wrapper {
+                height: 1600px;
+
+                .sticky-container {
+                    .text-layer {
+                        padding: 0 20px;
+
+                        .mobile-br {
+                            display: block;
+                            
+                        }
+
+                        .main-text-heading {
+                            font-size: 52px;
+                        }
+
+                        .sub-title {
+                            font-size: 16px;
+                            margin-top: 24px;
+                            word-break: keep-all;
+                        }
+                    }
+                }
+            }
+
+            .orange-box {
+                padding: 32px 20px;
+                gap: 24px;
+
+                .left-text {
+                    h2 {
+                        font-size: 40px;
+                    }
+                    .explore-text {
+                        font-size: 16px;
+                    }
+                }
+
+                .right-text {
+                    .title-ko {
+                        font-size: 18px;
+                    }
+                    .desc-ko {
+                        font-size: 14px;
+                        margin-bottom: 24px;
+                    }
+                    .desc-en {
+                        font-size: 13px;
+                    }
                 }
             }
         }

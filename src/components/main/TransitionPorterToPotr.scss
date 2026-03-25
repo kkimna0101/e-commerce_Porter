@@ -7,7 +7,6 @@
     background: $main_bg_yellow;
     transform: translateZ(0);
     overflow: hidden;
-    // margin-bottom: 40px;
 }
 
 .tp2p-bg {
@@ -35,7 +34,7 @@
     box-sizing: border-box;
 }
 
-// ─── 좌측 930×779 ────────────────────────────────────────────────────
+/* ── 좌측 930×779 ── */
 .tp2p-left {
     position: relative;
     width: 930px;
@@ -63,7 +62,7 @@
     }
 }
 
-// ─── 우측 520px (이미지와 동일 너비) ─────────────────────────────────
+/* ── 우측 520px ── */
 .tp2p-right {
     width: 520px;
     flex-shrink: 0;
@@ -85,11 +84,10 @@
     height: 338px;
 }
 
-// ─── 로고: SVG 우측 하단 정렬 ────────────────────────────────────────
 .tp2p-logo-area {
     width: 520px;
     display: flex;
-    justify-content: flex-end; // SVG 우측 끝 정렬
+    justify-content: flex-end;
     overflow: visible;
 }
 
@@ -99,7 +97,89 @@
     height: 148px;
     overflow: visible;
 
-    g {
-        will-change: transform;
+    g { will-change: transform; }
+}
+
+/* ── Tablet ── */
+@media (max-width: 1023px) {
+    .tp2p-section {
+        height: auto;
+        padding-bottom: 60px;
+    }
+
+    .tp2p-content {
+        padding: 100px 40px 0;   /* ← 상단 여백 충분히 확보 */
+        margin-top: 0;
+        gap: 32px;
+    }
+
+    .tp2p-left {
+        width: 54%;
+        height: 52vw;
+    }
+
+    .tp2p-right {
+        width: 40%;
+        height: calc(240px + (40vw - 40px) * 0.4353);
+        justify-content: space-between;
+    }
+
+    .tp2p-right-img {
+        width: 100%;
+        height: 240px;
+    }
+
+    .tp2p-logo-area {
+        width: 100%;
+    }
+
+    .tp2p-logo-svg {
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* ── Mobile ── */
+@media (max-width: 600px) {
+    .tp2p-section {
+        height: auto;
+        padding-bottom: 40px;
+    }
+
+    .tp2p-content {
+        flex-direction: column;
+        padding: 80px 20px 0;   /* ← 상단 여백 충분히 확보 */
+        margin-top: 0;
+        gap: 24px;
+    }
+
+    .tp2p-left {
+        width: 100%;
+        height: 60vw;
+    }
+
+    .tp2p-right {
+        width: 100%;
+        height: auto;
+        gap: calc((100vw - 40px) * 0.2176);
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .tp2p-right-img {
+        width: 100%;
+        height: 200px;
+        flex-shrink: 0;
+    }
+
+    .tp2p-logo-area {
+        width: 100%;
+        justify-content: flex-start;
+        overflow: visible;
+    }
+
+    .tp2p-logo-svg {
+        width: calc(100vw - 40px);
+        height: auto;
     }
 }
