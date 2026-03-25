@@ -66,7 +66,8 @@ const MainAboutSection = () => {
                         <div className="text-layer">
                             <div className="main-text-wrap">
                                 <h2 ref={mainTextRef} className="main-text-heading">
-                                    The essence <span className="thin">crafted by</span>
+                                    The essence <br className="mobile-br" />
+                                    <span className="thin">crafted by</span>
                                 </h2>
                                 <h2 ref={mainText2Ref} className="main-text-heading">
                                     master craftsmanship

@@ -126,9 +126,9 @@ const TransitionPorterToPotr = () => {
             tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: section,
-                    start: 'top top',
+                    start: 'bottom bottom',
                     end: '+=1200',
-                    scrub: 1,
+                    scrub: 2,
                     pin: true,
                     pinSpacing: true,
                     anticipatePin: 1.5,
