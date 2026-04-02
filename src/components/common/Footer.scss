@@ -21,9 +21,12 @@
     color: #bebebe;
 }
 .orange {
-    color: $point-orange;
+    color: $point_orange;
 }
 
+// ────────────────────────────────────────────────────────────────────────
+// 푸터 컨테이너 (데스크톱)
+// ────────────────────────────────────────────────────────────────────────
 .footer-container {
     width: 100%;
     height: 825px;
@@ -34,6 +37,9 @@
     padding: 48px 0 96px;
 }
 
+// ────────────────────────────────────────────────────────────────────────
+// 상단 4컬럼 (데스크톱)
+// ────────────────────────────────────────────────────────────────────────
 .footer-top {
     display: flex;
     justify-content: space-between;
@@ -45,7 +51,6 @@
 
     h2 {
         font-family: $font-display;
-
         font-weight: 800;
         font-size: 80px;
         line-height: 1;
@@ -68,7 +73,6 @@
         transform: translateY(-15px);
         transition: all 0.8s ease;
 
-        /* p 대신 a(Link) 스타일 추가 */
         a,
         p {
             font-family: 'Pretendard', sans-serif;
@@ -78,18 +82,18 @@
             margin: 0;
             cursor: pointer;
             white-space: nowrap;
-            text-decoration: none; // 링크 밑줄 제거
-            color: $white-80; // 부모 컬러(txt-bebebe 등) 상속
+            text-decoration: none;
+            color: $white-80;
 
             &:hover {
-                color: #ffffff; // 호버 시 색상 변화 추가 (선택사항)
+                color: #ffffff;
             }
         }
     }
 
     .logo-menu {
         gap: 20px;
-        display: flex; // a 태그로 감싸지면서 배치가 틀어지지 않게 추가
+        display: flex;
 
         img {
             object-fit: contain;
@@ -115,6 +119,9 @@
     }
 }
 
+// ────────────────────────────────────────────────────────────────────────
+// 하단 바 (데스크톱)
+// ────────────────────────────────────────────────────────────────────────
 .footer-bottom {
     padding: 56px 60px 0;
     display: flex;
@@ -123,11 +130,10 @@
 }
 
 .menu-list {
-    display: flex; // 가로 배치를 위해 추가
+    display: flex;
     flex-direction: column;
-    gap: 4px; // 간격 추가
+    gap: 4px;
 
-    /* p 대신 a(Link) 스타일 추가 */
     a,
     p {
         font-family: 'Roboto', sans-serif;
@@ -140,7 +146,6 @@
     }
 }
 
-/* 이하 스타일 동일 */
 .language-list {
     display: flex;
     align-items: center;
@@ -168,12 +173,13 @@
         margin: 0;
     }
 }
+
 .logo-box {
     display: flex;
-    justify-content: space-between; // 인스타는 왼쪽, TOP은 오른쪽으로 밀어줌
+    justify-content: space-between;
     align-items: center;
-    width: 100%; // 너비를 꽉 채워야 양 끝 배치가 가능합니다.
-    margin-top: 10px; // 간격 조절
+    width: 100%;
+    margin-top: 10px;
 
     .insta-logo {
         width: 60px;
@@ -195,12 +201,211 @@
 
         .arrow-icon {
             height: 60px;
-            /* 아이콘 이미지라면 width, height 설정 */
         }
 
         &:hover {
             opacity: 0.7;
             transition: opacity 0.3s ease;
+        }
+    }
+}
+
+// ────────────────────────────────────────────────────────────────────────
+// 태블릿 반응형 (≤ 1023px)
+// ────────────────────────────────────────────────────────────────────────
+@media (max-width: $tablet) {
+    .footer-container {
+        height: auto;
+        padding: 56px 0 64px;
+    }
+
+    // ── 상단 컬럼: 세로 스택 ─────────────────────────────────────────────
+    .footer-top {
+        flex-direction: column;
+        padding: 0 40px;
+        gap: 0;
+    }
+
+    .footer-col {
+        border-bottom: 1px solid rgba($white, 0.1);
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        h2 {
+            font-size: 48px;
+            letter-spacing: -2px;
+            padding-bottom: 0;
+            padding-top: 28px;
+            padding-bottom: 28px;
+        }
+
+        // 태블릿에서 sub-menu는 항상 보임 (hover 불필요)
+        .sub-menu {
+            position: static;
+            opacity: 1;
+            visibility: visible;
+            transform: none;
+            transition: none;
+            padding-bottom: 28px;
+            gap: 12px;
+
+            a,
+            p {
+                font-size: 15px;
+            }
+        }
+
+        .logo-menu {
+            padding-bottom: 28px;
+            align-items: flex-start;
+
+            .logo-1 {
+                width: 60px;
+                height: 40px;
+            }
+            .logo-2 {
+                width: 48px;
+                height: 48px;
+            }
+            .logo-3 {
+                width: 80px;
+                height: 34px;
+            }
+        }
+    }
+
+    // ── 하단 ─────────────────────────────────────────────────────────────
+    .footer-bottom {
+        padding: 40px 40px 0;
+        gap: 20px;
+    }
+
+    .menu-list {
+        a,
+        p {
+            font-size: 17px;
+        }
+    }
+
+    .language-list {
+        font-size: 16px;
+    }
+
+    .copyright-list {
+        p {
+            font-size: 13px;
+        }
+    }
+
+    .logo-box {
+        margin-top: 4px;
+
+        .insta-logo {
+            width: 48px;
+            height: 48px;
+        }
+
+        .back-to-top {
+            font-size: 16px;
+            .arrow-icon {
+                height: 44px;
+            }
+        }
+    }
+}
+
+// ────────────────────────────────────────────────────────────────────────
+// 모바일 반응형 (≤ 600px)
+// ────────────────────────────────────────────────────────────────────────
+@media (max-width: $mobile) {
+    .footer-container {
+        padding: 40px 0 48px;
+    }
+
+    .footer-top {
+        padding: 0 20px;
+    }
+
+    .footer-col {
+        h2 {
+            font-size: 36px;
+            letter-spacing: -1.5px;
+            padding-top: 22px;
+            padding-bottom: 22px;
+        }
+
+        .sub-menu {
+            padding-bottom: 22px;
+            gap: 10px;
+
+            a,
+            p {
+                font-size: 14px;
+            }
+        }
+
+        .logo-menu {
+            padding-bottom: 22px;
+            gap: 16px;
+
+            .logo-1 {
+                width: 50px;
+                height: 34px;
+            }
+            .logo-2 {
+                width: 40px;
+                height: 40px;
+            }
+            .logo-3 {
+                width: 66px;
+                height: 28px;
+            }
+        }
+    }
+
+    .footer-bottom {
+        padding: 32px 20px 0;
+        gap: 16px;
+    }
+
+    .menu-list {
+        a,
+        p {
+            font-size: 15px;
+        }
+    }
+
+    .language-list {
+        font-size: 13px;
+        flex-wrap: wrap;
+        gap: 4px;
+
+        .divider {
+            margin: 0 8px;
+        }
+    }
+
+    .copyright-list {
+        p {
+            font-size: 12px;
+            line-height: 1.5;
+        }
+    }
+
+    .logo-box {
+        .insta-logo {
+            width: 40px;
+            height: 40px;
+        }
+
+        .back-to-top {
+            font-size: 14px;
+            gap: 8px;
+            .arrow-icon {
+                height: 36px;
+            }
         }
     }
 }
